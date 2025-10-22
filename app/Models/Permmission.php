@@ -12,4 +12,9 @@ class Permmission extends Model
         'description',
         'is_active',
     ];
+        
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }

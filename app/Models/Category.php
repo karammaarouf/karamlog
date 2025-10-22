@@ -11,4 +11,8 @@ class Category extends Model
         'description',
         'is_active',
     ];
+    public function items()
+    {
+        return $this->belongsToMany(Item::class);
+    }
 }

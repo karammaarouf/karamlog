@@ -15,5 +15,12 @@ class Item extends Model
         'is_active',
         'discount',
     ];
-
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }

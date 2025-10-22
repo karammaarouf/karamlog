@@ -11,4 +11,8 @@ class Group extends Model
         'description',
         'is_active',
     ];
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }

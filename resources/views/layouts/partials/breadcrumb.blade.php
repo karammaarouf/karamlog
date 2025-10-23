@@ -1,9 +1,9 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
-        <a href="index.html">
+        <a href="/">
             <i class="iconly-Home icli svg-color"></i>
         </a>
     </li>
-    <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item active">Default</li>
+    <li class="breadcrumb-item">@yield('breadcrumb')</li>
+    <li class="breadcrumb-item active">@yield('breadcrumbActive')</li>
 </ol>

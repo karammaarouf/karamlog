@@ -15,6 +15,11 @@ class Item extends Model
         'is_active',
         'discount',
     ];
+    protected $casts = [
+        'is_active' => 'boolean',
+        'discount' => 'decimal:2',
+        'price' => 'decimal:2',
+    ];
     public function group()
     {
         return $this->belongsTo(Group::class);

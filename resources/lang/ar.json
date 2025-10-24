@@ -6,5 +6,13 @@
     "management": "إدارة",
     "content": "المحتوى",
     "categories": "الأقسام",
-    "collections": "المجموعات"
+    "collections": "المجموعات",
+    "Users":"المستخدمون",
+    "Users.list":"قائمة المستخدمون",
+    "users.index":"عرض المستخدمون",
+    "users.deleted":"المستخدمون المحذوفون",
+    "Users.deleted":"المستخدمون المحذوفون",
+    "Deleted":"المحذوف",
+    "items.index":"عرض العناصر",
+    "items.deleted":"العناصر المحذوفة"
 }

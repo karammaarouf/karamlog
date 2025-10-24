@@ -26,7 +26,7 @@
                   <use href="../assets/svg/iconly-sprite.svg#{{ $icon }}"></use>
                 </svg>
               @endif
-              <h6 class="f-w-600">{{ __($label) }}</h6>
+              <h6 class="f-w-600" @if(!empty($item['color'])) style="color: {{ $item['color'] }}" @endif>{{ __($label) }}</h6>
               @if($hasChildren)
                 <i class="iconly-Arrow-Right-2 icli"></i>
               @endif
@@ -39,7 +39,7 @@
                     $childActive = isset($child['route']) ? request()->routeIs($child['route']) : (isset($child['url']) ? request()->is(ltrim(parse_url($child['url'], PHP_URL_PATH) ?? '', '/')) : false);
                   @endphp
                   <li class="{{ $childActive ? 'active' : '' }}"> 
-                    <a href="{{ $childHref }}">{{ __($child['label'] ?? '') }}</a>
+                    <a href="{{ $childHref }}" @if(!empty($child['color'])) style="color: {{ $child['color'] }}" @endif>{{ __($child['label'] ?? '') }}</a>
                   </li>
                 @endforeach
               </ul>

@@ -9,12 +9,12 @@ return [
             'children'=>[
 
                 ['label' => 'users.index', 'icon' => 'Users', 'route' => 'users.index'],
-                ['label' => 'users.deleted', 'icon' => 'Delete', 'route' => 'users.deleted'],
+                ['label' => 'users.deleted', 'icon' => 'Delete','color'=>'red', 'route' => 'users.deleted'],
 
             ]],
             ['label' => 'items', 'icon' => 'Bag','children'=>[
                 ['label' => 'items.index', 'icon' => 'Items', 'route' => 'items.index'],
-                ['label' => 'items.deleted', 'icon' => 'Delete', 'route' => 'items.deleted'],
+                ['label' => 'items.deleted', 'icon' => 'Delete','color'=>'red', 'route' => 'items.deleted'],
             ]],
         ],
     ],

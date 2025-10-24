@@ -9,4 +9,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/users', UserController::class);
+Route::get('/usersdeleted', [UserController::class, 'deleted'])->name('users.deleted');
+
 Route::resource('/items', ItemController::class);
+Route::get('/itemsdeleted', [ItemController::class, 'deleted'])->name('items.deleted');

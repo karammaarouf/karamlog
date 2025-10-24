@@ -17,10 +17,18 @@
             $icon = $item['icon'] ?? null;
             $label = $item['label'] ?? '';
             $itemActive = isset($item['route']) ? request()->routeIs($item['route']) : (isset($item['url']) ? request()->is(ltrim(parse_url($item['url'], PHP_URL_PATH) ?? '', '/')) : false);
+            // keep submenu open if any child is active
+            $open = $itemActive;
+            if ($hasChildren) {
+              foreach ($item['children'] as $c) {
+                $cActive = isset($c['route']) ? request()->routeIs($c['route']) : (isset($c['url']) ? request()->is(ltrim(parse_url($c['url'], PHP_URL_PATH) ?? '', '/')) : false);
+                if ($cActive) { $open = true; break; }
+              }
+            }
           @endphp
-          <li class="sidebar-list {{ $itemActive ? 'active' : '' }}">
+          <li class="sidebar-list {{ $open ? 'active' : '' }}">
             <i class="fa-solid fa-thumbtack"></i>
-            <a class="sidebar-link" href="{{ $href }}"> 
+            <a class="sidebar-link" href="{{ $href }}" @if($hasChildren) aria-expanded="{{ $open ? 'true' : 'false' }}" @endif> 
               @if($icon)
                 <svg class="stroke-icon">
                   <use href="../assets/svg/iconly-sprite.svg#{{ $icon }}"></use>
@@ -32,7 +40,7 @@
               @endif
             </a>
             @if($hasChildren)
-              <ul class="sidebar-submenu">
+              <ul class="sidebar-submenu" @if($open) style="display: block;" @endif>
                 @foreach($item['children'] as $child)
                   @php
                     $childHref = isset($child['route']) ? route($child['route']) : ($child['url'] ?? '#');

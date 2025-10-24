@@ -14,5 +14,7 @@
     "Users.deleted":"المستخدمون المحذوفون",
     "Deleted":"المحذوف",
     "items.index":"عرض العناصر",
-    "items.deleted":"العناصر المحذوفة"
+    "items.deleted":"العناصر المحذوفة" ,
+    "Items":"العناصر",
+    "Items.list":"قائمة العناصر"
 }

@@ -1,4 +1,4 @@
-      <header class="page-header row">
+<header class="page-header row">
         <div class="logo-wrapper d-flex align-items-center col-auto"><a href="index.html"><img class="light-logo img-fluid" src="../assets/images/logo/logo1.png" alt="logo"/><img class="dark-logo img-fluid" src="../assets/images/logo/logo-dark.png" alt="logo"/></a><a class="close-btn toggle-sidebar" href="javascript:void(0)">
             <svg class="svg-color">
               <use href="../assets/svg/iconly-sprite.svg#Category"></use>
@@ -28,15 +28,13 @@
             <ul class="header-right"> 
               <li class="custom-dropdown">
                 <div class="translate_wrapper">
-                  <div class="current_lang"><a class="lang" href="javascript:void(0)"><i class="flag-icon flag-icon-us"></i>
-                      <h6 class="lang-txt f-w-700">ENG</h6></a></div>
+                  <div class="current_lang"><a class="lang" href="javascript:void(0)"><i class="flag-icon {{ app()->getLocale() === 'ar' ? 'flag-icon-sa' : 'flag-icon-us' }}"></i>
+                      <h6 class="lang-txt f-w-700">{{ app()->getLocale() === 'ar' ? 'AR' : 'EN' }}</h6></a></div>
                   <ul class="custom-menu profile-menu language-menu py-0 more_lang">
-                                  <li class="d-block"><a class="lang" href="#" data-value="English"><i class="flag-icon flag-icon-us"></i>
+                                  <li class="d-block"><a class="lang" href="{{ route('locale.switch', ['locale' => 'ar']) }}"><i class="flag-icon flag-icon-sa"></i>
+                                      <div class="lang-txt">العربية</div></a></li>
+                                  <li class="d-block"><a class="lang" href="{{ route('locale.switch', ['locale' => 'en']) }}"><i class="flag-icon flag-icon-us"></i>
                                       <div class="lang-txt">English</div></a></li>
-                                  <li class="d-block"><a class="lang" href="#" data-value="fr"><i class="flag-icon flag-icon-fr"></i>
-                                      <div class="lang-txt">Français</div></a></li>
-                                  <li class="d-block"><a class="lang" href="#" data-value="es"><i class="flag-icon flag-icon-es"></i>
-                                      <div class="lang-txt">Español</div></a></li>
                   </ul>
                 </div>
               </li>

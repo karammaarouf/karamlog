@@ -1,16 +1,16 @@
 @extends('layouts.app')
 @section('title')
-    {{__('Users.show')}}
+    {{__('Items.deleted')}}
 @endsection
 @section('subTitle')
-    {{ __('Users.show') }}
+    {{ __('Items.deleted') }}
 @endsection
 @section('breadcrumb')
-    {{ __('Users') }}
+    {{ __('Items') }}
 @endsection
 @section('breadcrumbActive')
-    {{ __('Show') }}
+    {{ __('Deleted') }}
 @endsection
 @section('content')
-show user
+deleted items
 @endsection

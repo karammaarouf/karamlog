@@ -1,3 +1,10 @@
 {
-    
+    "general": "عام",
+    "dashboard": "لوحة التحكم",
+    "users": "المستخدمون",
+    "items": "العناصر",
+    "management": "إدارة",
+    "content": "المحتوى",
+    "categories": "الأقسام",
+    "collections": "المجموعات"
 }

@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('layouts.app');
 });
-Route::get('/users', function () {
-    return view('pages.users.index');
-});
+
+Route::resource('/users', UserController::class);
+Route::resource('/items', ItemController::class);

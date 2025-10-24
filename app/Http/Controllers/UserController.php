@@ -35,9 +35,9 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        return view('pages.users.partials.show', compact('user'));
     }
 
     /**
@@ -62,5 +62,11 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function deleted()
+    {
+        $users = User::onlyTrashed()->get();
+        return view('pages.users.partials.deleted', compact('users'));
     }
 }

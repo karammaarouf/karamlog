@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -12,15 +13,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $roles = Role::with('permissions')->orderBy('name')->paginate(10);
+        $permissions = Permission::where('is_active', true)->orderBy('name')->get();
+        return view('pages.roles.index', compact('roles', 'permissions'));
     }
 
     /**
@@ -28,15 +23,19 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $data = $request->validate([
+            'name' => 'required|string|max:255|unique:roles,name',
+            'group_name' => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'is_active' => 'boolean',
+            'permission_ids' => 'array',
+            'permission_ids.*' => 'integer|exists:permissions,id',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Role $role)
-    {
-        //
+        $role = Role::create($data);
+        $role->permissions()->sync($data['permission_ids'] ?? []);
+
+        return redirect()->route('roles.index')->with('success', 'Role created');
     }
 
     /**
@@ -44,7 +43,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        $permissions = Permission::where('is_active', true)->orderBy('name')->get();
+        return view('pages.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -52,7 +52,19 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:255|unique:roles,name,' . $role->id,
+            'group_name' => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'is_active' => 'boolean',
+            'permission_ids' => 'array',
+            'permission_ids.*' => 'integer|exists:permissions,id',
+        ]);
+
+        $role->update($data);
+        $role->permissions()->sync($data['permission_ids'] ?? []);
+
+        return redirect()->route('roles.index')->with('success', 'Role updated');
     }
 
     /**
@@ -60,6 +72,8 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $role->permissions()->detach();
+        $role->delete();
+        return redirect()->route('roles.index')->with('success', 'Role deleted');
     }
 }

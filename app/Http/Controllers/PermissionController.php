@@ -12,15 +12,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $permissions = Permission::orderBy('group_name')->orderBy('name')->paginate(15);
+        return view('pages.permissions.index', compact('permissions'));
     }
 
     /**
@@ -28,15 +21,14 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Permission $permission)
-    {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:255|unique:permissions,name',
+            'group_name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'is_active' => 'boolean',
+        ]);
+        Permission::create($data);
+        return redirect()->route('permissions.index')->with('success', 'Permission created');
     }
 
     /**
@@ -44,7 +36,7 @@ class PermissionController extends Controller
      */
     public function edit(Permission $permission)
     {
-        //
+        return view('pages.permissions.edit', compact('permission'));
     }
 
     /**
@@ -52,7 +44,14 @@ class PermissionController extends Controller
      */
     public function update(Request $request, Permission $permission)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:255|unique:permissions,name,' . $permission->id,
+            'group_name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'is_active' => 'boolean',
+        ]);
+        $permission->update($data);
+        return redirect()->route('permissions.index')->with('success', 'Permission updated');
     }
 
     /**
@@ -60,6 +59,8 @@ class PermissionController extends Controller
      */
     public function destroy(Permission $permission)
     {
-        //
+        $permission->roles()->detach();
+        $permission->delete();
+        return redirect()->route('permissions.index')->with('success', 'Permission deleted');
     }
 }

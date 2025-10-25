@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Permmission;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 
-class PermmissionController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class PermmissionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Permmission $permmission)
+    public function show(Permission $permission)
     {
         //
     }
@@ -42,7 +42,7 @@ class PermmissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Permmission $permmission)
+    public function edit(Permission $permission)
     {
         //
     }
@@ -50,7 +50,7 @@ class PermmissionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Permmission $permmission)
+    public function update(Request $request, Permission $permission)
     {
         //
     }
@@ -58,7 +58,7 @@ class PermmissionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Permmission $permmission)
+    public function destroy(Permission $permission)
     {
         //
     }

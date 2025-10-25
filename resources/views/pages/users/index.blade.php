@@ -15,7 +15,12 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card">
-      <div class="card-header"><h5>{{ __('Users.list') }}</h5></div>
+      <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5>{{ __('Users.list') }}</h5>
+          <a href="{{ route('users.create') }}" class="btn btn-sm btn-outline-success">{{ __('create') }}</a>
+        </div>
+      </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-striped">
@@ -24,7 +29,7 @@
                 <th>#</th>
                 <th>{{ __('name') }}</th>
                 <th>{{ __('email') }}</th>
-                <th>{{ __('email_verified_at') }}</th>
+                <th>{{ __('roles') }}</th>
                 <th>{{ __('is_active') }}</th>
                 <th>{{ __('actions') }}</th>
               </tr>
@@ -35,7 +40,7 @@
                   <td>{{ $user->id }}</td>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
-                  <td>{{ $user->email_verified_at ? __('yes') : __('no') }}</td>
+                  <td>{{ $user->roles->pluck('name')->implode(', ') }}</td>
                   <td>{{ $user->is_active ? __('yes') : __('no') }}</td>
                   <td>
                     <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-outline-primary">{{ __('edit') }}</a>
@@ -44,6 +49,7 @@
                       @method('DELETE')
                       <button class="btn btn-sm btn-outline-danger" onclick="return confirm('{{ __('Are you sure you want to delete this user?') }}')">{{ __('delete') }}</button>
                     </form>
+                    <a href="{{ route('users.show', $user) }}" class="btn btn-sm btn-outline-info">{{ __('show') }}</a>
                   </td>
                 </tr>
               @empty
@@ -55,6 +61,11 @@
           </table>
         </div>
       </div>
+      @if ($users->count())
+          <div class="card-footer">
+              @include('layouts.partials.pagination', ['page' => $users])
+          </div>
+      @endif
     </div>
   </div>
 </div>

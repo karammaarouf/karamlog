@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::with('roles')->paginate(10);
         return view('pages.users.index', compact('users'));
     }
 
@@ -66,7 +66,7 @@ class UserController extends Controller
 
     public function deleted()
     {
-        $users = User::onlyTrashed()->get();
+        $users = User::onlyTrashed()->paginate(10);
         return view('pages.users.partials.deleted', compact('users'));
     }
 }

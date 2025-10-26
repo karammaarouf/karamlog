@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('roles')->paginate(10);
+        $users = User::with('roles')->get();
         return view('pages.users.index', compact('users'));
     }
 
@@ -21,7 +21,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $user = new User();
+        return view('pages.users.partials.form', compact('user'));
     }
 
     /**
@@ -29,7 +30,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // لم يتم تنفيذ الحفظ ضمن هذا الطلب. يمكنني إضافته لاحقاً.
     }
 
     /**
@@ -37,36 +38,37 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $user->load('roles');
         return view('pages.users.partials.show', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return view('pages.users.partials.form', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        // لم يتم تنفيذ التحديث ضمن هذا الطلب. يمكنني إضافته لاحقاً.
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        // لم يتم تنفيذ الحذف ضمن هذا الطلب. يمكنني إضافته لاحقاً.
     }
 
     public function deleted()
     {
-        $users = User::onlyTrashed()->paginate(10);
+        $users = User::onlyTrashed()->get();
         return view('pages.users.partials.deleted', compact('users'));
     }
 }

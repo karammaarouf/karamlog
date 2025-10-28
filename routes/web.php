@@ -22,6 +22,8 @@ Route::get('/locale/{locale}', function (string $locale) {
 
 Route::resource('/users', UserController::class);
 Route::get('/usersdeleted', [UserController::class, 'deleted'])->name('users.deleted');
+Route::put('/users/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
+Route::delete('/users/{id}/force-delete', [UserController::class, 'forceDelete'])->name('users.forceDelete');
 
 Route::resource('/items', ItemController::class);
 Route::get('/itemsdeleted', [ItemController::class, 'deleted'])->name('items.deleted');

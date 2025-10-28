@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,8 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        return view('pages.users.partials.form', compact('user'));
+        $roles = Role::where('is_active', true)->pluck('name', 'id');
+        return view('pages.users.partials.form', compact('user', 'roles'));
     }
 
     /**
@@ -47,8 +49,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $user->load('roles');
-        return view('pages.users.partials.form', compact('user'));
+
+        $roles = Role::where('is_active', true)->pluck('name', 'id');
+        return view('pages.users.partials.form', compact('user', 'roles'));
     }
 
     /**
@@ -69,7 +72,29 @@ class UserController extends Controller
 
     public function deleted()
     {
-        $users = User::onlyTrashed()->get();
+        $users = User::onlyTrashed()->with('roles')->paginate(10);
         return view('pages.users.partials.deleted', compact('users'));
+    }
+
+    /**
+     * Restore a soft-deleted user.
+     */
+    public function restore(string $id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+        $user->restore();
+        return redirect()->route('users.deleted')->with('success', __('User restored'));
+    }
+
+    /**
+     * Permanently delete a soft-deleted user.
+     */
+    public function forceDelete(string $id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+        // detach roles to avoid FK constraints, then force delete
+        $user->roles()->detach();
+        $user->forceDelete();
+        return redirect()->route('users.deleted')->with('success', __('User permanently deleted'));
     }
 }

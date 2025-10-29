@@ -7,7 +7,7 @@
               <div class="col-md-6">
                 <p class="float-end mb-0">Hand crafted &amp; made with
                   <svg class="svg-color footer-icon">
-                    <use href="../assets/svg/iconly-sprite.svg#heart"></use>
+                    <use href="{{ asset('assets/svg/iconly-sprite.svg#heart') }}"></use>
                   </svg>
                 </p>
               </div>

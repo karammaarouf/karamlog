@@ -1,7 +1,7 @@
 <header class="page-header row">
-        <div class="logo-wrapper d-flex align-items-center col-auto"><a href="index.html"><img class="light-logo img-fluid" src="../assets/images/logo/logo1.png" alt="logo"/><img class="dark-logo img-fluid" src="../assets/images/logo/logo-dark.png" alt="logo"/></a><a class="close-btn toggle-sidebar" href="javascript:void(0)">
+        <div class="logo-wrapper d-flex align-items-center col-auto"><a href="index.html"><img class="light-logo img-fluid" src={{asset('assets/images/logo/logo1.png')}} alt="logo"/><img class="dark-logo img-fluid" src={{asset('assets/images/logo/logo-dark.png')}} alt="logo"/></a><a class="close-btn toggle-sidebar" href="javascript:void(0)">
             <svg class="svg-color">
-              <use href="../assets/svg/iconly-sprite.svg#Category"></use>
+              <use href="{{ asset('assets/svg/iconly-sprite.svg#Category') }}"></use>
             </svg></a></div>
         <div class="page-main-header col">
           <div class="header-left">
@@ -40,21 +40,21 @@
               </li>
               <li class="search d-lg-none d-flex"> <a href="javascript:void(0)">
                   <svg>
-                    <use href="../assets/svg/iconly-sprite.svg#Search"></use>
+                    <use href="{{ asset('assets/svg/iconly-sprite.svg#Search') }}"></use>
                   </svg></a></li>
               <li>  <a class="dark-mode" href="javascript:void(0)">
                   <svg>
-                    <use href="../assets/svg/iconly-sprite.svg#moondark"></use>
+                    <use href="{{ asset('assets/svg/iconly-sprite.svg#moondark') }}"></use>
                   </svg></a></li>
               <li class="custom-dropdown"><a href="javascript:void(0)">
                   <svg>
-                    <use href="../assets/svg/iconly-sprite.svg#cart-icon"></use>
+                    <use href="{{ asset('assets/svg/iconly-sprite.svg#cart-icon') }}"></use>
                   </svg></a><span class="badge rounded-pill badge-primary">2</span>
                 <div class="custom-menu cart-dropdown py-0 overflow-hidden">
                   <h3 class="title dropdown-title">Cart</h3>
                   <ul class="pb-0">
                     <li>
-                      <div class="d-flex"><img class="img-fluid b-r-5 me-3 img-60" src="../assets/images/dashboard-2/1.png" alt=""/>
+                      <div class="d-flex"><img class="img-fluid b-r-5 me-3 img-60" src="{{ asset('assets/images/dashboard-2/1.png') }}" alt=""/>
                         <div class="flex-grow-1"><span class="f-w-600">Watch multicolor</span>
                           <div class="qty-box">
                             <div class="input-group"><span class="input-group-prepend">
@@ -69,7 +69,7 @@
                       </div>
                     </li>
                     <li>
-                      <div class="d-flex"><img class="img-fluid b-r-5 me-3 img-60" src="../assets/images/dashboard-2/2.png" alt=""/>
+                      <div class="d-flex"><img class="img-fluid b-r-5 me-3 img-60" src="{{ asset('assets/images/dashboard-2/2.png') }}" alt=""/>
                         <div class="flex-grow-1"><span class="f-w-600">Airpods</span>
                           <div class="qty-box">
                             <div class="input-group"><span class="input-group-prepend">
@@ -92,7 +92,7 @@
               </li>
               <li class="custom-dropdown"><a href="javascript:void(0)">
                   <svg>
-                    <use href="../assets/svg/iconly-sprite.svg#notification"></use>
+                    <use href="{{ asset('assets/svg/iconly-sprite.svg#notification') }}"></use>
                   </svg></a><span class="badge rounded-pill badge-primary">4</span>
                 <div class="custom-menu notification-dropdown py-0 overflow-hidden">
                   <h3 class="title bg-primary-light dropdown-title">Notification <span class="font-primary">View all</span></h3>
@@ -103,7 +103,7 @@
                       <div class="flex-grow-1">
                         <h6 class="f-w-600 font-primary">30-04-2024<span>Today</span><span class="circle-dot-primary float-end">
                             <svg class="circle-color">
-                              <use href="../assets/svg/iconly-sprite.svg#circle"></use>
+                              <use href="{{ asset('assets/svg/iconly-sprite.svg#circle') }}"></use>
                             </svg></span></h6>
                         <h5>Alice Goodwin</h5>
                         <p class="mb-0">Fashion should be fun. It shouldn't be labelled intellectual.</p>
@@ -114,7 +114,7 @@
                                     <div class="flex-grow-1">
                                       <h6 class="f-w-600 font-secondary">28-06-2024<span>1 hour ago</span><span class="float-end circle-dot-secondary">
                                           <svg class="circle-color">
-                                            <use href="../assets/svg/iconly-sprite.svg#circle"></use>
+                                            <use href="{{ asset('assets/svg/iconly-sprite.svg#circle') }}"></use>
                                           </svg></span></h6>
                                       <h5>Herry Venter</h5>
                                       <p>I am convinced that there can be luxury in simplicity.</p>
@@ -125,7 +125,7 @@
                                     <div class="flex-grow-1">
                                       <h6 class="f-w-600 font-primary">04-08-2024<span>Today</span><span class="float-end circle-dot-primary">
                                           <svg class="circle-color">
-                                            <use href="../assets/svg/iconly-sprite.svg#circle"></use>
+                                            <use href="{{ asset('assets/svg/iconly-sprite.svg#circle') }}"></use>
                                           </svg></span></h6>
                                       <h5>Loain Deo</h5>
                                       <p>I feel that things happen for open new opportunities.</p>
@@ -136,7 +136,7 @@
                                     <div class="flex-grow-1">
                                       <h6 class="f-w-600 font-secondary">12-11-2024<span>Yesterday</span><span class="float-end circle-dot-secondary">
                                           <svg class="circle-color">
-                                            <use href="../assets/svg/iconly-sprite.svg#circle"></use>
+                                            <use href="{{ asset('assets/svg/iconly-sprite.svg#circle') }}"></use>
                                           </svg></span></h6>
                                       <h5>Fenter Jessy</h5>
                                       <p>Sometimes the simplest things are the most profound.</p>
@@ -147,11 +147,11 @@
               </li>
               <li><a class="full-screen" href="javascript:void(0)"> 
                   <svg>
-                    <use href="../assets/svg/iconly-sprite.svg#scanfull"></use>
+                    <use href="{{ asset('assets/svg/iconly-sprite.svg#scanfull') }}"></use>
                   </svg></a></li>
               <li class="custom-dropdown"><a href="javascript:void(0)">
                   <svg>
-                    <use href="../assets/svg/iconly-sprite.svg#bookmark"></use>
+                    <use href="{{ asset('assets/svg/iconly-sprite.svg#bookmark') }}"></use>
                   </svg></a>
                 <div class="custom-menu bookmark-dropdown py-0 overflow-hidden">
                   <h3 class="title bg-primary-light dropdown-title">Bookmark</h3>
@@ -161,7 +161,7 @@
                         <div class="input-group">
                           <input class="form-control" type="text" placeholder="Search Bookmark..."/><span class="input-group-text">
                             <svg class="svg-color">
-                              <use href="../assets/svg/iconly-sprite.svg#Search"></use>
+                              <use href="{{ asset('assets/svg/iconly-sprite.svg#Search') }}"></use>
                             </svg></span>
                         </div>
                       </form>
@@ -169,33 +169,33 @@
                                   <li class="d-flex align-items-center">
                                     <div class="flex-shrink-0 me-2 btn-activity-primary"><a href="index.html">
                                         <svg class="svg-color">
-                                          <use href="../assets/svg/iconly-sprite.svg#cube"></use>
+                                          <use href="{{ asset('assets/svg/iconly-sprite.svg#cube') }}"></use>
                                         </svg></a></div>
                                     <div class="d-flex justify-content-between align-items-center w-100"><a href="index.html">Dashboard</a>
                                       <svg class="svg-color icon-star">
-                                        <use href="../assets/svg/iconly-sprite.svg#star"></use>
+                                        <use href="{{ asset('assets/svg/iconly-sprite.svg#star') }}"></use>
                                       </svg>
                                     </div>
                                   </li>
                                   <li class="d-flex align-items-center">
                                     <div class="flex-shrink-0 me-2 btn-activity-secondary"><a href="to-do.html">
                                         <svg class="svg-color">
-                                          <use href="../assets/svg/iconly-sprite.svg#check"></use>
+                                          <use href="{{ asset('assets/svg/iconly-sprite.svg#check') }}"></use>
                                         </svg></a></div>
                                     <div class="d-flex justify-content-between align-items-center w-100"><a href="to-do.html">To-do</a>
                                       <svg class="svg-color icon-star">
-                                        <use href="../assets/svg/iconly-sprite.svg#star"></use>
+                                        <use href="{{ asset('assets/svg/iconly-sprite.svg#star') }}"></use>
                                       </svg>
                                     </div>
                                   </li>
                                   <li class="d-flex align-items-center">
                                     <div class="flex-shrink-0 me-2 btn-activity-danger"><a href="apex_chart.html">
                                         <svg class="svg-color">
-                                          <use href="../assets/svg/iconly-sprite.svg#pie"></use>
+                                          <use href="{{ asset('assets/svg/iconly-sprite.svg#pie') }}"></use>
                                         </svg></a></div>
                                     <div class="d-flex justify-content-between align-items-center w-100"><a href="apex_chart.html">Chart</a>
                                       <svg class="svg-color icon-star">
-                                        <use href="../assets/svg/iconly-sprite.svg#star"></use>
+                                        <use href="{{ asset('assets/svg/iconly-sprite.svg#star') }}"></use>
                                       </svg>
                                     </div>
                                   </li>
@@ -218,7 +218,7 @@
                   <h3>15</h3></a></li>
               <li class="profile-nav custom-dropdown">
                 <div class="user-wrap">
-                  <div class="user-img"><img src="../assets/images/profile.png" alt="user"/></div>
+                  <div class="user-img"><img src="{{ asset('assets/images/profile.png') }}" alt="user"/></div>
                   <div class="user-content">
                     <h6>Ava Davis</h6>
                     <p class="mb-0">Admin<i class="fa-solid fa-chevron-down"></i></p>
@@ -228,22 +228,22 @@
                   <ul class="profile-body">
                     <li class="d-flex"> 
                       <svg class="svg-color">
-                        <use href="../assets/svg/iconly-sprite.svg#Profile"></use>
+                        <use href="{{ asset('assets/svg/iconly-sprite.svg#Profile') }}"></use>
                       </svg><a class="ms-2" href="user-profile.html">Account</a>
                     </li>
                     <li class="d-flex"> 
                       <svg class="svg-color">
-                        <use href="../assets/svg/iconly-sprite.svg#Message"></use>
+                        <use href="{{ asset('assets/svg/iconly-sprite.svg#Message') }}"></use>
                       </svg><a class="ms-2" href="letter-box.html">Inbox</a>
                     </li>
                     <li class="d-flex"> 
                       <svg class="svg-color">
-                        <use href="../assets/svg/iconly-sprite.svg#Document"></use>
+                        <use href="{{ asset('assets/svg/iconly-sprite.svg#Document') }}"></use>
                       </svg><a class="ms-2" href="to-do.html">Task</a>
                     </li>
                     <li class="d-flex"> 
                       <svg class="svg-color">
-                        <use href="../assets/svg/iconly-sprite.svg#Login"></use>
+                        <use href="{{ asset('assets/svg/iconly-sprite.svg#Login') }}"></use>
                       </svg><a class="ms-2" href="login.html">Log Out</a>
                     </li>
                   </ul>

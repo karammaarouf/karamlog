@@ -76,15 +76,19 @@ sidebarListItems.forEach((item) => {
 
 // Sidebar toggle js
     const sidebarToggle = document.querySelector(".toggle-sidebar");
-    sidebarToggle.addEventListener("click", function () {
-      wrapper.classList.toggle("sidebar-open");
-      const wrapperClose = wrapper.classList.contains("sidebar-open");
-    });
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener("click", function () {
+        wrapper.classList.toggle("sidebar-open");
+        const wrapperClose = wrapper.classList.contains("sidebar-open");
+      });
+    }
 })();
 // Sidebar pin-drops
 const pinTitle = document.querySelector(".pin-title");
 let pinIcon = document.querySelectorAll(".sidebar-list .fa-thumbtack");
 function togglePinnedName() {
+  // إذا لم يوجد عنصر العنوان المثبت، لا تنفّذ أي تغيير لتفادي أخطاء null
+  if (!pinTitle) return;
   if (document.getElementsByClassName("pined").length) {
     if (!pinTitle.classList.contains("show")) pinTitle.classList.add("show");
   } else {
@@ -115,18 +119,13 @@ pinIcon.forEach((item, index) => {
     var elem = item;
     var topPos = elem.offsetTop;
     togglePinnedName();
-    if (item.parentElement.parentElement.classList.contains("pined")) {
-      scrollTo(
-        document.getElementsByClassName("main-sidebar")[0],
-        topPos - 30,
-        600
-      );
-    } else {
-      scrollTo(
-        document.getElementsByClassName("main-sidebar")[0],
-        elem.parentNode.offsetTop - 30,
-        600
-      );
+    const mainSidebar = document.getElementsByClassName("main-sidebar")[0];
+    if (mainSidebar) {
+      if (item.parentElement.parentElement.classList.contains("pined")) {
+        scrollTo(mainSidebar, topPos - 30, 600);
+      } else {
+        scrollTo(mainSidebar, elem.parentNode.offsetTop - 30, 600);
+      }
     }
   });
   function scrollTo(element, to, duration) {

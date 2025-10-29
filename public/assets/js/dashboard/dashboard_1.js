@@ -1,4 +1,10 @@
 (function () {
+  function renderChartIfPresent(selector, options) {
+    var el = document.querySelector(selector);
+    if (!el) return;
+    var chart = new ApexCharts(el, options);
+    chart.render();
+  }
   // visitor chart
   var optionsvisitor = {
     series: [
@@ -110,11 +116,7 @@
       },
     ],
   };
-  var chartvisitor = new ApexCharts(
-    document.querySelector("#earnings-chart"),
-    optionsvisitor
-  );
-  chartvisitor.render();
+  renderChartIfPresent("#earnings-chart", optionsvisitor);
   var options = {
     series: [76, 67, 61, 90],
     chart: {
@@ -245,8 +247,7 @@
       },
     ],
   };
-  var chart = new ApexCharts(document.querySelector("#investment"), options);
-  chart.render();
+  renderChartIfPresent("#investment", options);
   ///growth-chart
   var options = {
     series: [
@@ -445,8 +446,7 @@
       },
     ],
   };
-  var chart = new ApexCharts(document.querySelector("#growth-chart"), options);
-  chart.render();
+  renderChartIfPresent("#growth-chart", options);
   // income chart
   var income = {
     series: [46],
@@ -550,9 +550,5 @@
       },
     ],
   };
-  var IncomechrtchartEl = new ApexCharts(
-    document.querySelector("#Incomechrt"),
-    income
-  );
-  IncomechrtchartEl.render();
+  renderChartIfPresent("#Incomechrt", income);
 })();

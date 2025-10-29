@@ -2,6 +2,11 @@
   <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
   <div class="main-sidebar" id="main-sidebar">
     <ul class="sidebar-menu" id="simple-bar">
+      <li class="pin-title sidebar-main-title">
+        <div>
+          <h5 class="f-w-700 sidebar-title">{{ __('Pinned') }}</h5>
+        </div>
+      </li>
       @foreach(config('sidebar') as $section)
         @if(!empty($section['title']))
           <li class="sidebar-main-title">
@@ -31,7 +36,7 @@
             <a class="sidebar-link" href="{{ $href }}" @if($hasChildren) aria-expanded="{{ $open ? 'true' : 'false' }}" @endif> 
               @if($icon)
                 <svg class="stroke-icon">
-                  <use href="../assets/svg/iconly-sprite.svg#{{ $icon }}"></use>
+                  <use href="{{ asset('assets/svg/iconly-sprite.svg#'.$icon) }}"></use>
                 </svg>
               @endif
               <h6 class="f-w-600" @if(!empty($item['color'])) style="color: {{ $item['color'] }}" @endif>{{ __($label) }}</h6>

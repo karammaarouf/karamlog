@@ -18,7 +18,7 @@
       <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
           <h5>{{ __('Users.list') }}</h5>
-          <a href="{{ route('users.create') }}" class="btn btn-sm btn-outline-success">{{ __('create') }}</a>
+          <x-create :action="route('users.create')" />
         </div>
       </div>
       <div class="card-body">
@@ -43,13 +43,9 @@
                   <td>{{ $user->roles->pluck('name')->implode(', ') }}</td>
                   <td>{{ $user->is_active ? __('yes') : __('no') }}</td>
                   <td>
-                    <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-outline-primary">{{ __('edit') }}</a>
-                    <form method="POST" action="{{ route('users.destroy', $user) }}" style="display:inline-block">
-                      @csrf
-                      @method('DELETE')
-                      <button class="btn btn-sm btn-outline-danger" onclick="return confirm('{{ __('Are you sure you want to delete this user?') }}')">{{ __('delete') }}</button>
-                    </form>
-                    <a href="{{ route('users.show', $user) }}" class="btn btn-sm btn-outline-info">{{ __('show') }}</a>
+                    <x-show :action="route('users.show', $user)" />
+                    <x-edit :action="route('users.edit', $user)" />
+                    <x-delete-form :action="route('users.destroy', $user)" />
                   </td>
                 </tr>
               @empty

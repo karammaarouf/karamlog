@@ -18,7 +18,7 @@
       <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
           <h5>{{ __('Users.deleted') }}</h5>
-          <a href="{{ route('users.index') }}" class="btn btn-sm btn-outline-secondary">{{ __('back') }}</a>
+          <x-back :action="route('users.index')" />
         </div>
       </div>
       <div class="card-body">
@@ -43,16 +43,8 @@
                   <td>{{ $user->roles->pluck('name')->implode(', ') }}</td>
                   <td>{{ optional($user->deleted_at)->format('Y-m-d H:i') }}</td>
                   <td>
-                    <form method="POST" action="{{ route('users.restore', $user->id) }}" style="display:inline-block">
-                      @csrf
-                      @method('PUT')
-                      <button class="btn btn-sm btn-outline-success" onclick="return confirm('{{ __('Are you sure to restore this user?') }}')">{{ __('restore') }}</button>
-                    </form>
-                    <form method="POST" action="{{ route('users.forceDelete', $user->id) }}" style="display:inline-block">
-                      @csrf
-                      @method('DELETE')
-                      <button class="btn btn-sm btn-outline-danger" onclick="return confirm('{{ __('Are you sure to permanently delete this user?') }}')">{{ __('force delete') }}</button>
-                    </form>
+                    <x-restore-form :action="route('users.restore', $user)" />
+                    <x-delete-form :action="route('users.forceDelete', $user)" />
                   </td>
                 </tr>
               @empty

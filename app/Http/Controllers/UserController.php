@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserStoreRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,9 +31,11 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        // لم يتم تنفيذ الحفظ ضمن هذا الطلب. يمكنني إضافته لاحقاً.
+    public function store(UserStoreRequest $request)
+    {   
+        $user = User::create($request->validated());
+        $user->assignRoles($request->input('roles', []));
+        return redirect()->route('users.index')->with('success', __('User created'));
     }
 
     /**
@@ -59,7 +62,10 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->only(['name', 'email', 'is_active']));
+        // مزامنة الأدوار المختارة مع المستخدم
+        $user->roles()->sync($request->input('roles', []));
+        return redirect()->route('users.index')->with('success', __('User updated'));
     }
 
     /**
@@ -67,7 +73,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        // 
+        // حذف المستخدم
+        $user->delete();
+        
+        return redirect()->route('users.index')->with('success', __('User deleted'));
     }
 
     public function deleted()

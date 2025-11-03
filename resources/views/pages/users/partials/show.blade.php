@@ -19,9 +19,9 @@
         <h5 class="mb-0">{{__('user details')}}</h5>
         <div>
           @isset($user)
-            <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-primary">{{__('edit')}}</a>
+          <x-edit :action="route('users.edit', $user)" />
           @endisset
-          <a href="{{ route('users.index') }}" class="btn btn-sm btn-secondary ms-2">{{__('back')}}</a>
+          <x-back :action="route('users.index')" />
         </div>
       </div>
       <div class="card-body">

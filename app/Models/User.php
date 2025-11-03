@@ -59,10 +59,20 @@ class User extends Authenticatable
         return $this->roles()->whereIn('name', $roles)->exists();
     }
 
-    public function assignRole(string|Role $role): void
+    public function assignRoles(string|array $roles): void
     {
-        $roleModel = $role instanceof Role ? $role : Role::where('name', $role)->firstOrFail();
-        $this->roles()->syncWithoutDetaching([$roleModel->id]);
+        $roleInputs = is_array($roles) ? $roles : [$roles];
+        $roleIds = array_map(function ($role) {
+            if ($role instanceof Role) {
+                return $role->id;
+            }
+            if (is_numeric($role)) {
+                return (int) $role;
+            }
+            return Role::where('name', $role)->value('id');
+        }, $roleInputs);
+        $roleIds = array_values(array_filter($roleIds));
+        $this->roles()->syncWithoutDetaching($roleIds);
     }
 
     public function removeRole(string|Role $role): void

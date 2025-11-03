@@ -1,5 +1,27 @@
 var SweetAlert_custom = {
     init: function () {
+      // Delegated handler for delete buttons using SweetAlert2
+      document.addEventListener('click', function(e){
+        var btn = e.target.closest('.sweet-5');
+        if(!btn) return;
+        e.preventDefault();
+        var form = btn.closest('form');
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#2e8e87',
+          cancelButtonColor: '#C42A02',
+          confirmButtonText: 'Yes, delete it!'
+        }).then(function(result){
+          if (result.isConfirmed && form) {
+            form.submit();
+          }
+        });
+      });
+      // Stop executing demo bindings to avoid null errors on pages without elements
+      return;
       document.querySelector(".sweet-1").onclick = function () {
         Swal.fire(
           'Good job!',

@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('roles')->paginate(10);
+        $users = User::paginate();
         return view('pages.users.index', compact('users'));
     }
 
@@ -24,8 +24,7 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        $roles = [];
-        return view('pages.users.partials.form', compact('user', 'roles'));
+        return view('pages.users.partials.form', compact('user'));
     }
 
     /**
@@ -34,7 +33,6 @@ class UserController extends Controller
     public function store(UserStoreRequest $request)
     {   
         $user = User::create($request->validated());
-        $user->assignRoles($request->input('roles', []));
         return redirect()->route('users.index')->with('success', __('User created'));
     }
 
@@ -43,7 +41,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $user->load('roles');
         return view('pages.users.partials.show', compact('user'));
     }
 
@@ -53,8 +50,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
 
-        $roles = [];
-        return view('pages.users.partials.form', compact('user', 'roles'));
+        return view('pages.users.partials.form', compact('user'));
     }
 
     /**
@@ -79,7 +75,7 @@ class UserController extends Controller
 
     public function deleted()
     {
-        $users = User::onlyTrashed()->with('roles')->paginate(10);
+        $users = User::onlyTrashed()->paginate();
         return view('pages.users.partials.deleted', compact('users'));
     }
 

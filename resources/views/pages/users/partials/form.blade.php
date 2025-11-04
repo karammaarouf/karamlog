@@ -4,8 +4,6 @@
         $title = $isEdit ? __('edit user') : __('add new user');
         $action = $isEdit ? route('users.update', $user) : route('users.store');
         $method = $isEdit ? 'PUT' : 'POST';
-
-        $selectedRoleIds = $isEdit ? $user->roles->pluck('id')->toArray() : [];
     @endphp
 @section('title')
     {{ $title }}
@@ -37,8 +35,6 @@
                 <x-input name="password" type="password" label="{{__('password')}}" required help="{{__('min 8 chars')}}" />
                 <x-input name="password_confirmation" type="password" label="{{__('confirm password')}}" required />
             @endif
-
-            <x-select name="roles[]" label="{{__('roles')}}" :options="$roles" :value="$selectedRoleIds" multiple required />
 
             <x-checkbox name="is_active" label="{{__('is active')}}" :model="$user" />
 

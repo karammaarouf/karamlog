@@ -29,7 +29,6 @@
                 <th>#</th>
                 <th>{{ __('name') }}</th>
                 <th>{{ __('email') }}</th>
-                <th>{{ __('roles') }}</th>
                 <th>{{ __('is_active') }}</th>
                 <th>{{ __('actions') }}</th>
               </tr>
@@ -40,7 +39,6 @@
                   <td>{{ $user->id }}</td>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
-                  <td>{{ $user->roles->pluck('name')->implode(', ') }}</td>
                   <td>{{ $user->is_active ? __('yes') : __('no') }}</td>
                   <td>
                     <x-show :action="route('users.show', $user)" />

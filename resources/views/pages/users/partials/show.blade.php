@@ -50,18 +50,6 @@
                 <td>{{ $user->is_active ? __('yes') : __('no') }}</td>
               </tr>
               <tr>
-                <th>{{__('roles')}}</th>
-                <td>
-                  @if($user->roles && $user->roles->count())
-                    @foreach($user->roles as $role)
-                      <span class="badge bg-info me-1">{{ $role->name }}</span>
-                    @endforeach
-                  @else
-                    <span class="text-muted">{{__('no roles')}}</span>
-                  @endif
-                </td>
-              </tr>
-              <tr>
                 <th>{{__('created at')}}</th>
                 <td>{{ \Illuminate\Support\Carbon::parse($user->created_at)->format('Y-m-d H:i') }}</td>
               </tr>

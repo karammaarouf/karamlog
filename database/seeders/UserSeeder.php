@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
@@ -13,6 +14,19 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $permissions=['view-users',
+        'create-users',
+        'update-users',
+        'delete-users',
+        'restore-users',
+        'force-delete-users'
+    ];
+    foreach($permissions as $permission){
+        Permission::create([
+            'name'=>$permission,
+            'guard_name'=>'web',
+        ]);
+    }
         User::create([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',

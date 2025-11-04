@@ -24,7 +24,7 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        $roles = Role::where('is_active', true)->pluck('name', 'id');
+        $roles = [];
         return view('pages.users.partials.form', compact('user', 'roles'));
     }
 
@@ -53,7 +53,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
 
-        $roles = Role::where('is_active', true)->pluck('name', 'id');
+        $roles = [];
         return view('pages.users.partials.form', compact('user', 'roles'));
     }
 
@@ -63,8 +63,6 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->only(['name', 'email', 'is_active']));
-        // مزامنة الأدوار المختارة مع المستخدم
-        $user->roles()->sync($request->input('roles', []));
         return redirect()->route('users.index')->with('success', __('User updated'));
     }
 
@@ -101,8 +99,6 @@ class UserController extends Controller
     public function forceDelete(string $id)
     {
         $user = User::withTrashed()->findOrFail($id);
-        // detach roles to avoid FK constraints, then force delete
-        $user->roles()->detach();
         $user->forceDelete();
         return redirect()->route('users.deleted')->with('success', __('User permanently deleted'));
     }

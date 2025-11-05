@@ -46,8 +46,8 @@
                 <td>{{ $user->email_verified_at ? __('yes') : __('no') }}</td>
               </tr>
               <tr>
-                <th>{{__('active')}}</th>
-                <td>{{ $user->is_active ? __('yes') : __('no') }}</td>
+                <th>{{__('status')}}</th>
+                <td>{{ $user->is_active ? __('active') : __('inactive') }}</td>
               </tr>
               <tr>
                 <th>{{__('created at')}}</th>

@@ -36,7 +36,7 @@
                 <x-input name="password_confirmation" type="password" label="{{__('confirm password')}}" required />
             @endif
 
-            <x-checkbox name="is_active" label="{{__('is active')}}" :model="$user" />
+            <x-switch-checkbox name="is_active" label="{{__('status')}}" :model="$user" />
 
             <div class="col-12 d-flex gap-2">
                 <button type="submit" class="btn btn-primary">{{__('save')}}</button>

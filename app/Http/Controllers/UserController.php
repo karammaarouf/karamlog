@@ -82,9 +82,8 @@ class UserController extends Controller
     /**
      * Restore a soft-deleted user.
      */
-    public function restore(string $id)
+    public function restore(User $user)
     {
-        $user = User::withTrashed()->findOrFail($id);
         $user->restore();
         return redirect()->route('users.deleted')->with('success', __('User restored'));
     }
@@ -92,10 +91,19 @@ class UserController extends Controller
     /**
      * Permanently delete a soft-deleted user.
      */
-    public function forceDelete(string $id)
+    public function forceDelete(User $user)
     {
-        $user = User::withTrashed()->findOrFail($id);
         $user->forceDelete();
         return redirect()->route('users.deleted')->with('success', __('User permanently deleted'));
+    }
+
+    /**
+     * Toggle the active status of a user.
+     */
+    public function toggleActive(User $user)
+    {
+        $user->is_active = !$user->is_active;
+        $user->save();
+        return redirect()->route('users.index')->with('success', __('User active status updated'));
     }
 }

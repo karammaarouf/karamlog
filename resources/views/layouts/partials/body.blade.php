@@ -1,6 +1,6 @@
-        <div class="page-body">
-            <div class="container-fluid">
-                <div class="page-title">
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-title">
                     <div class="row">
                         <div class="col-sm-6 col-12">
                             <h2>@yield('title')</h2>

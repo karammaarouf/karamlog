@@ -44,3 +44,4 @@
         <!-- Sweetalert js-->
     <script src="{{asset('assets/js/sweetalert/sweetalert2.min.js')}}"></script>
     <script src="{{asset('assets/js/sweetalert/sweetalert-custom.js')}}"></script>
+    @stack('scripts')

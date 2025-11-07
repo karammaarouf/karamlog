@@ -33,3 +33,4 @@
         font-variation-settings:"slnt" 0 !important;
     }
 </style>
+@stack('styles')

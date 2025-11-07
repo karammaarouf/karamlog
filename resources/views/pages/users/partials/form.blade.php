@@ -40,7 +40,7 @@
 
             <div class="col-12 d-flex gap-2">
                 <button type="submit" class="btn btn-primary">{{__('save')}}</button>
-                <a href="{{ route('users.index') }}" class="btn btn-secondary">{{__('cancel')}}</a>
+                <x-cancel route="users.index" />
             </div>
         </x-form>
                 </div>

@@ -27,3 +27,4 @@ Route::put('/users/{user}/toggle-active', [UserController::class, 'toggleActive'
 Route::resource('/items', ItemController::class);
 Route::get('/itemsdeleted', [ItemController::class, 'deleted'])->name('items.deleted');
 
+require __DIR__.'/auth.php';

@@ -19,9 +19,9 @@
         <h5 class="mb-0">{{__('user details')}}</h5>
         <div>
           @isset($user)
-          <x-edit :action="route('users.edit', $user)" />
+          <x-buttons.edit :action="route('users.edit', $user)" />
           @endisset
-          <x-back :action="route('users.index')" />
+          <x-buttons.back :action="route('users.index')" />
         </div>
       </div>
       <div class="card-body">

@@ -13,34 +13,43 @@
         <div class="col-12 p-0">    
           <div class="login-card login-dark">
             <div>
-              <div><a class="logo" href="index.html"><img class="img-fluid for-light m-auto" src="{{asset('assets/images/logo/logo1.png')}}" alt="looginpage"><img class="img-fluid for-dark" src="{{asset('assets/images/logo/logo-dark.png')}}" alt="logo"></a></div>
+              <div><a class="logo text-center" href="index.html"><img class="img-fluid for-light m-auto" src="../assets/images/logo/logo1.png" alt="looginpage"><img class="img-fluid for-dark" src="../assets/images/logo/logo-dark.png" alt="logo"></a></div>
               <div class="login-main"> 
-                <form class="theme-form" action="{{route('login')}}" method="POST">
-                  @csrf
-                  <h2 class="text-center">{{__('Sign in to account')}}</h2>
-                  <p class="text-center">{{__('Enter your email & password to login')}} </p>
+                <form class="theme-form">
+                  <h2 class="text-center">{{__('Create your account')}}</h2>
+                  <p class="text-center">{{__('Enter your personal details to create account')}}</p>
+                  <div class="form-group">
+                    <label class="col-form-label pt-0">{{__('Your Name')}}</label>
+                    <div class="row g-2">
+                      <div class="col-6">
+                        <input class="form-control" type="text" required="" placeholder="{{__('First name')}}">
+                      </div>
+                      <div class="col-6">
+                        <input class="form-control" type="text" required="" placeholder="{{__('Last name')}}">
+                      </div>
+                    </div>
+                  </div>
                   <div class="form-group">
                     <label class="col-form-label">{{__('Email Address')}}</label>
-                    <input class="form-control" name='email' type="email" required="" placeholder="Test@gmail.com">
+                    <input class="form-control" name="email" type="email" required="" placeholder="{{__('Test@gmail.com')}}">
                   </div>
                   <div class="form-group">
                     <label class="col-form-label">{{__('Password')}}</label>
                     <div class="form-input position-relative">
-                      <input class="form-control" type="password" name="password" required="" placeholder="*********">
-                      <div class="show-hide"><span class="show">                         </span></div>
+                      <input class="form-control" type="password" name="password" required="" placeholder="{{__('*********')}}"> 
+                      <div class="show-hide"><span class="show"></span></div>
                     </div>
                   </div>
+
                   <div class="form-group mb-0 checkbox-checked">
                     <div class="form-check checkbox-solid-info">
                       <input class="form-check-input" id="solid6" type="checkbox">
-                      <label class="form-check-label" for="solid6">{{__('Remember password')}}</label>
-                    </div><a class="link" href="forget-password.html">{{__('Forgot password?')}}</a>
-                    <div class="text-end mt-3">
-                      <button class="btn btn-primary btn-block w-100" type="submit">{{__('Sign in')}}</button>
+                      <label class="form-check-label" for="solid6">{{__('Agree with')}}<a class="ms-3 link" href="forget-password.html">{{__('Privacy Policy')}}</a></label>
                     </div>
+                    <button class="btn btn-primary btn-block w-100 mt-3" type="submit">{{__('Create Account')}}</button>
                   </div>
                   <div class="login-social-title">
-                    <h6>{{__('Or Sign in with')}}</h6>
+                    <h6>{{__('Or Sign in with')}}                 </h6>
                   </div>
                   <div class="form-group">
                     <ul class="login-social">
@@ -50,7 +59,7 @@
                       <li><a href="https://www.instagram.com" target="_blank"><i class="icon-instagram"></i></a></li>
                     </ul>
                   </div>
-                  <p class="mt-4 mb-0 text-center">{{__('Don\'t have account?')}}<a class="ms-2" href="sign-up.html">{{__('Create Account')}}</a></p>
+                  <p class="mt-4 mb-0 text-center">{{__('Already have an account?')}}<a class="ms-2" href="login.html">{{__('Sign in')}}</a></p>
                 </form>
               </div>
             </div>

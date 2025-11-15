@@ -18,7 +18,7 @@
       <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
           <h5>{{ __('Users.deleted') }}</h5>
-          <x-back :action="route('users.index')" />
+          <x-buttons.back :action="route('users.index')" />
         </div>
       </div>
       <div class="card-body">
@@ -43,8 +43,8 @@
                   <td>{{ $user->roles->pluck('name')->implode(', ') }}</td>
                   <td>{{ optional($user->deleted_at)->format('Y-m-d H:i') }}</td>
                   <td>
-                    <x-restore-form :action="route('users.restore', $user)" />
-                    <x-delete-form :action="route('users.forceDelete', $user)" />
+                    <x-buttons.restore-form :action="route('users.restore', $user)" />
+                    <x-buttons.delete-form :action="route('users.forceDelete', $user)" />
                   </td>
                 </tr>
               @empty

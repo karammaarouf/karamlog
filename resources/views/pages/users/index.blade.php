@@ -18,7 +18,7 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <h5>{{ __('Users.list') }}</h5>
-                        <x-create :action="route('users.create')" />
+                        <x-buttons.create :action="route('users.create')" />
                     </div>
                 </div>
                 <div class="card-body">
@@ -40,12 +40,12 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>
-                                          <x-toggle-active :model="$user" action="users.toggleActive" />
+                                          <x-buttons.toggle-active :model="$user" action="users.toggleActive" />
                                         </td>
                                         <td>
-                                            <x-show :action="route('users.show', $user)" />
-                                            <x-edit :action="route('users.edit', $user)" />
-                                            <x-delete-form :action="route('users.destroy', $user)" />
+                                            <x-buttons.show :action="route('users.show', $user)" />
+                                            <x-buttons.edit :action="route('users.edit', $user)" />
+                                            <x-buttons.delete-form :action="route('users.destroy', $user)" />
                                         </td>
                                     </tr>
                                 @empty

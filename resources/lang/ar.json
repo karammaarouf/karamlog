@@ -56,5 +56,15 @@
     "updated at":"تاريخ التعديل",
     "back":"رجوع",
     "edit user":"تعديل المستخدم",
-    "force delete":"حذف نهائي"
+    "force delete":"حذف نهائي",
+    "Sign in to account":"تسجيل الدخول إلى الحساب",
+    "Or Sign in with":"أو تسجيل الدخول باستخدام",
+    "Email Address":"عنوان البريد الإلكتروني",
+    "Password":"كلمة المرور",
+    "Remember password":"تذكر كلمة المرور",
+    "Forgot password?":"نسيت كلمة المرور؟",
+    "Sign in":"تسجيل الدخول",
+    "Don't have account?":"ليس لديك حساب؟",
+    "Create Account":"إنشاء حساب",
+    "Enter your email & password to login":"أدخل عنوان بريدك الإلكتروني وكلمة المرور لتسجيل الدخول"
 }

@@ -41,7 +41,9 @@
     <script src="{{ asset('assets/js/dashboard/dashboard_1.js') }}"></script>
     <!-- custom script -->
     <script src="{{ asset('assets/js/script.js') }}"></script>
-        <!-- Sweetalert js-->
+    <!-- Sweetalert js-->
     <script src="{{asset('assets/js/sweetalert/sweetalert2.min.js')}}"></script>
     <script src="{{asset('assets/js/sweetalert/sweetalert-custom.js')}}"></script>
+    <!-- password_show-->
+    <script src="{{ asset('assets/js/password.js') }}"></script>
     @stack('scripts')

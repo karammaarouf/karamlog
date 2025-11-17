@@ -28,59 +28,16 @@ class UserSeeder extends Seeder
         ]);
     }
         User::create([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('12345678'),
+            'name' => 'Super Admin',
+            'email' => 'superadmin@gmail.com',
+            'password' => bcrypt('password'),
         ]);
-        User::create([
-            'name' => 'User',
-            'email' => 'user@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
-        User::create([
-            'name' => 'User2',
-            'email' => 'user2@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
-        User::create([
-            'name' => 'User3',
-            'email' => 'user3@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
-        User::create([
-            'name' => 'User4',
-            'email' => 'user4@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
-        User::create([
-            'name' => 'User5',
-            'email' => 'user5@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
-        User::create([
-            'name' => 'User6',
-            'email' => 'user6@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
-        User::create([
-            'name' => 'User7',
-            'email' => 'user7@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
-        User::create([
-            'name' => 'User8',
-            'email' => 'user8@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
-        User::create([
-            'name' => 'User9',
-            'email' => 'user9@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
-        User::create([
-            'name' => 'User10',
-            'email' => 'user10@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
+        for($i=0;$i<20;$i++){
+            User::create([
+                'name' => 'User'.$i,
+                'email' => 'user'.$i.'@gmail.com',
+                'password' => bcrypt('password'),
+            ]);
+        }
     }
 }

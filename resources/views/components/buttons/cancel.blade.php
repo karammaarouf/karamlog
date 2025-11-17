@@ -2,8 +2,7 @@
     'href' => null,
     'route' => null,
     'label' => null,
-    'col' => 12,
-    'class' => 'btn btn-secondary',
+    'class' => 'btn btn-outline-secondary',
 ])
 
 @php
@@ -11,6 +10,6 @@
     $label = $label ?? __('cancel');
 @endphp
 
-<div class="col-md-{{ $col }}">
+<div>
     <a href="{{ $url }}" class="{{ $class }}" {{ $attributes }}>{{ $label }}</a>
 </div>

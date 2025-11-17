@@ -10,7 +10,7 @@
                 <div class="Typeahead Typeahead--twitterUsers">
                   <div class="u-posRelative">
                     <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text" placeholder="Search Admiro .." name="q" title="" autofocus="autofocus"/>
-                    <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Loading...</span></div><i class="close-search" data-feather="x"></i>
+                    <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">{{(__('Loading...'))}}</span></div><i class="close-search" data-feather="x"></i>
                   </div>
                   <div class="Typeahead-menu"></div>
                 </div>
@@ -29,12 +29,12 @@
               <li class="custom-dropdown">
                 <div class="translate_wrapper">
                   <div class="current_lang"><a class="lang" href="javascript:void(0)"><i class="flag-icon {{ app()->getLocale() === 'ar' ? 'flag-icon-sa' : 'flag-icon-us' }}"></i>
-                      <h6 class="lang-txt f-w-700">{{ app()->getLocale() === 'ar' ? 'AR' : 'EN' }}</h6></a></div>
+                      <h6 class="lang-txt f-w-700">{{ app()->getLocale() === 'ar' ? __('AR') : __('EN') }}</h6></a></div>
                   <ul class="custom-menu profile-menu language-menu py-0 more_lang">
                                   <li class="d-block"><a class="lang" href="{{ route('locale.switch', ['locale' => 'ar']) }}"><i class="flag-icon flag-icon-sa"></i>
-                                      <div class="lang-txt">العربية</div></a></li>
+                                      <div class="lang-txt">{{__('AR')}}</div></a></li>
                                   <li class="d-block"><a class="lang" href="{{ route('locale.switch', ['locale' => 'en']) }}"><i class="flag-icon flag-icon-us"></i>
-                                      <div class="lang-txt">English</div></a></li>
+                                      <div class="lang-txt">{{__('EN')}}</div></a></li>
                   </ul>
                 </div>
               </li>
@@ -46,162 +46,11 @@
                   <svg>
                     <use href="{{ asset('assets/svg/iconly-sprite.svg#moondark') }}"></use>
                   </svg></a></li>
-              <li class="custom-dropdown"><a href="javascript:void(0)">
-                  <svg>
-                    <use href="{{ asset('assets/svg/iconly-sprite.svg#cart-icon') }}"></use>
-                  </svg></a><span class="badge rounded-pill badge-primary">2</span>
-                <div class="custom-menu cart-dropdown py-0 overflow-hidden">
-                  <h3 class="title dropdown-title">Cart</h3>
-                  <ul class="pb-0">
-                    <li>
-                      <div class="d-flex"><img class="img-fluid b-r-5 me-3 img-60" src="{{ asset('assets/images/dashboard-2/1.png') }}" alt=""/>
-                        <div class="flex-grow-1"><span class="f-w-600">Watch multicolor</span>
-                          <div class="qty-box">
-                            <div class="input-group"><span class="input-group-prepend">
-                                <button class="btn quantity-left-minus" type="button" data-type="minus" data-field="">-</button></span>
-                              <input class="form-control input-number" type="text" name="quantity" value="1"/><span class="input-group-prepend">
-                                <button class="btn quantity-right-plus" type="button" data-type="plus" data-field="">+</button></span>
-                            </div>
-                          </div>
-                          <h6 class="font-primary">$500</h6>
-                        </div>
-                        <div class="close-circle"><a class="bg-danger" href="#"><i data-feather="x"></i></a></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="d-flex"><img class="img-fluid b-r-5 me-3 img-60" src="{{ asset('assets/images/dashboard-2/2.png') }}" alt=""/>
-                        <div class="flex-grow-1"><span class="f-w-600">Airpods</span>
-                          <div class="qty-box">
-                            <div class="input-group"><span class="input-group-prepend">
-                                <button class="btn quantity-left-minus" type="button" data-type="minus" data-field="">-</button></span>
-                              <input class="form-control input-number" type="text" name="quantity" value="1"/><span class="input-group-prepend">
-                                <button class="btn quantity-right-plus" type="button" data-type="plus" data-field="">+</button></span>
-                            </div>
-                          </div>
-                          <h6 class="font-primary">$500.00</h6>
-                        </div>
-                        <div class="close-circle"><a class="bg-danger" href="#"><i data-feather="x"></i></a></div>
-                      </div>
-                    </li>
-                    <li class="total">
-                      <h6 class="mb-0">Order Total : <span class="f-w-600">$1000.00</span></h6>
-                    </li>
-                    <li class="text-center"><a class="d-block mb-3 view-cart f-w-700 text-primary" href="cart.html">Go to your cart</a><a class="btn btn-primary view-checkout text-white" href="checkout.html">Checkout</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li class="custom-dropdown"><a href="javascript:void(0)">
-                  <svg>
-                    <use href="{{ asset('assets/svg/iconly-sprite.svg#notification') }}"></use>
-                  </svg></a><span class="badge rounded-pill badge-primary">4</span>
-                <div class="custom-menu notification-dropdown py-0 overflow-hidden">
-                  <h3 class="title bg-primary-light dropdown-title">Notification <span class="font-primary">View all</span></h3>
-                  <ul class="activity-timeline">
-                    <li class="d-flex align-items-start">
-                      <div class="activity-line"></div>
-                      <div class="activity-dot-primary"></div>
-                      <div class="flex-grow-1">
-                        <h6 class="f-w-600 font-primary">30-04-2024<span>Today</span><span class="circle-dot-primary float-end">
-                            <svg class="circle-color">
-                              <use href="{{ asset('assets/svg/iconly-sprite.svg#circle') }}"></use>
-                            </svg></span></h6>
-                        <h5>Alice Goodwin</h5>
-                        <p class="mb-0">Fashion should be fun. It shouldn't be labelled intellectual.</p>
-                      </div>
-                    </li>
-                                  <li class="d-flex align-items-start">
-                                    <div class="activity-dot-secondary"></div>
-                                    <div class="flex-grow-1">
-                                      <h6 class="f-w-600 font-secondary">28-06-2024<span>1 hour ago</span><span class="float-end circle-dot-secondary">
-                                          <svg class="circle-color">
-                                            <use href="{{ asset('assets/svg/iconly-sprite.svg#circle') }}"></use>
-                                          </svg></span></h6>
-                                      <h5>Herry Venter</h5>
-                                      <p>I am convinced that there can be luxury in simplicity.</p>
-                                    </div>
-                                  </li>
-                                  <li class="d-flex align-items-start">
-                                    <div class="activity-dot-primary"></div>
-                                    <div class="flex-grow-1">
-                                      <h6 class="f-w-600 font-primary">04-08-2024<span>Today</span><span class="float-end circle-dot-primary">
-                                          <svg class="circle-color">
-                                            <use href="{{ asset('assets/svg/iconly-sprite.svg#circle') }}"></use>
-                                          </svg></span></h6>
-                                      <h5>Loain Deo</h5>
-                                      <p>I feel that things happen for open new opportunities.</p>
-                                    </div>
-                                  </li>
-                                  <li class="d-flex align-items-start">
-                                    <div class="activity-dot-secondary"></div>
-                                    <div class="flex-grow-1">
-                                      <h6 class="f-w-600 font-secondary">12-11-2024<span>Yesterday</span><span class="float-end circle-dot-secondary">
-                                          <svg class="circle-color">
-                                            <use href="{{ asset('assets/svg/iconly-sprite.svg#circle') }}"></use>
-                                          </svg></span></h6>
-                                      <h5>Fenter Jessy</h5>
-                                      <p>Sometimes the simplest things are the most profound.</p>
-                                    </div>
-                                  </li>
-                  </ul>
-                </div>
-              </li>
+
               <li><a class="full-screen" href="javascript:void(0)"> 
                   <svg>
                     <use href="{{ asset('assets/svg/iconly-sprite.svg#scanfull') }}"></use>
                   </svg></a></li>
-              <li class="custom-dropdown"><a href="javascript:void(0)">
-                  <svg>
-                    <use href="{{ asset('assets/svg/iconly-sprite.svg#bookmark') }}"></use>
-                  </svg></a>
-                <div class="custom-menu bookmark-dropdown py-0 overflow-hidden">
-                  <h3 class="title bg-primary-light dropdown-title">Bookmark</h3>
-                  <ul> 
-                    <li> 
-                      <form class="mb-0">
-                        <div class="input-group">
-                          <input class="form-control" type="text" placeholder="Search Bookmark..."/><span class="input-group-text">
-                            <svg class="svg-color">
-                              <use href="{{ asset('assets/svg/iconly-sprite.svg#Search') }}"></use>
-                            </svg></span>
-                        </div>
-                      </form>
-                    </li>
-                                  <li class="d-flex align-items-center">
-                                    <div class="flex-shrink-0 me-2 btn-activity-primary"><a href="index.html">
-                                        <svg class="svg-color">
-                                          <use href="{{ asset('assets/svg/iconly-sprite.svg#cube') }}"></use>
-                                        </svg></a></div>
-                                    <div class="d-flex justify-content-between align-items-center w-100"><a href="index.html">Dashboard</a>
-                                      <svg class="svg-color icon-star">
-                                        <use href="{{ asset('assets/svg/iconly-sprite.svg#star') }}"></use>
-                                      </svg>
-                                    </div>
-                                  </li>
-                                  <li class="d-flex align-items-center">
-                                    <div class="flex-shrink-0 me-2 btn-activity-secondary"><a href="to-do.html">
-                                        <svg class="svg-color">
-                                          <use href="{{ asset('assets/svg/iconly-sprite.svg#check') }}"></use>
-                                        </svg></a></div>
-                                    <div class="d-flex justify-content-between align-items-center w-100"><a href="to-do.html">To-do</a>
-                                      <svg class="svg-color icon-star">
-                                        <use href="{{ asset('assets/svg/iconly-sprite.svg#star') }}"></use>
-                                      </svg>
-                                    </div>
-                                  </li>
-                                  <li class="d-flex align-items-center">
-                                    <div class="flex-shrink-0 me-2 btn-activity-danger"><a href="apex_chart.html">
-                                        <svg class="svg-color">
-                                          <use href="{{ asset('assets/svg/iconly-sprite.svg#pie') }}"></use>
-                                        </svg></a></div>
-                                    <div class="d-flex justify-content-between align-items-center w-100"><a href="apex_chart.html">Chart</a>
-                                      <svg class="svg-color icon-star">
-                                        <use href="{{ asset('assets/svg/iconly-sprite.svg#star') }}"></use>
-                                      </svg>
-                                    </div>
-                                  </li>
-                  </ul>
-                </div>
-              </li>
               <li class="cloud-design"><a class="cloud-mode">
                   <svg class="climacon climacon_cloudDrizzle" id="cloudDrizzle" version="1.1" viewBox="15 15 70 70">
                     <g class="climacon_iconWrap climacon_iconWrap-cloudDrizzle">
@@ -220,8 +69,8 @@
                 <div class="user-wrap">
                   <div class="user-img"><img src="{{ asset('assets/images/profile.png') }}" alt="user"/></div>
                   <div class="user-content">
-                    <h6>Ava Davis</h6>
-                    <p class="mb-0">Admin<i class="fa-solid fa-chevron-down"></i></p>
+                    <h6>{{ Auth::user()->name }}</h6>
+                    <p class="mb-0">{{ Auth::user()->email }}<i class="fa-solid fa-chevron-down"></i></p>
                   </div>
                 </div>
                 <div class="custom-menu overflow-hidden">
@@ -229,22 +78,15 @@
                     <li class="d-flex"> 
                       <svg class="svg-color">
                         <use href="{{ asset('assets/svg/iconly-sprite.svg#Profile') }}"></use>
-                      </svg><a class="ms-2" href="user-profile.html">Account</a>
-                    </li>
-                    <li class="d-flex"> 
-                      <svg class="svg-color">
-                        <use href="{{ asset('assets/svg/iconly-sprite.svg#Message') }}"></use>
-                      </svg><a class="ms-2" href="letter-box.html">Inbox</a>
-                    </li>
-                    <li class="d-flex"> 
-                      <svg class="svg-color">
-                        <use href="{{ asset('assets/svg/iconly-sprite.svg#Document') }}"></use>
-                      </svg><a class="ms-2" href="to-do.html">Task</a>
+                      </svg><a class="ms-2" href="#">{{__('Account')}}</a>
                     </li>
                     <li class="d-flex"> 
                       <svg class="svg-color">
                         <use href="{{ asset('assets/svg/iconly-sprite.svg#Login') }}"></use>
-                      </svg><a class="ms-2" href="login.html">Log Out</a>
+                      </svg><form action="{{ route('logout') }}" method="POST" class="d-inline-block">
+                        @csrf
+                        <button type="submit" class="btn btn-link text-danger text-decoration-none text-nowrap">{{__('Log Out')}}</button>
+                      </form>
                     </li>
                   </ul>
                 </div>

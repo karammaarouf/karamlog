@@ -4,10 +4,9 @@ use Illuminate\Support\Facades\App;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 
+Route::middleware(['auth'])->group(function () {
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
+Route::get('/', function () {return view('layouts.app');})->name('home');
 
 // Locale switcher
 Route::get('/locale/{locale}', function (string $locale) {
@@ -26,5 +25,5 @@ Route::put('/users/{user}/toggle-active', [UserController::class, 'toggleActive'
 
 Route::resource('/items', ItemController::class);
 Route::get('/itemsdeleted', [ItemController::class, 'deleted'])->name('items.deleted');
-
+});
 require __DIR__.'/auth.php';

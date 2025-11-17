@@ -2,6 +2,7 @@
 <html lang="en">
     @include('layouts.partials.head')
   <body>
+    @include('layouts.partials.alert')
     <!-- tap on top starts-->
     <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
     <!-- tap on tap ends-->
@@ -21,18 +22,18 @@
                   <p class="text-center">{{__('Enter your email & password to login')}} </p>
                   <div class="form-group">
                     <label class="col-form-label">{{__('Email Address')}}</label>
-                    <input class="form-control" name='email' type="email" required="" placeholder="Test@gmail.com">
+                    <input class="form-control" name='email' type="email" required="" placeholder="Test@gmail.com" @if($errors->has('email')) value="{{ old('email') }}" @endif>
                   </div>
                   <div class="form-group">
                     <label class="col-form-label">{{__('Password')}}</label>
                     <div class="form-input position-relative">
-                      <input class="form-control" type="password" name="password" required="" placeholder="*********">
+                      <input class="form-control" type="password" name="password" required="" placeholder="*********" @if($errors->has('password')) value="{{ old('password') }}" @endif>
                       <div class="show-hide"><span class="show">                         </span></div>
                     </div>
                   </div>
                   <div class="form-group mb-0 checkbox-checked">
                     <div class="form-check checkbox-solid-info">
-                      <input class="form-check-input" id="solid6" type="checkbox">
+                      <input name="remember" class="form-check-input" id="solid6" type="checkbox">
                       <label class="form-check-label" for="solid6">{{__('Remember password')}}</label>
                     </div><a class="link" href="forget-password.html">{{__('Forgot password?')}}</a>
                     <div class="text-end mt-3">

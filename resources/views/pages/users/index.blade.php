@@ -9,7 +9,7 @@
     {{ __('Users') }}
 @endsection
 @section('breadcrumbActive')
-    {{ __('Users') }}
+    {{ __('Users.list') }}
 @endsection
 @section('content')
     <div class="row">

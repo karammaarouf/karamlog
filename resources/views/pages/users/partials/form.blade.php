@@ -15,7 +15,7 @@
     {{ __('Users') }}
 @endsection
 @section('breadcrumbActive')
-    {{ $isEdit ? __('edit') : __('add new') }}
+    {{ $isEdit ? __('edit user') : __('add new user') }}
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -39,8 +39,8 @@
             <x-forms.switch-checkbox name="is_active" label="{{__('status')}}" :model="$user" />
 
             <div class="col-12 d-flex gap-2">
-                <button type="submit" class="btn btn-primary">{{__('save')}}</button>
-                <x-buttons.cancel route="users.index" />
+                <x-forms.submit-button label="{{__('save')}}" />
+                <x-buttons.cancel route="users.index"/>
             </div>
         </x-forms.form>
                 </div>

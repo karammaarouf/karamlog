@@ -78,8 +78,10 @@ sidebarListItems.forEach((item) => {
     const sidebarToggle = document.querySelector(".toggle-sidebar");
     if (sidebarToggle) {
       sidebarToggle.addEventListener("click", function () {
-        wrapper.classList.toggle("sidebar-open");
-        const wrapperClose = wrapper.classList.contains("sidebar-open");
+        if (wrapper) {
+          wrapper.classList.toggle("sidebar-open");
+          const wrapperClose = wrapper.classList.contains("sidebar-open");
+        }
       });
     }
 })();
@@ -222,17 +224,17 @@ document.addEventListener("DOMContentLoaded", function () {
   var toggleSidebarButton = document.querySelector(".toggle-sidebar");
   var widthWindow = window.innerWidth;
   if (widthWindow <= 1199) {
-    pageWrapper.classList.add("sidebar-open");
-    toggleSidebarButton.classList.add("close");
+    if (pageWrapper) pageWrapper.classList.add("sidebar-open");
+    if (toggleSidebarButton) toggleSidebarButton.classList.add("close");
   }
   window.addEventListener("resize", function () {
     var widthWindow = window.innerWidth;
     if (widthWindow <= 1199) {
-      pageWrapper.classList.add("sidebar-open");
-      toggleSidebarButton.classList.add("close");
+      if (pageWrapper) pageWrapper.classList.add("sidebar-open");
+      if (toggleSidebarButton) toggleSidebarButton.classList.add("close");
     } else {
-      pageWrapper.classList.remove("sidebar-open");
-      toggleSidebarButton.classList.remove("close");
+      if (pageWrapper) pageWrapper.classList.remove("sidebar-open");
+      if (toggleSidebarButton) toggleSidebarButton.classList.remove("close");
     }
   });
 });

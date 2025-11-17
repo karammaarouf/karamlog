@@ -15,17 +15,15 @@
             <div>
               <div><a class="logo text-center" href="index.html"><img class="img-fluid for-light m-auto" src="../assets/images/logo/logo1.png" alt="looginpage"><img class="img-fluid for-dark" src="../assets/images/logo/logo-dark.png" alt="logo"></a></div>
               <div class="login-main"> 
-                <form class="theme-form">
+                <form class="theme-form" method="POST" action="{{ route('register') }}">
+                  @csrf
                   <h2 class="text-center">{{__('Create your account')}}</h2>
                   <p class="text-center">{{__('Enter your personal details to create account')}}</p>
                   <div class="form-group">
                     <label class="col-form-label pt-0">{{__('Your Name')}}</label>
                     <div class="row g-2">
-                      <div class="col-6">
-                        <input class="form-control" type="text" required="" placeholder="{{__('First name')}}">
-                      </div>
-                      <div class="col-6">
-                        <input class="form-control" type="text" required="" placeholder="{{__('Last name')}}">
+                      <div class="col-12">
+                        <input name="name" class="form-control" type="text" required="" placeholder="{{__('Name')}}">
                       </div>
                     </div>
                   </div>
@@ -40,10 +38,17 @@
                       <div class="show-hide"><span class="show"></span></div>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <label class="col-form-label">{{__('Confirm Password')}}</label>
+                    <div class="form-input position-relative">
+                      <input class="form-control" type="password" name="password_confirmation" required="" placeholder="{{__('*********')}}"> 
+                      <div class="show-hide"><span class="show"></span></div>
+                    </div>
+                  </div>
 
                   <div class="form-group mb-0 checkbox-checked">
                     <div class="form-check checkbox-solid-info">
-                      <input class="form-check-input" id="solid6" type="checkbox">
+                      <input name="terms" class="form-check-input" id="solid6" type="checkbox">
                       <label class="form-check-label" for="solid6">{{__('Agree with')}}<a class="ms-3 link" href="forget-password.html">{{__('Privacy Policy')}}</a></label>
                     </div>
                     <button class="btn btn-primary btn-block w-100 mt-3" type="submit">{{__('Create Account')}}</button>

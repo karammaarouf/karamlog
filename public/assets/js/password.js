@@ -8,20 +8,24 @@ document.addEventListener("DOMContentLoaded", function() {
       element.style.display = "block";
     });
   
-    showHideSpan.classList.add("show");
-  
-    showHideSpan.addEventListener("click", function() {
-      if (showHideSpan.classList.contains("show")) {
-        passwordInput.setAttribute("type", "text");
-        showHideSpan.classList.remove("show");
-      } else {
-        passwordInput.setAttribute("type", "password");
-        showHideSpan.classList.add("show");
-      }
-    });
-  
-    submitButton.addEventListener("click", function() {
+    if (showHideSpan && passwordInput) {
       showHideSpan.classList.add("show");
-      passwordInput.setAttribute("type", "password");
-    });
+  
+      showHideSpan.addEventListener("click", function() {
+        if (showHideSpan.classList.contains("show")) {
+          passwordInput.setAttribute("type", "text");
+          showHideSpan.classList.remove("show");
+        } else {
+          passwordInput.setAttribute("type", "password");
+          showHideSpan.classList.add("show");
+        }
+      });
+    }
+  
+    if (submitButton && showHideSpan && passwordInput) {
+      submitButton.addEventListener("click", function() {
+        showHideSpan.classList.add("show");
+        passwordInput.setAttribute("type", "password");
+      });
+    }
   });

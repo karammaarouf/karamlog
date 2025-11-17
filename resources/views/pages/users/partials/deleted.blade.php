@@ -29,7 +29,6 @@
                 <th>#</th>
                 <th>{{ __('name') }}</th>
                 <th>{{ __('email') }}</th>
-                <th>{{ __('roles') }}</th>
                 <th>{{ __('deleted_at') }}</th>
                 <th>{{ __('actions') }}</th>
               </tr>
@@ -40,7 +39,6 @@
                   <td>{{ $user->id }}</td>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
-                  <td>{{ $user->roles->pluck('name')->implode(', ') }}</td>
                   <td>{{ optional($user->deleted_at)->format('Y-m-d H:i') }}</td>
                   <td>
                     <x-buttons.restore-form :action="route('users.restore', $user)" />

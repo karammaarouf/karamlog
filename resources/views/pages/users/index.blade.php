@@ -12,6 +12,11 @@
     {{ __('Users.list') }}
 @endsection
 @section('content')
+    <x-cards.container>
+        <x-cards.card :value="$users->total()" label="{{ __('Total Users') }}" icon="users" roundColor="primary" trendText="+0%"
+            trendClass="font-primary" />
+        <x-cards.card :value="$users->count()" label="{{ __('Current Page Users') }}" icon="users" roundColor="success" />
+    </x-cards.container>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -40,7 +45,7 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>
-                                          <x-buttons.toggle-active :model="$user" action="users.toggleActive" />
+                                            <x-buttons.toggle-active :model="$user" action="users.toggleActive" />
                                         </td>
                                         <td>
                                             <x-buttons.show :action="route('users.show', $user)" />

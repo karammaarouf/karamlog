@@ -46,4 +46,6 @@
     <script src="{{asset('assets/js/sweetalert/sweetalert-custom.js')}}"></script>
     <!-- password_show-->
     <script src="{{ asset('assets/js/password.js') }}"></script>
+    <!-- general_widget-->
+    <script src="{{asset('assets/js/widget/general-widget.js')}}"></script>
     @stack('scripts')

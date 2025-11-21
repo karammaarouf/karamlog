@@ -7,10 +7,12 @@ return [
             ['label' => 'dashboard', 'icon' => 'Home-dashboard', 'url' => '/'],
             ['label' => 'users', 'icon' => 'Profile',
             'children'=>[
-
                 ['label' => 'users.index', 'icon' => 'Users', 'route' => 'users.index'],
                 ['label' => 'users.deleted', 'icon' => 'Delete','color'=>'red', 'route' => 'users.deleted'],
-
+            ]],
+            ['label' => 'roles', 'icon' => 'Users',
+            'children'=>[
+                ['label' => 'roles.index', 'icon' => 'Users', 'route' => 'roles.index'],
             ]],
             ['label' => 'items', 'icon' => 'Bag','children'=>[
                 ['label' => 'items.index', 'icon' => 'Items', 'route' => 'items.index'],

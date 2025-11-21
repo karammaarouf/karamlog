@@ -3,62 +3,65 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $roles = Role::with('permissions')->paginate();
+        return view('pages.roles.index', compact('roles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $role = new Role();
+        $permissionsOptions = Permission::query()->pluck('name', 'name')->toArray();
+        $selectedPermissions = [];
+        return view('pages.roles.partials.form', compact('role', 'permissionsOptions', 'selectedPermissions'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'permissions' => ['array'],
+        ]);
+        $role = Role::create([
+            'name' => $data['name'],
+            'guard_name' => config('auth.defaults.guard', 'web'),
+        ]);
+        $role->syncPermissions($data['permissions'] ?? []);
+        return redirect()->route('roles.index')->with('success', __('Role created'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Role $role)
     {
-        //
+        return view('pages.roles.partials.show', compact('role'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Role $role)
     {
-        //
+        $permissionsOptions = Permission::query()->pluck('name', 'name')->toArray();
+        $selectedPermissions = $role->permissions()->pluck('name')->toArray();
+        return view('pages.roles.partials.form', compact('role', 'permissionsOptions', 'selectedPermissions'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'permissions' => ['array'],
+        ]);
+        $role->update(['name' => $data['name']]);
+        $role->syncPermissions($data['permissions'] ?? []);
+        return redirect()->route('roles.index')->with('success', __('Role updated'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return redirect()->route('roles.index')->with('success', __('Role deleted'));
     }
 }

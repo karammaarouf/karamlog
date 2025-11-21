@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
 
 Route::middleware(['auth'])->group(function () {
 
@@ -22,6 +23,8 @@ Route::get('/usersDeleted', [UserController::class, 'deleted'])->name('users.del
 Route::put('/users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
 Route::delete('/users/{user}/force-delete', [UserController::class, 'forceDelete'])->name('users.forceDelete');
 Route::put('/users/{user}/toggle-active', [UserController::class, 'toggleActive'])->name('users.toggleActive');
+
+Route::resource('/roles', RoleController::class);
 
 Route::resource('/items', ItemController::class);
 Route::get('/itemsdeleted', [ItemController::class, 'deleted'])->name('items.deleted');

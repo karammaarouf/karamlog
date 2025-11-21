@@ -87,5 +87,12 @@
     "AR":"العربية",
     "EN":"الإنجليزية",
     "Total Users":"إجمالي المستخدمين",
-    "Current Page Users":"مستخدمون في الصفحة"
+    "Current Page Users":"مستخدمون في الصفحة",
+    "permissions":"الأذونات",
+    "edit role":"تعديل الدور",
+    "add new role":"إضافة دور جديد",
+    "roles list":"قائمة الأدوار",
+    "Role updated":"تم تحديث الدور",
+    "Role deleted":"تم حذف الدور",
+    "Role created":"تم إنشاء الدور"
 }

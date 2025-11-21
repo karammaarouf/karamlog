@@ -17,9 +17,9 @@ class RoleController extends Controller
     public function create()
     {
         $role = new Role();
-        $permissionsOptions = Permission::query()->pluck('name', 'name')->toArray();
+        $permissionGroups = Permission::query()->orderBy('group_name')->get()->groupBy('group_name');
         $selectedPermissions = [];
-        return view('pages.roles.partials.form', compact('role', 'permissionsOptions', 'selectedPermissions'));
+        return view('pages.roles.partials.form', compact('role', 'permissionGroups', 'selectedPermissions'));
     }
 
     public function store(Request $request)
@@ -43,9 +43,9 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
-        $permissionsOptions = Permission::query()->pluck('name', 'name')->toArray();
+        $permissionGroups = Permission::query()->orderBy('group_name')->get()->groupBy('group_name');
         $selectedPermissions = $role->permissions()->pluck('name')->toArray();
-        return view('pages.roles.partials.form', compact('role', 'permissionsOptions', 'selectedPermissions'));
+        return view('pages.roles.partials.form', compact('role', 'permissionGroups', 'selectedPermissions'));
     }
 
     public function update(Request $request, Role $role)

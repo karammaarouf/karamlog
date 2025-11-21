@@ -48,11 +48,25 @@
               <tr>
                 <th>{{ __('permissions') }}</th>
                 <td>
-                  @forelse($role->permissions as $permission)
-                    <span class="badge bg-primary me-1">{{ $permission->name }}</span>
-                  @empty
-                    <span class="text-muted">{{ __('No permissions') }}</span>
-                  @endforelse
+                  @php $groups = $role->permissions->groupBy('group_name'); @endphp
+                  <div class="row">
+                    @forelse($groups as $group => $perms)
+                      <div class="col-md-3">
+                        <div class="card h-100 border border-1">
+                          <div class="card-header">
+                            <h6 class="mb-0">{{ __($group) }}</h6>
+                          </div>
+                          <div class="card-body">
+                            @foreach($perms as $permission)
+                              <div><span class="badge bg-primary me-1">{{ $permission->name }}</span></div>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                    @empty
+                      <span class="text-muted">{{ __('No permissions') }}</span>
+                    @endforelse
+                  </div>
                 </td>
               </tr>
             </tbody>

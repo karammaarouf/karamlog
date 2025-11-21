@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
         Permission::create([
             'name'=>$permission,
             'guard_name'=>'web',
+            'group_name'=>'users'
         ]);
     }
         User::create([

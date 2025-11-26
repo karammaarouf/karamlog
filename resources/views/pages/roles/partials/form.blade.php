@@ -28,7 +28,7 @@
                 <div class="card-body">
                     <x-forms.form :action="$action" :method="$method" class="row g-3" novalidate>
                         <x-forms.input name="name" label="{{__('name')}}" :model="$role" required />
-
+                        <x-forms.textarea name="description" label="{{__('description')}}" :model="$role" />
                         <div class="col-md-12">
                             <div class="row">
                                 @foreach(($permissionGroups ?? collect()) as $group => $perms)

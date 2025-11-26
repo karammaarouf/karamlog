@@ -94,5 +94,7 @@
     "roles list":"قائمة الأدوار",
     "Role updated":"تم تحديث الدور",
     "Role deleted":"تم حذف الدور",
-    "Role created":"تم إنشاء الدور"
+    "Role created":"تم إنشاء الدور",
+    "description":"الوصف",
+    "roles.index":"عرض الأدوار"
 }

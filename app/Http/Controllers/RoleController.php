@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Http\Requests\RoleStoreRequest;
+use App\Http\Requests\RoleUpdateRequest;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
@@ -22,17 +24,14 @@ class RoleController extends Controller
         return view('pages.roles.partials.form', compact('role', 'permissionGroups', 'selectedPermissions'));
     }
 
-    public function store(Request $request)
+    public function store(RoleStoreRequest $request)
     {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'permissions' => ['array'],
-        ]);
         $role = Role::create([
-            'name' => $data['name'],
+            'name' => $request['name'],
+            'description' => $request['description'],
             'guard_name' => config('auth.defaults.guard', 'web'),
         ]);
-        $role->syncPermissions($data['permissions'] ?? []);
+        $role->syncPermissions($request['permissions'] ?? []);
         return redirect()->route('roles.index')->with('success', __('Role created'));
     }
 
@@ -48,14 +47,13 @@ class RoleController extends Controller
         return view('pages.roles.partials.form', compact('role', 'permissionGroups', 'selectedPermissions'));
     }
 
-    public function update(Request $request, Role $role)
+    public function update(RoleUpdateRequest $request, Role $role)
     {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'permissions' => ['array'],
+        $role->update([
+            'name' => $request['name'],
+            'description' => $request['description'],
         ]);
-        $role->update(['name' => $data['name']]);
-        $role->syncPermissions($data['permissions'] ?? []);
+        $role->syncPermissions($request['permissions'] ?? []);
         return redirect()->route('roles.index')->with('success', __('Role updated'));
     }
 

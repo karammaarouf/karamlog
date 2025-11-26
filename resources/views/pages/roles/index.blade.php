@@ -28,6 +28,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>{{ __('name') }}</th>
+                                    <th>{{ __('description') }}</th>
                                     <th>{{ __('permissions') }}</th>
                                     <th>{{ __('actions') }}</th>
                                 </tr>
@@ -37,6 +38,7 @@
                                     <tr>
                                         <td>{{ $role->id }}</td>
                                         <td>{{ $role->name }}</td>
+                                        <td>{{ $role->description }}</td>
                                         <td>{{$role->permissions->count()}}</td>
                                         <td>
                                             <x-buttons.show :action="route('roles.show', $role)" />

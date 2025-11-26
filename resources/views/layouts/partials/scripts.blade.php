@@ -23,6 +23,9 @@
     <!-- slick-->
     <script src="{{ asset('assets/js/slick/slick.min.js') }}"></script>
     <script src="{{ asset('assets/js/slick/slick.js') }}"></script>
+    <!-- swiper -->
+    <script src="{{ asset('assets/js/vendors/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/swiper/swiper-custom.js') }}"></script>
     <!-- data_table-->
     <script src="{{ asset('assets/js/js-datatables/datatables/jquery.dataTables.min.js') }}"></script>
     <!-- page_datatable-->
@@ -48,6 +51,5 @@
     <script src="{{ asset('assets/js/password.js') }}"></script>
     <!-- general_widget-->
     <script src="{{asset('assets/js/widget/general-widget.js')}}"></script>
-    <!-- page_select3-->
-    <script src="{{ asset('assets/js/select2/select3-custom.js') }}"></script>
+
     @stack('scripts')

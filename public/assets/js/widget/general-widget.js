@@ -105,8 +105,11 @@
       },
     ],
   };
-  var chart = new ApexCharts(document.querySelector("#sales-chart"), options);
-  chart.render();
+  var salesChartEl = document.querySelector("#sales-chart");
+  if (salesChartEl && window.ApexCharts) {
+    var chart = new ApexCharts(salesChartEl, options);
+    chart.render();
+  }
   ////visitor-chart
   var options = {
     series: [
@@ -213,8 +216,11 @@
       },
     ],
   };
-  var chart = new ApexCharts(document.querySelector("#visitor-chart"), options);
-  chart.render();
+  var visitorChartEl = document.querySelector("#visitor-chart");
+  if (visitorChartEl && window.ApexCharts) {
+    var chart = new ApexCharts(visitorChartEl, options);
+    chart.render();
+  }
   //////invest
   var options = {
     series: [76, 67, 61, 90],
@@ -361,9 +367,13 @@
     ],
   };
 
-  var chart = new ApexCharts(document.querySelector("#investment"), options);
-  chart.render();
+  var investChartEl = document.querySelector("#investment");
+  if (investChartEl && window.ApexCharts) {
+    var chart = new ApexCharts(investChartEl, options);
+    chart.render();
+  }
   ////////////slider-js/////////////
+  if (window.Swiper && document.querySelector(".mySwiper1")) {
   var swiper = new Swiper(".mySwiper1", {
     spaceBetween: 0,
     slidesPerView: 1,
@@ -376,6 +386,8 @@
       prevEl: ".swiper-button-prev",
     },
   });
+  }
+  if (window.Swiper && document.querySelector(".mySwiper2")) {
   var swiper = new Swiper(".mySwiper2", {
     spaceBetween: 0,
     slidesPerView: 1,
@@ -389,6 +401,7 @@
       prevEl: ".swiper-button-prev",
     },
   });
+  }
   /*=======/Sales Stats Radial Chart/=======*/
   const salesStatsOption = {
     series: [70],
@@ -533,11 +546,11 @@
       },
     ],
   };
-  const salesStatsChartEl = new ApexCharts(
-    document.querySelector("#salesStatsRadialChart"),
-    salesStatsOption
-  );
-  salesStatsChartEl.render();
+  var salesStatsEl = document.querySelector("#salesStatsRadialChart");
+  if (salesStatsEl && window.ApexCharts) {
+    const salesStatsChartEl = new ApexCharts(salesStatsEl, salesStatsOption);
+    salesStatsChartEl.render();
+  }
   ///growth-chart
   var options = {
     series: [
@@ -694,8 +707,11 @@
     },
   };
 
-  var chart = new ApexCharts(document.querySelector("#growth-chart"), options);
-  chart.render();
+  var growthChartEl = document.querySelector("#growth-chart");
+  if (growthChartEl && window.ApexCharts) {
+    var chart = new ApexCharts(growthChartEl, options);
+    chart.render();
+  }
   // profit chart
   var options3 = {
     series: [
@@ -869,11 +885,11 @@
     ],
   };
 
-  var chart3 = new ApexCharts(
-    document.querySelector("#profitchart1"),
-    options3
-  );
-  chart3.render();
+  var profitChartEl = document.querySelector("#profitchart1");
+  if (profitChartEl && window.ApexCharts) {
+    var chart3 = new ApexCharts(profitChartEl, options3);
+    chart3.render();
+  }
   // order chart
   var options2 = {
     series: [
@@ -1084,7 +1100,9 @@
     ],
   };
 
-  var chart2 = new ApexCharts(document.querySelector("#orderchart1"), options2);
-
-  chart2.render();
+  var orderChartEl = document.querySelector("#orderchart1");
+  if (orderChartEl && window.ApexCharts) {
+    var chart2 = new ApexCharts(orderChartEl, options2);
+    chart2.render();
+  }
 })();

@@ -48,4 +48,6 @@
     <script src="{{ asset('assets/js/password.js') }}"></script>
     <!-- general_widget-->
     <script src="{{asset('assets/js/widget/general-widget.js')}}"></script>
+    <!-- page_select3-->
+    <script src="{{ asset('assets/js/select2/select3-custom.js') }}"></script>
     @stack('scripts')

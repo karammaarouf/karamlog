@@ -25,7 +25,8 @@ class UserController extends Controller
     {
         $user = new User();
         $roles = Role::pluck('name', 'id');
-        return view('pages.users.partials.form', compact('user', 'roles'));
+        $userRoles = [];
+        return view('pages.users.partials.form', compact('user', 'roles', 'userRoles'));
     }
 
     /**

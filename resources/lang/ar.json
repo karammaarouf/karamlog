@@ -96,5 +96,6 @@
     "Role deleted":"تم حذف الدور",
     "Role created":"تم إنشاء الدور",
     "description":"الوصف",
-    "roles.index":"عرض الأدوار"
+    "roles.index":"عرض الأدوار",
+    "No roles assigned":"لم يتم تعيين أدوار"
 }

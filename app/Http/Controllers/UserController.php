@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserStoreRequest;
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use App\Http\Requests\UserStoreRequest;
 
 class UserController extends Controller
 {
@@ -24,7 +24,8 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        return view('pages.users.partials.form', compact('user'));
+        $roles = Role::pluck('name', 'id');
+        return view('pages.users.partials.form', compact('user', 'roles'));
     }
 
     /**
@@ -33,6 +34,8 @@ class UserController extends Controller
     public function store(UserStoreRequest $request)
     {   
         $user = User::create($request->validated());
+        $roles=Role::whereIn('id', $request->validated('roles'))->pluck('name')->toArray();
+        $user->syncRoles($roles);
         return redirect()->route('users.index')->with('success', __('User created'));
     }
 
@@ -49,8 +52,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-
-        return view('pages.users.partials.form', compact('user'));
+        $roles = Role::pluck('name', 'id');
+        $userRoles = $user->roles->pluck('id')->toArray();
+        return view('pages.users.partials.form', compact('user', 'roles', 'userRoles'));
     }
 
     /**
@@ -59,6 +63,8 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->only(['name', 'email', 'is_active']));
+        $roles=Role::whereIn('id', $request->validated('roles'))->pluck('name')->toArray();
+        $user->syncRoles($roles);
         return redirect()->route('users.index')->with('success', __('User updated'));
     }
 

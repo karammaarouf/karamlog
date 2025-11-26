@@ -35,7 +35,7 @@
                 <x-forms.input name="password" type="password" label="{{__('password')}}" required help="{{__('min 8 chars')}}" />
                 <x-forms.input name="password_confirmation" type="password" label="{{__('confirm password')}}" required />
             @endif
-
+            <x-forms.select name="roles" label="{{__('roles')}}" :model="$user" placeholder="{{__('select role')}}" :options="$roles" :value="$userRoles" multiple required />
             <x-forms.switch-checkbox name="is_active" label="{{__('status')}}" :model="$user" />
 
             <div class="col-12 d-flex gap-2">

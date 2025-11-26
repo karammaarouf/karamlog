@@ -34,6 +34,7 @@
                                     <th>#</th>
                                     <th>{{ __('name') }}</th>
                                     <th>{{ __('email') }}</th>
+                                    <th>{{ __('roles') }}</th>
                                     <th>{{ __('status') }}</th>
                                     <th>{{ __('actions') }}</th>
                                 </tr>
@@ -44,6 +45,13 @@
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>
+                                            @if($user->roles->count())
+                                                {{ $user->roles->pluck('name')->implode(', ') }}
+                                            @else
+                                                {{ __('No roles assigned') }}
+                                            @endif
+                                        </td>
                                         <td>
                                             <x-buttons.toggle-active :model="$user" action="users.toggleActive" />
                                         </td>

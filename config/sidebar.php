@@ -10,7 +10,7 @@ return [
                 ['label' => 'users.index', 'icon' => 'Users', 'route' => 'users.index'],
                 ['label' => 'users.deleted', 'icon' => 'Delete','color'=>'red', 'route' => 'users.deleted'],
             ]],
-            ['label' => 'roles', 'icon' => 'Users',
+            ['label' => 'roles', 'icon' => 'Shield',
             'children'=>[
                 ['label' => 'roles.index', 'icon' => 'Users', 'route' => 'roles.index'],
             ]],

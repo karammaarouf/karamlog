@@ -33,7 +33,7 @@
           @endphp
           <li class="sidebar-list {{ $open ? 'active' : '' }}">
             <i class="fa-solid fa-thumbtack"></i>
-            <a class="sidebar-link" href="{{ $href }}" @if($hasChildren) aria-expanded="{{ $open ? 'true' : 'false' }}" @endif> 
+            <a class="sidebar-link" href="{{ $href }}" @if($hasChildren) aria-expanded="{{ $open ? 'true' : 'false' }}" @endif>
               @if($icon)
                 <svg class="stroke-icon">
                   <use href="{{ asset('assets/svg/iconly-sprite.svg#'.$icon) }}"></use>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @php
     $isEdit = isset($role) && $role->exists;
-    $title = $isEdit ? __('edit role') : __('add new role');
+    $title = $isEdit ? __('Edit Role') : __('Add New Role');
     $action = $isEdit ? route('roles.update', $role) : route('roles.store');
     $method = $isEdit ? 'PUT' : 'POST';
 @endphp
@@ -12,10 +12,10 @@
     {{ $title }}
 @endsection
 @section('breadcrumb')
-    {{ __('roles') }}
+    {{ __('Roles') }}
 @endsection
 @section('breadcrumbActive')
-    {{ $isEdit ? __('edit role') : __('add new role') }}
+    {{ $isEdit ? __('Edit Role') : __('Add New Role') }}
 @endsection
 @section('content')
 <div class="container-fluid">

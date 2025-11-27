@@ -1,22 +1,22 @@
 @extends('layouts.app')
 @section('title')
-    {{ __('role details') }}
+    {{ __('Role Details') }}
 @endsection
 @section('subTitle')
-    {{ __('role details') }}
+    {{ __('Role Details') }}
 @endsection
 @section('breadcrumb')
-    {{ __('roles') }}
+    {{ __('Roles') }}
 @endsection
 @section('breadcrumbActive')
-    {{ __('show') }}
+    {{ __('Role Details') }}
 @endsection
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">{{ __('role details') }}</h5>
+                    <h5 class="mb-0">{{ __('Role Details') }}</h5>
                     <div>
                         @isset($role)
                             <x-buttons.edit :action="route('roles.edit', $role)" />

@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('title')
-    {{__('Users.deleted')}}
+    {{__('Deleted Users')}}
 @endsection
 @section('subTitle')
-    {{ __('Users.deleted') }}
+    {{ __('Deleted Users') }}
 @endsection
 @section('breadcrumb')
     {{ __('Users') }}
 @endsection
 @section('breadcrumbActive')
-    {{ __('Users.deleted') }}
+    {{ __('Deleted Users') }}
 @endsection
 @section('content')
 <div class="row">
@@ -17,7 +17,7 @@
     <div class="card">
       <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
-          <h5>{{ __('Users.deleted') }}</h5>
+          <h5>{{ __('Deleted Users') }}</h5>
           <x-buttons.back :action="route('users.index')" />
         </div>
       </div>

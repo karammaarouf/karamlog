@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('title')
-    {{ __('user details') }}
+    {{ __('User Details') }}
 @endsection
 @section('subTitle')
-    {{ __('user details') }}
+    {{ __('User Details') }}
 @endsection
 @section('breadcrumb')
     {{ __('Users') }}
 @endsection
 @section('breadcrumbActive')
-    {{__('show')}}
+    {{__('user details')}}
 @endsection
 @section('content')
 <div class="row">

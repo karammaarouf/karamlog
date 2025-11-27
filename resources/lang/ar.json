@@ -97,5 +97,12 @@
     "Role created":"تم إنشاء الدور",
     "description":"الوصف",
     "roles.index":"عرض الأدوار",
-    "No roles assigned":"لم يتم تعيين أدوار"
+    "No roles assigned":"لم يتم تعيين أدوار",
+    "Users List":"قائمة المستخدمون",
+    "Deleted Users":"المستخدمون المحذوفون",
+    "Add New User":"إضافة مستخدم جديد",
+    "User Details":"تفاصيل المستخدم",
+    "Show":"عرض",
+    "Roles List":"قائمة الأدوار",
+    "Roles":"الأدوار"
 }

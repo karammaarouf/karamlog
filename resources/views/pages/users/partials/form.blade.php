@@ -1,7 +1,7 @@
 @extends('layouts.app')
     @php
         $isEdit = isset($user) && $user->exists;
-        $title = $isEdit ? __('edit user') : __('add new user');
+        $title = $isEdit ? __('Edit User') : __('Add New User');
         $action = $isEdit ? route('users.update', $user) : route('users.store');
         $method = $isEdit ? 'PUT' : 'POST';
     @endphp
@@ -15,7 +15,7 @@
     {{ __('Users') }}
 @endsection
 @section('breadcrumbActive')
-    {{ $isEdit ? __('edit user') : __('add new user') }}
+    {{ $isEdit ? __('Users Edit') : __('Add New User') }}
 @endsection
 @section('content')
 <div class="container-fluid">

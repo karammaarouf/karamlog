@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('title')
-    {{ __('Users.list') }}
+    {{ __('Users List') }}
 @endsection
 @section('subTitle')
-    {{ __('Users.list') }}
+    {{ __('Users List') }}
 @endsection
 @section('breadcrumb')
     {{ __('Users') }}
 @endsection
 @section('breadcrumbActive')
-    {{ __('Users.list') }}
+    {{ __('Users List') }}
 @endsection
 @section('content')
     <x-cards.container>
@@ -22,7 +22,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5>{{ __('Users.list') }}</h5>
+                        <h5>{{ __('Users List') }}</h5>
                         <x-buttons.create :action="route('users.create')" />
                     </div>
                 </div>

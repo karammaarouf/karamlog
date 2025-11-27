@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('title')
-    {{ __('roles') }}
+    {{ __('Roles List') }}
 @endsection
 @section('subTitle')
-    {{ __('roles') }}
+    {{ __('Roles List') }}
 @endsection
 @section('breadcrumb')
-    {{ __('roles') }}
+    {{ __('Roles') }}
 @endsection
 @section('breadcrumbActive')
-    {{ __('roles') }}
+    {{ __('Roles List') }}
 @endsection
 @section('content')
     <div class="row">
@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5>{{ __('roles') }}</h5>
+                        <h5>{{ __('Roles List') }}</h5>
                         <x-buttons.create :action="route('roles.create')" />
                     </div>
                 </div>

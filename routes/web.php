@@ -1,9 +1,10 @@
 <?php
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 Route::middleware(['auth'])->group(function () {
 
@@ -28,5 +29,10 @@ Route::resource('/roles', RoleController::class);
 
 Route::resource('/items', ItemController::class);
 Route::get('/itemsdeleted', [ItemController::class, 'deleted'])->name('items.deleted');
+
+Route::resource('/categories', CategoryController::class);
+Route::put('/categories/{category}/toggle-active', [CategoryController::class, 'toggleActive'])->name('categories.toggleActive');
+Route::put('/categories/{category}/restore', [CategoryController::class, 'restore'])->withTrashed()->name('categories.restore');
+Route::delete('/categories/{category}/force-delete', [CategoryController::class, 'forceDelete'])->withTrashed()->name('categories.forceDelete');
 });
 require __DIR__.'/auth.php';

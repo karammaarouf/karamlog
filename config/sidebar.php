@@ -23,11 +23,10 @@ return [
     [
         'title' => 'management',
         'items' => [
-            [
-                'label' => 'content',
+                    ['label' => 'content',
                 'icon' => 'Document',
                 'children' => [
-                    ['label' => 'categories', 'url' => '#'],
+                    ['label' => 'categories', 'icon' => 'Document', 'route' => 'categories.index'],
                     ['label' => 'collections', 'url' => '#'],
                 ],
             ],

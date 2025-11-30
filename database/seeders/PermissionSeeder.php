@@ -39,7 +39,7 @@ class PermissionSeeder extends Seeder
                 'force-delete-items'
             ]
         ];
-        $RolePermissions = [
+        $rolePermissions = [
             'group_name' =>'roles',
             'guard_name' =>'web',
             'permissions' =>[
@@ -50,9 +50,20 @@ class PermissionSeeder extends Seeder
                 'delete-roles',
             ]
         ];
+        $categoryPermissions = [
+            'group_name' =>'categories',
+            'guard_name' =>'web',
+            'permissions' =>[
+                'view-categories',
+                'create-categories',
+                'update-categories',
+                'delete-categories',
+                'restore-categories',
+                'force-delete-categories',
+            ]
+        ];
 
-
-        $permissions=[$userPermissions,$itemPermissions,$RolePermissions];
+        $permissions=[$userPermissions,$itemPermissions,$rolePermissions,$categoryPermissions];
 
 
         foreach($permissions as $permission){

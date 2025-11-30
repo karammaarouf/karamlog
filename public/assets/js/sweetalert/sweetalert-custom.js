@@ -6,14 +6,22 @@ var SweetAlert_custom = {
         if(!btn) return;
         e.preventDefault();
         var form = btn.closest('form');
+        var title = btn.getAttribute('data-swal-title') || 'Are you sure?';
+        var text = btn.getAttribute('data-swal-text') || "You won't be able to revert this!";
+        var icon = btn.getAttribute('data-swal-icon') || 'warning';
+        var confirmButtonText = btn.getAttribute('data-swal-confirm') || 'Yes, delete it!';
+        var cancelButtonText = btn.getAttribute('data-swal-cancel') || 'Cancel';
+        var confirmButtonColor = btn.getAttribute('data-swal-confirm-color') || '#2e8e87';
+        var cancelButtonColor = btn.getAttribute('data-swal-cancel-color') || '#C42A02';
         Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
+          title: title,
+          text: text,
+          icon: icon,
           showCancelButton: true,
-          confirmButtonColor: '#2e8e87',
-          cancelButtonColor: '#C42A02',
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonColor: confirmButtonColor,
+          cancelButtonColor: cancelButtonColor,
+          confirmButtonText: confirmButtonText,
+          cancelButtonText: cancelButtonText,
         }).then(function(result){
           if (result.isConfirmed && form) {
             form.submit();

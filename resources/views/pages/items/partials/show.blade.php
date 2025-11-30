@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title')
-    {{__('Items.show')}}
+    {{__('Show Item')}}
 @endsection
 @section('subTitle')
-    {{ __('Items.show') }}
+    {{ __('Show Item') }}
 @endsection
 @section('breadcrumb')
     {{ __('Items') }}
@@ -12,5 +12,5 @@
     {{ __('Show') }}
 @endsection
 @section('content')
-show item
+{{ __('Show Item') }}
 @endsection

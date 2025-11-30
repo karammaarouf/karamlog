@@ -124,5 +124,11 @@
     "No roles found":"لا يوجد أدوار",
     "Role Details":"تفاصيل الدور",
     "none":"لا يوجد",
-    "Edit Role":"تعديل الدور"
+    "Edit Role":"تعديل الدور",
+    "Deleted Items":"عناصر المحذوفة",
+    "Items List":"قائمة العناصر",
+    "Are you sure?":"هل أنت متأكد؟",
+    "You won't be able to revert this!":"لا يمكنك التراجع عن هذا!",
+    "Yes, delete it!":"نعم، حذف هذا!",
+    "Cancel":"إلغاء"
 }

@@ -9,8 +9,8 @@
     {{ __('Items') }}
 @endsection
 @section('breadcrumbActive')
-    {{ __('Items') }}
+    {{ __('Items List') }}  
 @endsection
 @section('content')
-items
+{{ __('Items List') }}
 @endsection

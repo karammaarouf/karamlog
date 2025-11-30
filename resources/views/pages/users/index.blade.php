@@ -19,7 +19,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-end align-items-center">
+                        @can('create-users')
                         <x-buttons.create :action="route('users.create')" />
+                        @endcan
                     </div>
                 </div>
                 <div class="card-body">
@@ -32,7 +34,9 @@
                                     <th>{{ __('email') }}</th>
                                     <th>{{ __('roles') }}</th>
                                     <th>{{ __('status') }}</th>
+                                    @canany(['show-users', 'update-users', 'delete-users'])
                                     <th>{{ __('actions') }}</th>
+                                    @endcanany
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,13 +55,25 @@
                                             @endif
                                         </td>
                                         <td>
+                                            @can('update-users')
                                             <x-buttons.toggle-active :model="$user" action="users.toggleActive" />
+                                            @else
+                                            <span class="badge bg-{{ $user->is_active ? 'success' : 'danger' }}">{{ $user->is_active ? __('active') : __('inactive') }}</span>
+                                            @endcan
                                         </td>
+                                        @canany(['show-users', 'update-users', 'delete-users'])
                                         <td>
+                                            @can('show-users')
                                             <x-buttons.show :action="route('users.show', $user)" />
+                                            @endcan
+                                            @can('update-users')
                                             <x-buttons.edit :action="route('users.edit', $user)" />
+                                            @endcan
+                                            @can('delete-users')
                                             <x-buttons.delete-form :action="route('users.destroy', $user)" />
+                                            @endcan 
                                         </td>
+                                        @endcanany
                                     </tr>
                                 @empty
                                     <tr>

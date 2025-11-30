@@ -26,7 +26,9 @@
                 <th>{{ __('name') }}</th>
                 <th>{{ __('email') }}</th>
                 <th>{{ __('deleted_at') }}</th>
+                @canany(['restore-users', 'force-delete-users'])
                 <th>{{ __('actions') }}</th>
+                @endcan
               </tr>
             </thead>
             <tbody>
@@ -36,10 +38,16 @@
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
                   <td>{{ optional($user->deleted_at)->format('Y-m-d H:i') }}</td>
+                  @canany(['restore-users', 'force-delete-users'])
                   <td>
+                    @can('restore-users')
                     <x-buttons.restore-form :action="route('users.restore', $user)" />
+                    @endcan
+                    @can('force-delete-users')
                     <x-buttons.delete-form :action="route('users.forceDelete', $user)" />
+                    @endcan 
                   </td>
+                  @endcan
                 </tr>
               @empty
                 <tr>

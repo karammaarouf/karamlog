@@ -136,6 +136,15 @@
     "show-roles":"عرض تفاصيل الأدوار",
     "create-roles":"إنشاء أدوار",
     "update-roles":"تحديث الأدوار",
-    "delete-roles":"حذف الأدوار"
+    "delete-roles":"حذف الأدوار",
+    "Restore this item?":"هل أنت متأكد من استعادة هذا العنصر؟",
+    "This will reinstate the item.":"ستتم إستعادة هذا العنصر.",
+    "Yes, restore it!":"نعم، استعادة هذا العنصر!",
+    "User created":"تم إنشاء المستخدم",
+    "User updated":"تم تحديث المستخدم",
+    "User deleted":"تم حذف المستخدم",
+    "User restored":"تم استعادة المستخدم",
+    "User force deleted":"تم حذف المستخدم نهائيًا",
+    "User active status updated":"تم تحديث حالة النشاط للمستخدم"
 
 }

@@ -60,8 +60,8 @@
                                                             </div>
                                                             <div class="card-body">
                                                                 @foreach ($perms as $permission)
-                                                                    <div><span
-                                                                            class="badge bg-primary me-1">{{ __($permission->name) }}</span>
+                                                                    <div>
+                                                                        <span class="badge bg-primary me-1">{{ __($permission->name) }}</span>
                                                                     </div>
                                                                 @endforeach
                                                             </div>

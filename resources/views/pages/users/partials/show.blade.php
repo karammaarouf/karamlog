@@ -15,7 +15,9 @@
       <div class="card-header d-flex justify-content-end align-items-center">
         <div>
           @isset($user)
+          @can('update-users')
           <x-buttons.edit :action="route('users.edit', $user)" />
+          @endcan 
           @endisset
           <x-buttons.back :action="route('users.index')" />
         </div>

@@ -20,8 +20,8 @@ Route::get('/locale/{locale}', function (string $locale) {
 
 Route::resource('/users', UserController::class);
 Route::get('/usersDeleted', [UserController::class, 'deleted'])->name('users.deleted');
-Route::put('/users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
-Route::delete('/users/{user}/force-delete', [UserController::class, 'forceDelete'])->name('users.forceDelete');
+Route::put('/users/{user}/restore', [UserController::class, 'restore'])->withTrashed()->name('users.restore');
+Route::delete('/users/{user}/force-delete', [UserController::class, 'forceDelete'])->withTrashed()->name('users.forceDelete');
 Route::put('/users/{user}/toggle-active', [UserController::class, 'toggleActive'])->name('users.toggleActive');
 
 Route::resource('/roles', RoleController::class);

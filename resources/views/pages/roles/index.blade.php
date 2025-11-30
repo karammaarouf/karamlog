@@ -14,7 +14,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-end align-items-center">
+                        @can('create-roles')
                         <x-buttons.create :action="route('roles.create')" />
+                        @endcan
                     </div>
                 </div>
                 <div class="card-body">
@@ -26,7 +28,9 @@
                                     <th>{{ __('name') }}</th>
                                     <th>{{ __('description') }}</th>
                                     <th>{{ __('permissions') }}</th>
+                                    @canany(['show-roles','update-roles', 'delete-roles'])
                                     <th>{{ __('actions') }}</th>
+                                    @endcanany
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,11 +40,19 @@
                                         <td>{{ $role->name }}</td>
                                         <td>{{ $role->description }}</td>
                                         <td>{{$role->permissions->count()}}</td>
+                                        @canany(['show-roles','update-roles', 'delete-roles'])
                                         <td>
+                                            @can('show-roles')
                                             <x-buttons.show :action="route('roles.show', $role)" />
+                                            @endcan
+                                            @can('update-roles')
                                             <x-buttons.edit :action="route('roles.edit', $role)" />
+                                            @endcan
+                                            @can('delete-roles')
                                             <x-buttons.delete-form :action="route('roles.destroy', $role)" />
+                                            @endcan
                                         </td>
+                                        @endcanany
                                     </tr>
                                 @empty
                                     <tr>

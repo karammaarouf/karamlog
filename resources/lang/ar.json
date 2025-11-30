@@ -131,5 +131,11 @@
     "You won't be able to revert this!":"لا يمكنك التراجع عن هذا!",
     "Yes, delete it!":"نعم، حذف هذا!",
     "Cancel":"إلغاء",
-    "Edit User":"تعديل المستخدم"
+    "Edit User":"تعديل المستخدم",
+    "view-roles":"عرض الأدوار",
+    "show-roles":"عرض تفاصيل الأدوار",
+    "create-roles":"إنشاء أدوار",
+    "update-roles":"تحديث الأدوار",
+    "delete-roles":"حذف الأدوار"
+
 }

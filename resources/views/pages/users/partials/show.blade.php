@@ -2,9 +2,6 @@
 @section('title')
     {{ __('User Details') }}
 @endsection
-@section('subTitle')
-    {{ __('User Details') }}
-@endsection
 @section('breadcrumb')
     {{ __('Users') }}
 @endsection
@@ -15,8 +12,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">{{__('user details')}}</h5>
+      <div class="card-header d-flex justify-content-end align-items-center">
         <div>
           @isset($user)
           <x-buttons.edit :action="route('users.edit', $user)" />
@@ -49,7 +45,7 @@
                       <span class="badge bg-primary">{{ $role->name }}</span>
                     @endforeach
                   @else
-                    {{ __('none') }}
+                    {{ __('No roles assigned') }}
                   @endif
                 </td>
               </tr>

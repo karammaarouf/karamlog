@@ -2,9 +2,6 @@
 @section('title')
     {{ __('Role Details') }}
 @endsection
-@section('subTitle')
-    {{ __('Role Details') }}
-@endsection
 @section('breadcrumb')
     {{ __('Roles') }}
 @endsection
@@ -15,8 +12,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">{{ __('Role Details') }}</h5>
+                <div class="card-header d-flex justify-content-end align-items-center">
                     <div>
                         @isset($role)
                             <x-buttons.edit :action="route('roles.edit', $role)" />
@@ -65,7 +61,7 @@
                                                             <div class="card-body">
                                                                 @foreach ($perms as $permission)
                                                                     <div><span
-                                                                            class="badge bg-primary me-1">{{ $permission->name }}</span>
+                                                                            class="badge bg-primary me-1">{{ __($permission->name) }}</span>
                                                                     </div>
                                                                 @endforeach
                                                             </div>

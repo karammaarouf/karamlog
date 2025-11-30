@@ -8,22 +8,18 @@
 @section('title')
     {{ $title }}
 @endsection
-@section('subTitle')
-    {{ $title }}
-@endsection
 @section('breadcrumb')
     {{ __('Users') }}
 @endsection
 @section('breadcrumbActive')
-    {{ $isEdit ? __('Users Edit') : __('Add New User') }}
+    {{ $isEdit ? __('Edit User') : __('Add New User') }}
 @endsection
 @section('content')
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">{{ $title }}</h5>
+                <div class="card-header d-flex justify-content-end align-items-center">
                 </div>
                 <div class="card-body">
         <x-forms.form :action="$action" :method="$method" class="row g-3" novalidate>

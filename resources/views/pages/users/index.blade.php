@@ -2,9 +2,6 @@
 @section('title')
     {{ __('Users List') }}
 @endsection
-@section('subTitle')
-    {{ __('Users List') }}
-@endsection
 @section('breadcrumb')
     {{ __('Users') }}
 @endsection
@@ -21,8 +18,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h5>{{ __('Users List') }}</h5>
+                    <div class="d-flex justify-content-end align-items-center">
                         <x-buttons.create :action="route('users.create')" />
                     </div>
                 </div>
@@ -46,10 +42,12 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>
-                                            @if($user->roles->count())
-                                                {{ $user->roles->pluck('name')->implode(', ') }}
+                                            @if ($user->roles->count() > 0)
+                                                @foreach ($user->roles as $role)
+                                                    <span class="badge bg-primary">{{ $role->name }}</span>
+                                                @endforeach
                                             @else
-                                                {{ __('No roles assigned') }}
+                                                <span class="badge bg-secondary">{{ __('No roles assigned') }}</span>
                                             @endif
                                         </td>
                                         <td>

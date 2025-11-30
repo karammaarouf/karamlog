@@ -2,9 +2,6 @@
 @section('title')
     {{__('Deleted Users')}}
 @endsection
-@section('subTitle')
-    {{ __('Deleted Users') }}
-@endsection
 @section('breadcrumb')
     {{ __('Users') }}
 @endsection
@@ -16,8 +13,7 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <div class="d-flex justify-content-between align-items-center">
-          <h5>{{ __('Deleted Users') }}</h5>
+        <div class="d-flex justify-content-end align-items-center">
           <x-buttons.back :action="route('users.index')" />
         </div>
       </div>

@@ -2,9 +2,6 @@
 @section('title')
     {{__('Deleted Items')}}
 @endsection
-@section('subTitle')
-    {{ __('Deleted Items') }}
-@endsection
 @section('breadcrumb')
     {{ __('Items') }}
 @endsection

@@ -8,9 +8,6 @@
 @section('title')
     {{ $title }}
 @endsection
-@section('subTitle')
-    {{ $title }}
-@endsection
 @section('breadcrumb')
     {{ __('Roles') }}
 @endsection
@@ -22,8 +19,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">{{ $title }}</h5>
+                <div class="card-header d-flex justify-content-end align-items-center">
                 </div>
                 <div class="card-body">
                     <x-forms.form :action="$action" :method="$method" class="row g-3" novalidate>

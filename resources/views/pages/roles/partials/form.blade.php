@@ -46,7 +46,7 @@
                                                 @foreach($perms as $permission)
                                                     <div class="form-check">
                                                         <input class="form-check-input permission-checkbox permission-{{ $groupKey }}" type="checkbox" id="perm_{{ $permission->id }}" name="permissions[]" value="{{ $permission->name }}" @checked(in_array($permission->name, $selectedPermissions ?? []))>
-                                                        <label class="form-check-label" for="perm_{{ $permission->id }}">{{ $permission->name }}</label>
+                                                        <label class="form-check-label" for="perm_{{ $permission->id }}">{{ __($permission->name) }}</label>
                                                     </div>
                                                 @endforeach
                                             </div>

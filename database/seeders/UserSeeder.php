@@ -14,20 +14,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $permissions=['view-users',
-        'create-users',
-        'update-users',
-        'delete-users',
-        'restore-users',
-        'force-delete-users'
-    ];
-    foreach($permissions as $permission){
-        Permission::create([
-            'name'=>$permission,
-            'guard_name'=>'web',
-            'group_name'=>'users'
-        ]);
-    }
         User::create([
             'name' => 'Super Admin',
             'email' => 'superadmin@gmail.com',

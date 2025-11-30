@@ -14,20 +14,7 @@ class ItemSeeder extends Seeder
      */
     public function run(): void
     {
-        $permissions=['view-items',
-        'create-items',
-        'update-items',
-        'delete-items',
-        'restore-items',
-        'force-delete-items'
-    ];
-        foreach($permissions as $permission){
-            Permission::create([
-                'name'=>$permission,
-                'guard_name'=>'web',
-                'group_name'=>'items'
-            ]);
-        }
+
         Item::create([
             'name' => 'Item 1',
             'description' => 'Description 1',

@@ -42,6 +42,18 @@
                 <td>{{ $user->email }}</td>
               </tr>
               <tr>
+                <th>{{__('roles')}}</th>
+                <td>
+                  @if($user->roles->count() > 0)
+                    @foreach($user->roles as $role)
+                      <span class="badge bg-primary">{{ $role->name }}</span>
+                    @endforeach
+                  @else
+                    {{ __('none') }}
+                  @endif
+                </td>
+              </tr>
+              <tr>
                 <th>{{__('email verified')}}</th>
                 <td>{{ $user->email_verified_at ? __('yes') : __('no') }}</td>
               </tr>

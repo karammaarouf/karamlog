@@ -64,7 +64,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->only(['name', 'email', 'is_active']));
-        $roles=Role::whereIn('id', $request->validated('roles'))->pluck('name')->toArray();
+        $roles=Role::whereIn('id', $request->input('roles'))->pluck('name')->toArray();
         $user->syncRoles($roles);
         return redirect()->route('users.index')->with('success', __('User updated'));
     }

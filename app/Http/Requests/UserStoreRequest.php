@@ -30,4 +30,20 @@ class UserStoreRequest extends FormRequest
             'roles' => 'required|array',
         ];
     }
+
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'The user name is required.',
+            'email.required' => 'The user email is required.',
+            'password.required' => 'The user password is required.',
+            'is_active.required' => 'The user active status is required.',
+            'roles.required' => 'The user roles are required.',
+        ];
+    }
 }

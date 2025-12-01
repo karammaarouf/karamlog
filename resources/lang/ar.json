@@ -167,5 +167,14 @@
     "Category force deleted successfully":"تم حذف الفئة نهائيًا",
     "Category active status toggled successfully":"تم تبديل حالة النشاط للفئة بنجاح",
     "No categories found":"لا يوجد فئات",
-    "No deleted categories found":"لا يوجد فئات محذوفة"
+    "No deleted categories found":"لا يوجد فئات محذوفة",
+    "The category name is required.":"يجب إدخال اسم الفئة.",
+    "The category description may not be greater than 255 characters.":"وصف الفئة يجب أن لا يتجاوز 255 حرفًا.",
+    "The role name is required.":"يجب إدخال اسم الدور.",
+    "The role description may not be greater than 255 characters.":"وصف الدور يجب أن لا يتجاوز 255 حرفًا.",
+    "The user name is required.":"يجب إدخال اسم المستخدم.",
+    "The user email is required.":"يجب إدخال البريد الإلكتروني للمستخدم.",
+    "The user password is required.":"يجب إدخال كلمة المرور للمستخدم.",
+    "The user active status is required.":"يجب إدخال حالة النشاط للمستخدم.",
+    "The user roles are required.":"يجب إدخال الأدوار للمستخدم."
 }

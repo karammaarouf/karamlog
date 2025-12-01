@@ -27,4 +27,17 @@ class RoleUpdateRequest extends FormRequest
             'permissions' => ['array'],
         ];
     }
+
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'The role name is required.',
+            'description.max' => 'The role description may not be greater than 255 characters.',
+        ];
+    }
 }

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class UserController extends Controller
@@ -71,10 +72,10 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        $user->update($request->only(['name', 'email', 'is_active']));
-        $roles=Role::whereIn('id', $request->input('roles'))->pluck('name')->toArray();
+        $user->update($request->validated());
+        $roles=Role::whereIn('id', $request->validated('roles'))->pluck('name')->toArray();
         $user->syncRoles($roles);
         return redirect()->route('users.index')->with('success', __('User updated'));
     }

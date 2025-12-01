@@ -176,5 +176,6 @@
     "The user email is required.":"يجب إدخال البريد الإلكتروني للمستخدم.",
     "The user password is required.":"يجب إدخال كلمة المرور للمستخدم.",
     "The user active status is required.":"يجب إدخال حالة النشاط للمستخدم.",
-    "The user roles are required.":"يجب إدخال الأدوار للمستخدم."
+    "The user roles are required.":"يجب إدخال الأدوار للمستخدم.",
+    "Inactive Categories":"الفئات غير النشطة"
 }

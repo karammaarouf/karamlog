@@ -17,7 +17,8 @@ class CategoryController extends Controller
         // عرض جميع الفئات
         $this->authorize('viewAny', Category::class);
         $categories = Category::paginate();
-        return view('pages.categories.index', compact('categories'));
+        $inactiveCategories = Category::where('is_active', false)->count();
+        return view('pages.categories.index', compact('categories','inactiveCategories'));
     }
 
     /**

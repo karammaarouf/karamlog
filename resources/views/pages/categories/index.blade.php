@@ -10,9 +10,9 @@
 @endsection
 @section('content')
     <x-cards.container>
-        <x-cards.card :value="$categories->total()" label="{{ __('Total Categories') }}" icon="users" roundColor="primary" trendText="+0%"
+        <x-cards.card :value="$categories->total()" label="{{ __('Total Categories') }}" icon="menu" roundColor="primary" trendText="+0%"
             trendClass="font-primary" />
-        <x-cards.card :value="$categories->count()" label="{{ __('Current Page Categories') }}" icon="users" roundColor="success" />
+        <x-cards.card :value="$inactiveCategories" label="{{ __('Inactive Categories') }}" icon="eye-off" iconLib="feather" roundColor="danger" />
     </x-cards.container>
     <div class="row">
         <div class="col-md-12">

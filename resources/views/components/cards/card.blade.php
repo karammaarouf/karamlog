@@ -2,6 +2,8 @@
     'value' => null,
     'label' => null,
     'icon' => 'shopping-cart',
+    'iconLib' => 'feather',
+    'iconClass' => null,
     'roundColor' => 'danger',
     'trendText' => null,
     'trendClass' => 'font-danger',
@@ -13,7 +15,13 @@
             <div class="widget-content">
                 <div class="widget-round {{ $roundColor }}">
                     <div class="bg-round">
-                        <i data-feather="{{ $icon }}" class="svg-fill"></i>
+                        @switch($iconLib)
+                            @case('feather')
+                                <i data-feather="{{ $icon }}" class="svg-fill {{ $iconClass }}"></i>
+                                @break
+                            @default
+                                <i class="{{ $icon }} svg-fill {{ $iconClass }}"></i>
+                        @endswitch
                         <svg class="half-circle svg-fill">
                             <use href="{{ asset('assets/svg/icon-sprite.svg#halfcircle') }}"></use>
                         </svg>

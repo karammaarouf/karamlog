@@ -15,12 +15,22 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // عرض جميع المستخدمين
         $this->authorize('viewAny', User::class);
         $users = User::paginate();
-        return view('pages.users.index', compact('users'));
+        $usersCount=$users->total();
+        $usersCountActive=User::where('is_active', true)->count();
+        $usersCountInactive=User::where('is_active', false)->count();
+
+        $search = $request->input('search');
+        if ($search) {
+            $users = User::where('name', 'like', "%$search%")
+                ->orWhere('email', 'like', "%$search%")
+                ->paginate();
+        }
+        return view('pages.users.index', compact('users','usersCount','usersCountActive','usersCountInactive'));
     }
 
     /**

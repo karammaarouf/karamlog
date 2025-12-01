@@ -10,9 +10,18 @@ use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
-    public function index()
+
+    public function index(Request $request)
     {
-        $roles = Role::with('permissions')->paginate();
+        $search = $request->input('search');
+        if ($search) {
+            $roles = Role::where('name', 'like', "%$search%")
+                ->orWhere('description', 'like', "%$search%")
+                ->with('permissions')
+                ->paginate();
+        } else {
+            $roles = Role::paginate();
+        }
         return view('pages.roles.index', compact('roles'));
     }
 

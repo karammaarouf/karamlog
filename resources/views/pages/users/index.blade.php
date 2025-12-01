@@ -10,15 +10,17 @@
 @endsection
 @section('content')
     <x-cards.container>
-        <x-cards.card :value="$users->total()" label="{{ __('Total Users') }}" icon="users" roundColor="primary" trendText="+0%"
+        <x-cards.card :value="$usersCount" label="{{ __('Total Users') }}" icon="users" roundColor="primary" trendText="+0%"
             trendClass="font-primary" />
-        <x-cards.card :value="$users->count()" label="{{ __('Current Page Users') }}" icon="users" roundColor="success" />
+        <x-cards.card :value="$usersCountActive" label="{{ __('Active Users') }}" icon="users" roundColor="success" />
+        <x-cards.card :value="$usersCountInactive" label="{{ __('Inactive Users') }}" icon="users" roundColor="danger" />
     </x-cards.container>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="d-flex justify-content-end align-items-center">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <x-search-form route="users.index" name="search" placeholder="{{ __('search users') }}" />
                         @can('create-users')
                         <x-buttons.create :action="route('users.create')" />
                         @endcan

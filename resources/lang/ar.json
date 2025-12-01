@@ -177,5 +177,14 @@
     "The user password is required.":"يجب إدخال كلمة المرور للمستخدم.",
     "The user active status is required.":"يجب إدخال حالة النشاط للمستخدم.",
     "The user roles are required.":"يجب إدخال الأدوار للمستخدم.",
-    "Inactive Categories":"الفئات غير النشطة"
+    "Inactive Categories":"الفئات غير النشطة",
+    "No users found":"لا يوجد مستخدمين",
+    "search users":"بحث عن مستخدمين",
+    "clear":"مسح",
+    "search":"بحث",
+    "Active Users":"المستخدمين النشطين",
+    "Inactive Users":"المستخدمين غير النشطين",
+    "search roles":"بحث عن الأدوار",
+    "search categories":"بحث عن الفئات",
+    "Active Categories":"الفئات النشطة"
 }

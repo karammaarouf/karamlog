@@ -10,15 +10,17 @@
 @endsection
 @section('content')
     <x-cards.container>
-        <x-cards.card :value="$categories->total()" label="{{ __('Total Categories') }}" icon="menu" roundColor="primary" trendText="+0%"
+        <x-cards.card :value="$categoriesCount" label="{{ __('Total Categories') }}" icon="menu" roundColor="primary" trendText="+0%"
             trendClass="font-primary" />
+        <x-cards.card :value="$activeCategories" label="{{ __('Active Categories') }}" icon="eye" iconLib="feather" roundColor="success" />
         <x-cards.card :value="$inactiveCategories" label="{{ __('Inactive Categories') }}" icon="eye-off" iconLib="feather" roundColor="danger" />
     </x-cards.container>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="d-flex justify-content-end align-items-center">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <x-search-form route="categories.index" name="search" placeholder="{{ __('search categories') }}" />
                         @can('create-categories')
                         <x-buttons.create :action="route('categories.create')" />
                         @endcan

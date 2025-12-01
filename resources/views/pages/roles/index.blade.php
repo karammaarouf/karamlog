@@ -13,7 +13,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="d-flex justify-content-end align-items-center">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <x-search-form route="roles.index" name="search" placeholder="{{ __('search roles') }}" />
                         @can('create-roles')
                         <x-buttons.create :action="route('roles.create')" />
                         @endcan

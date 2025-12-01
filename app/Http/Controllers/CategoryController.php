@@ -12,13 +12,22 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // عرض جميع الفئات
         $this->authorize('viewAny', Category::class);
         $categories = Category::paginate();
-        $inactiveCategories = Category::where('is_active', false)->count();
-        return view('pages.categories.index', compact('categories','inactiveCategories'));
+        $categoriesCount = Category::count();
+        $search = $request->input('search');
+        if ($search) {
+            $categories = Category::where('name', 'like', "%$search%")
+                ->orWhere('description', 'like', "%$search%")
+                ->paginate();
+        }
+
+            $inactiveCategories = Category::where('is_active', false)->count();
+            $activeCategories = Category::where('is_active', true)->count();
+            return view('pages.categories.index', compact('categories', 'inactiveCategories', 'activeCategories', 'categoriesCount'));
     }
 
     /**

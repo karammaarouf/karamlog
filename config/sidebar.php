@@ -14,7 +14,7 @@ return [
             'children'=>[
                 ['label' => 'Roles List', 'icon' => 'Users', 'route' => 'roles.index'],
             ]],
-            ['label' => 'categories', 'icon' => 'Category',
+            ['label' => 'Categories', 'icon' => 'Category',
             'children'=>[
                 ['label' => 'Categories List', 'icon' => 'Categories', 'route' => 'categories.index'],
                 ['label' => 'Deleted Categories', 'icon' => 'Delete','color'=>'red', 'route' => 'categories.deleted'],

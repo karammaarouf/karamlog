@@ -5,7 +5,7 @@
     "items": "العناصر",
     "management": "إدارة",
     "content": "المحتوى",
-    "categories": "الأقسام",
+    "categories": "الفئات",
     "collections": "المجموعات",
     "Users":"المستخدمون",
     "Users.list":"قائمة المستخدمون",
@@ -166,5 +166,6 @@
     "Category restored successfully":"تم استعادة الفئة بنجاح",
     "Category force deleted successfully":"تم حذف الفئة نهائيًا",
     "Category active status toggled successfully":"تم تبديل حالة النشاط للفئة بنجاح",
-    "No categories found":"لا يوجد فئات"
+    "No categories found":"لا يوجد فئات",
+    "No deleted categories found":"لا يوجد فئات محذوفة"
 }

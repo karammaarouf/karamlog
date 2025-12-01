@@ -21,12 +21,9 @@ class UserSeeder extends Seeder
         ]);
         $superAdmin = User::where('email', 'superadmin@gmail.com')->first();
         $superAdmin->assignRole('super-admin');
-        for($i=0;$i<20;$i++){
-            User::create([
-                'name' => 'User'.$i,
-                'email' => 'user'.$i.'@gmail.com',
-                'password' => bcrypt('password'),
-            ]);
-        }
+
+        // إنشاء 20 مستخدم باستخدام الـ Factory
+        User::factory(20)->create();
+
     }
 }

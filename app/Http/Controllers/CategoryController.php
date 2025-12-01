@@ -37,7 +37,7 @@ class CategoryController extends Controller
     public function store(CategoryStoreRequest $request)
     {
         Category::create($request->all());
-        return redirect()->route('categories.index')->with('success', 'Category created successfully');
+        return redirect()->route('categories.index')->with('success', __('Category created successfully'));
     }
 
 
@@ -57,7 +57,7 @@ class CategoryController extends Controller
     public function update(CategoryUpdateRequest $request, Category $category)
     {
         $category->update($request->all());
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully');
+        return redirect()->route('categories.index')->with('success', __('Category updated successfully'));
     }
 
     /**
@@ -68,7 +68,7 @@ class CategoryController extends Controller
         // حذف فئة موجودة
         $this->authorize('delete', $category);
         $category->delete();
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
+        return redirect()->route('categories.index')->with('success', __('Category deleted successfully'));
     }
     public function deleted()
     {
@@ -84,7 +84,7 @@ class CategoryController extends Controller
     {
         $this->authorize('restore', $category);
         $category->restore();
-        return redirect()->route('categories.index')->with('success', 'Category restored successfully');
+        return redirect()->route('categories.index')->with('success', __('Category restored successfully'));
     }
 
     /**
@@ -94,7 +94,7 @@ class CategoryController extends Controller
     {
         $this->authorize('forceDelete', $category);
         $category->forceDelete();
-        return redirect()->route('categories.index')->with('success', 'Category force deleted successfully');
+        return redirect()->route('categories.index')->with('success', __('Category force deleted successfully'));
     }
 
     /**
@@ -105,6 +105,6 @@ class CategoryController extends Controller
         $this->authorize('update', $category);
         $category->is_active = !$category->is_active;
         $category->save();
-        return redirect()->route('categories.index')->with('success', 'Category active status toggled successfully');
+        return redirect()->route('categories.index')->with('success', __('Category active status toggled successfully'));
     }
 }

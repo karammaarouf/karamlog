@@ -14,6 +14,11 @@ return [
             'children'=>[
                 ['label' => 'Roles List', 'icon' => 'Users', 'route' => 'roles.index'],
             ]],
+            ['label' => 'categories', 'icon' => 'Category',
+            'children'=>[
+                ['label' => 'Categories List', 'icon' => 'Categories', 'route' => 'categories.index'],
+                ['label' => 'Deleted Categories', 'icon' => 'Delete','color'=>'red', 'route' => 'categories.deleted'],
+            ]],
             ['label' => 'items', 'icon' => 'Bag','children'=>[
                 ['label' => 'Items List', 'icon' => 'Items', 'route' => 'items.index'],
                 ['label' => 'Deleted Items', 'icon' => 'Delete','color'=>'red', 'route' => 'items.deleted'],
@@ -26,7 +31,6 @@ return [
                     ['label' => 'content',
                 'icon' => 'Document',
                 'children' => [
-                    ['label' => 'categories', 'icon' => 'Document', 'route' => 'categories.index'],
                     ['label' => 'collections', 'url' => '#'],
                 ],
             ],

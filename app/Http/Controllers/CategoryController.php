@@ -70,6 +70,13 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
     }
+    public function deleted()
+    {
+        // عرض الفئات المحذوفة
+        $this->authorize('viewAny', Category::class);
+        $categories = Category::onlyTrashed()->paginate();
+        return view('pages.categories.partials.deleted', compact('categories'));
+    }
     /**
      * Restore the specified resource from storage.
      */

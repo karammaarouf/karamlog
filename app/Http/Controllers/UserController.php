@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Services\UserService;
 
 class UserController extends Controller
 {
+    protected $userService;
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -17,17 +23,17 @@ class UserController extends Controller
     {
         // عرض جميع المستخدمين
         $this->authorize('viewAny', User::class);
-        $users = User::paginate();
-        $usersCount=$users->total();
+
+        $search = $request->input('search');
+        $users = ($search) 
+        ? $this->userService->getSearch($search) 
+        : $this->userService->getAll();
+
+        $usersCount=User::count();
         $usersCountActive=User::where('is_active', true)->count();
         $usersCountInactive=User::where('is_active', false)->count();
 
-        $search = $request->input('search');
-        if ($search) {
-            $users = User::where('name', 'like', "%$search%")
-                ->orWhere('email', 'like', "%$search%")
-                ->paginate();
-        }
+        
         return view('pages.users.index', compact('users','usersCount','usersCountActive','usersCountInactive'));
     }
 
@@ -49,9 +55,7 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {   
-        $user = User::create($request->validated());
-        $roles=Role::whereIn('id', $request->validated('roles'))->pluck('name')->toArray();
-        $user->syncRoles($roles);
+        $this->userService->create($request->validated());
         return redirect()->route('users.index')->with('success', __('User created'));
     }
 
@@ -82,9 +86,7 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, User $user)
     {
-        $user->update($request->validated());
-        $roles=Role::whereIn('id', $request->validated('roles'))->pluck('name')->toArray();
-        $user->syncRoles($roles);
+        $this->userService->update($user, $request->validated());
         return redirect()->route('users.index')->with('success', __('User updated'));
     }
 
@@ -95,8 +97,7 @@ class UserController extends Controller
     {
         // حذف المستخدم
         $this->authorize('delete', $user);
-        $user->delete();
-        
+        $this->userService->delete($user);
         return redirect()->route('users.index')->with('success', __('User deleted'));
     }
 
@@ -107,7 +108,7 @@ class UserController extends Controller
     {
         // عرض جميع المستخدمين المحذوفين
         $this->authorize('viewAny', User::class);
-        $users = User::onlyTrashed()->paginate();
+        $users = $this->userService->getTrashed();
         return view('pages.users.partials.deleted', compact('users'));
     }
 
@@ -118,7 +119,7 @@ class UserController extends Controller
     {
         // استعادة المستخدم المحذوف
         $this->authorize('restore', $user);
-        $user->restore();
+        $this->userService->restore($user);
         return redirect()->route('users.deleted')->with('success', __('User restored'));
     }
 
@@ -129,7 +130,7 @@ class UserController extends Controller
     {
         // حذف المستخدم بشكل نهائي
         $this->authorize('forceDelete', $user);
-        $user->forceDelete();
+        $this->userService->forceDelete($user);
         return redirect()->route('users.deleted')->with('success', __('User force deleted'));
     }
 
@@ -140,8 +141,7 @@ class UserController extends Controller
     {
         // تبديل حالة النشاط للمستخدم
         $this->authorize('update', $user);
-        $user->is_active = !$user->is_active;
-        $user->save();
+        $this->userService->toggelActive($user);
         return redirect()->route('users.index')->with('success', __('User active status updated'));
     }
 }

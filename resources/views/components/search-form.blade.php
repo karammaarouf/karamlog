@@ -6,7 +6,7 @@
     'value' => null,
     'placeholder' => null,
     'label' => null,
-    'col' => 4,
+    'col' => 3,
     'inputClass' => 'form-control',
     'buttonClass' => 'btn btn-outline-secondary',
     'submitLabel' => null,

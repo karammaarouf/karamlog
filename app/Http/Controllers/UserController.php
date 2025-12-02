@@ -7,11 +7,9 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class UserController extends Controller
 {
-    use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */

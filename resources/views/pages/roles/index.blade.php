@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title')
     {{ __('Roles List') }}
-@endsection 
+@endsection
 @section('breadcrumb')
     {{ __('Roles') }}
 @endsection
@@ -14,9 +14,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <x-search-form route="roles.index" name="search" placeholder="{{ __('search roles') }}" />
+                        <x-search-form route="roles.index" placeholder="{{ __('search roles') }}" />
                         @can('create-roles')
-                        <x-buttons.create :action="route('roles.create')" />
+                            <x-buttons.create :action="route('roles.create')" />
                         @endcan
                     </div>
                 </div>
@@ -29,8 +29,8 @@
                                     <th>{{ __('name') }}</th>
                                     <th>{{ __('description') }}</th>
                                     <th>{{ __('permissions') }}</th>
-                                    @canany(['show-roles','update-roles', 'delete-roles'])
-                                    <th>{{ __('actions') }}</th>
+                                    @canany(['show-roles', 'update-roles', 'delete-roles'])
+                                        <th>{{ __('actions') }}</th>
                                     @endcanany
                                 </tr>
                             </thead>
@@ -40,19 +40,19 @@
                                         <td>{{ $role->id }}</td>
                                         <td>{{ $role->name }}</td>
                                         <td>{{ $role->description }}</td>
-                                        <td>{{$role->permissions->count()}}</td>
-                                        @canany(['show-roles','update-roles', 'delete-roles'])
-                                        <td>
-                                            @can('show-roles')
-                                            <x-buttons.show :action="route('roles.show', $role)" />
-                                            @endcan
-                                            @can('update-roles')
-                                            <x-buttons.edit :action="route('roles.edit', $role)" />
-                                            @endcan
-                                            @can('delete-roles')
-                                            <x-buttons.delete-form :action="route('roles.destroy', $role)" />
-                                            @endcan
-                                        </td>
+                                        <td>{{ $role->permissions->count() }}</td>
+                                        @canany(['show-roles', 'update-roles', 'delete-roles'])
+                                            <td>
+                                                @can('show-roles')
+                                                    <x-buttons.show :action="route('roles.show', $role)" />
+                                                @endcan
+                                                @can('update-roles')
+                                                    <x-buttons.edit :action="route('roles.edit', $role)" />
+                                                @endcan
+                                                @can('delete-roles')
+                                                    <x-buttons.delete-form :action="route('roles.destroy', $role)" />
+                                                @endcan
+                                            </td>
                                         @endcanany
                                     </tr>
                                 @empty
@@ -61,6 +61,9 @@
                                     </tr>
                                 @endforelse
                             </tbody>
+                            @if ($roles->count())
+                                <x-table.tfoot :page="$roles" />
+                            @endif
                         </table>
                     </div>
                 </div>

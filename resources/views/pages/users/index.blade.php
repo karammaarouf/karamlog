@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <x-search-form route="users.index" name="search" placeholder="{{ __('search users') }}" />
+                        <x-search-form route="users.index" placeholder="{{ __('search users') }}" />
                         @can('create-users')
                         <x-buttons.create :action="route('users.create')" />
                         @endcan
@@ -83,6 +83,9 @@
                                     </tr>
                                 @endforelse
                             </tbody>
+                            @if($users->count())
+                                <x-table.tfoot :page="$users" />
+                            @endif
                         </table>
                     </div>
                 </div>

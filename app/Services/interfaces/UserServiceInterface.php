@@ -10,6 +10,8 @@ interface UserServiceInterface
     public function getAll();
     // return search data
     public function getSearch(string $search);
+    // return count data
+    public function getCounts();
     // create data
     public function create(array $data);
     // update data

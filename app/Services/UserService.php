@@ -11,16 +11,27 @@ class UserService implements UserServiceInterface
     // return all data
     public function getAll()
     {
-       $users= User::paginate();
+       $users= User::with('roles')->paginate();
         return $users;
     }
     // return search data
     public function getSearch(string $search)
     {
-        $users = User::where('name', 'like', "%$search%")
+        $users = User::with('roles')
+            ->where('name', 'like', "%$search%")
             ->orWhere('email', 'like', "%$search%")
             ->paginate();
         return $users;
+    }
+    // return count data
+    public function getCounts()
+    {
+        $counts = User::selectRaw("
+                    COUNT(*) as total,
+                    SUM(is_active = 1) as active,
+                    SUM(is_active = 0) as inactive
+                    ")->first();
+        return $counts;
     }
     // create data
     public function create(array $data)

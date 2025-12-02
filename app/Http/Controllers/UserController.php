@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Services\UserService;
+use GuzzleHttp\Psr7\Query;
 
 class UserController extends Controller
 {
@@ -25,16 +26,17 @@ class UserController extends Controller
         $this->authorize('viewAny', User::class);
 
         $search = $request->input('search');
-        $users = ($search) 
-        ? $this->userService->getSearch($search) 
-        : $this->userService->getAll();
+        $users = ($search)
+            ? $this->userService->getSearch($search)
+            : $this->userService->getAll();
 
-        $usersCount=User::count();
-        $usersCountActive=User::where('is_active', true)->count();
-        $usersCountInactive=User::where('is_active', false)->count();
+        $counts = $this->userService->getCounts();
 
-        
-        return view('pages.users.index', compact('users','usersCount','usersCountActive','usersCountInactive'));
+        $usersCount = $counts->total;
+        $usersCountActive = $counts->active;
+        $usersCountInactive = $counts->inactive;
+
+        return view('pages.users.index', compact('users', 'usersCount', 'usersCountActive', 'usersCountInactive'));
     }
 
     /**
@@ -54,7 +56,7 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(UserStoreRequest $request)
-    {   
+    {
         $this->userService->create($request->validated());
         return redirect()->route('users.index')->with('success', __('User created'));
     }

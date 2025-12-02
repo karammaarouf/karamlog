@@ -13,6 +13,7 @@ class RoleController extends Controller
 
     public function index(Request $request)
     {
+        $this->authorize('view-roles', Role::class);
         $search = $request->input('search');
         if ($search) {
             $roles = Role::where('name', 'like', "%$search%")
@@ -27,6 +28,7 @@ class RoleController extends Controller
 
     public function create()
     {
+        $this->authorize('create-roles', Role::class);
         $role = new Role();
         $permissionGroups = Permission::query()->orderBy('group_name')->get()->groupBy('group_name');
         $selectedPermissions = [];
@@ -46,11 +48,13 @@ class RoleController extends Controller
 
     public function show(Role $role)
     {
+        $this->authorize('show-roles', $role);
         return view('pages.roles.partials.show', compact('role'));
     }
 
     public function edit(Role $role)
     {
+        $this->authorize('update-roles', $role);
         $permissionGroups = Permission::query()->orderBy('group_name')->get()->groupBy('group_name');
         $selectedPermissions = $role->permissions()->pluck('name')->toArray();
         return view('pages.roles.partials.form', compact('role', 'permissionGroups', 'selectedPermissions'));

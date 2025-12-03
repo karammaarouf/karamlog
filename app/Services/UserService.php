@@ -3,8 +3,7 @@ namespace App\Services;
 
 use App\Models\User;
 use Spatie\Permission\Models\Role;
-use App\Services\interfaces\GeneralInterface;
-use App\Services\interfaces\UserServiceInterface;
+use App\Services\Interfaces\UserServiceInterface;
 
 class UserService implements UserServiceInterface
 {

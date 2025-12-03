@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\RoleService;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\RoleStoreRequest;
 use App\Http\Requests\RoleUpdateRequest;
@@ -10,19 +11,18 @@ use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
+    protected $roleService;
+
+    public function __construct(RoleService $roleService)
+    {
+        $this->roleService = $roleService;
+    }
 
     public function index(Request $request)
     {
         $this->authorize('view-roles', Role::class);
         $search = $request->input('search');
-        if ($search) {
-            $roles = Role::where('name', 'like', "%$search%")
-                ->orWhere('description', 'like', "%$search%")
-                ->with('permissions')
-                ->paginate();
-        } else {
-            $roles = Role::paginate();
-        }
+        $roles=($search)?$this->roleService->getSearch($search):$this->roleService->getAll();
         return view('pages.roles.index', compact('roles'));
     }
 
@@ -37,12 +37,7 @@ class RoleController extends Controller
 
     public function store(RoleStoreRequest $request)
     {
-        $role = Role::create([
-            'name' => $request['name'],
-            'description' => $request['description'],
-            'guard_name' => config('auth.defaults.guard', 'web'),
-        ]);
-        $role->syncPermissions($request['permissions'] ?? []);
+        $this->roleService->create($request->validated());
         return redirect()->route('roles.index')->with('success', __('Role created'));
     }
 
@@ -62,17 +57,13 @@ class RoleController extends Controller
 
     public function update(RoleUpdateRequest $request, Role $role)
     {
-        $role->update([
-            'name' => $request['name'],
-            'description' => $request['description'],
-        ]);
-        $role->syncPermissions($request['permissions'] ?? []);
+        $this->roleService->update($role, $request->validated());
         return redirect()->route('roles.index')->with('success', __('Role updated'));
     }
 
     public function destroy(Role $role)
     {
-        $role->delete();
+        $this->roleService->delete($role);
         return redirect()->route('roles.index')->with('success', __('Role deleted'));
     }
 }

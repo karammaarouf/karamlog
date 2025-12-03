@@ -37,9 +37,9 @@ return [
         ],
     ],
     [
-        'title' => 'الإعدادات',
+        'title' => 'Settings',
         'items' => [
-            ['label' => 'تخصيص المظهر', 'icon' => 'Setting', 'route' => 'settings.index'],
+            ['label' => 'Customize Appearance', 'icon' => 'Setting', 'route' => 'settings.index'],
         ],
     ],
 ];

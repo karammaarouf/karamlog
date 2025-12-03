@@ -190,5 +190,8 @@
     "Showing":"عرض",
     "to":"إلى",
     "of":"من",
-    "results":"نتائج"
+    "results":"نتائج",
+    "select roles":"اختر الأدوار",
+    "Press to select":"ضغط لتحديد",
+    "select options":"اختر الخيارات"
 }

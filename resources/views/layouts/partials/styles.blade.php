@@ -20,6 +20,8 @@
     <!-- App css -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"/>
     <link id="color" rel="stylesheet" href="{{ asset('assets/css/color-1.css') }}" media="screen"/>
+    <!--choices.js-->
+    <link rel="stylesheet" href="{{ asset('assets/css/vendors/choices.js/public/assets/styles/choices.min.css') }}">
 
  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

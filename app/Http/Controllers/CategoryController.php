@@ -24,7 +24,9 @@ class CategoryController extends Controller
         $this->authorize('viewAny', Category::class);
 
         $search = $request->input('search');
-        $categories = $search ? $this->categoryService->getSearch($search) : $this->categoryService->getAll();
+        $categories = $search 
+        ? $this->categoryService->getSearch($search) 
+        : $this->categoryService->getAll();
 
         $counts = $this->categoryService->getCounts();
         $categoriesCount = $counts->total;

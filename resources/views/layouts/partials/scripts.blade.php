@@ -51,5 +51,8 @@
     <script src="{{ asset('assets/js/password.js') }}"></script>
     <!-- general_widget-->
     <script src="{{asset('assets/js/widget/general-widget.js')}}"></script>
+    <!--choices.js-->
+    <script src="{{ asset('assets/js/vendors/choices.js/public/assets/scripts/choices.js') }}"></script>
+    <script src="{{ asset('assets/js/typeahead/typeahead.custom.js') }}"></script>
 
     @stack('scripts')

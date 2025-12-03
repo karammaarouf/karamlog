@@ -21,7 +21,7 @@ interface CategoryServiceInterface
     // delete data
     public function delete(Category $category);
     // return deleted data
-    public function getTrashed();
+    public function getDeleted();
     // restore data
     public function restore(Category $category);
     // force delete data

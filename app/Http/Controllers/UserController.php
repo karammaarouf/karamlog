@@ -110,7 +110,7 @@ class UserController extends Controller
     {
         // عرض جميع المستخدمين المحذوفين
         $this->authorize('viewAny', User::class);
-        $users = $this->userService->getTrashed();
+        $users = $this->userService->getDeleted();
         return view('pages.users.partials.deleted', compact('users'));
     }
 

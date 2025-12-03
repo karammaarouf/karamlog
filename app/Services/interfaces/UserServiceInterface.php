@@ -23,7 +23,7 @@ interface UserServiceInterface
     // force delete data
     public function forceDelete(User $user);
     // get trashed data
-    public function getTrashed();
+    public function getDeleted();
     // toggel active
     public function toggelActive(User $user);
 }

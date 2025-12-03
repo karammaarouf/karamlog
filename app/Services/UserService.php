@@ -66,10 +66,10 @@ class UserService implements UserServiceInterface
         $user->forceDelete();
         return $user;
     }
-    // get trashed data
-    public function getTrashed()
+    // get deleted data
+    public function getDeleted()
     {
-        return User::query()->onlyTrashed()->paginate();
+        return User::query()->onlyTrashed()->with('roles')->paginate();
     }
     // toggel active
     public function toggelActive(User $user)

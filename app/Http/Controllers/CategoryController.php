@@ -90,7 +90,7 @@ class CategoryController extends Controller
     {
         // عرض الفئات المحذوفة
         $this->authorize('viewAny', Category::class);
-        $categories = $this->categoryService->getTrashed();
+        $categories = $this->categoryService->getDeleted();
         return view('pages.categories.partials.deleted', compact('categories'));
     }
     /**

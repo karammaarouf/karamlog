@@ -55,7 +55,7 @@ class CategoryService implements CategoryServiceInterface
         return $category;
     }
     // return deleted data
-    public function getTrashed()
+    public function getDeleted()
     {
         $categories = Category::onlyTrashed()->paginate();
         return $categories;

@@ -36,4 +36,10 @@ return [
             ],
         ],
     ],
+    [
+        'title' => 'الإعدادات',
+        'items' => [
+            ['label' => 'تخصيص المظهر', 'icon' => 'Setting', 'route' => 'settings.index'],
+        ],
+    ],
 ];

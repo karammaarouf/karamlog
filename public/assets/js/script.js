@@ -13,6 +13,23 @@
 document.addEventListener("DOMContentLoaded", function () {
   const body = document.querySelector("body");
   const html = document.querySelector("html");
+  // Apply persisted UI settings
+  (function(){
+    var dir = localStorage.getItem('dir');
+    if (dir) { document.documentElement.setAttribute('dir', dir); }
+    var layout = localStorage.getItem('sidebarLayout');
+    if (layout === 'horizontal') {
+      document.querySelectorAll('.page-wrapper').forEach(function(el){ el.classList.add('horizontal-sidebar'); el.classList.remove('compact-wrapper'); });
+    } else if (layout === 'compact') {
+      document.querySelectorAll('.page-wrapper').forEach(function(el){ el.classList.add('compact-wrapper'); el.classList.remove('horizontal-sidebar'); });
+    }
+    var iconStyle = localStorage.getItem('sidebarIcon');
+    if (iconStyle === 'iconcolor-sidebar') {
+      document.querySelectorAll('.page-sidebar').forEach(function(el){ el.classList.add('iconcolor-sidebar'); el.setAttribute('data-sidebar-layout','iconcolor-sidebar'); });
+    } else if (iconStyle === 'stroke-svg') {
+      document.querySelectorAll('.page-sidebar').forEach(function(el){ el.classList.remove('iconcolor-sidebar'); el.setAttribute('data-sidebar-layout','stroke-svg'); });
+    }
+  })();
     /*=====================
         01 Loader Js
     ==========================*/

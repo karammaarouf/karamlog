@@ -35,5 +35,10 @@ Route::get('/categoriesdeleted', [CategoryController::class, 'deleted'])->name('
 Route::put('/categories/{category}/toggle-active', [CategoryController::class, 'toggleActive'])->name('categories.toggleActive');
 Route::put('/categories/{category}/restore', [CategoryController::class, 'restore'])->withTrashed()->name('categories.restore');
 Route::delete('/categories/{category}/force-delete', [CategoryController::class, 'forceDelete'])->withTrashed()->name('categories.forceDelete');
+
+// Settings page
+Route::get('/settings', function () {
+    return view('pages.settings.index');
+})->name('settings.index');
 });
 require __DIR__.'/auth.php';

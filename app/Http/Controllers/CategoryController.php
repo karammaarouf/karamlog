@@ -6,9 +6,15 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
+use App\Services\CategoryService;
 
 class CategoryController extends Controller
 {
+    protected $categoryService;
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -16,18 +22,18 @@ class CategoryController extends Controller
     {
         // عرض جميع الفئات
         $this->authorize('viewAny', Category::class);
-        $categories = Category::paginate();
-        $categoriesCount = Category::count();
-        $search = $request->input('search');
-        if ($search) {
-            $categories = Category::where('name', 'like', "%$search%")
-                ->orWhere('description', 'like', "%$search%")
-                ->paginate();
-        }
 
-            $inactiveCategories = Category::where('is_active', false)->count();
-            $activeCategories = Category::where('is_active', true)->count();
-            return view('pages.categories.index', compact('categories', 'inactiveCategories', 'activeCategories', 'categoriesCount'));
+        $search = $request->input('search');
+        $categories = $search ? $this->categoryService->getSearch($search) : $this->categoryService->getAll();
+
+        $counts = $this->categoryService->getCounts();
+        $categoriesCount = $counts->total;
+        $inactiveCategories = $counts->inactive;
+        $activeCategories = $counts->active;
+
+
+
+        return view('pages.categories.index', compact('categories', 'inactiveCategories', 'activeCategories', 'categoriesCount'));
     }
 
     /**
@@ -46,7 +52,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-        Category::create($request->all());
+        $this->categoryService->create($request->all());
         return redirect()->route('categories.index')->with('success', __('Category created successfully'));
     }
 
@@ -66,7 +72,7 @@ class CategoryController extends Controller
      */
     public function update(CategoryUpdateRequest $request, Category $category)
     {
-        $category->update($request->all());
+        $this->categoryService->update($category, $request->all());
         return redirect()->route('categories.index')->with('success', __('Category updated successfully'));
     }
 
@@ -77,14 +83,14 @@ class CategoryController extends Controller
     {
         // حذف فئة موجودة
         $this->authorize('delete', $category);
-        $category->delete();
+        $this->categoryService->delete($category);
         return redirect()->route('categories.index')->with('success', __('Category deleted successfully'));
     }
     public function deleted()
     {
         // عرض الفئات المحذوفة
         $this->authorize('viewAny', Category::class);
-        $categories = Category::onlyTrashed()->paginate();
+        $categories = $this->categoryService->getTrashed();
         return view('pages.categories.partials.deleted', compact('categories'));
     }
     /**
@@ -93,7 +99,7 @@ class CategoryController extends Controller
     public function restore(Category $category)
     {
         $this->authorize('restore', $category);
-        $category->restore();
+        $this->categoryService->restore($category);
         return redirect()->route('categories.index')->with('success', __('Category restored successfully'));
     }
 
@@ -103,7 +109,7 @@ class CategoryController extends Controller
     public function forceDelete(Category $category)
     {
         $this->authorize('forceDelete', $category);
-        $category->forceDelete();
+        $this->categoryService->forceDelete($category);
         return redirect()->route('categories.index')->with('success', __('Category force deleted successfully'));
     }
 
@@ -113,8 +119,7 @@ class CategoryController extends Controller
     public function toggleActive(Category $category)
     {
         $this->authorize('update', $category);
-        $category->is_active = !$category->is_active;
-        $category->save();
+        $this->categoryService->toggleActive($category);
         return redirect()->route('categories.index')->with('success', __('Category active status toggled successfully'));
     }
 }

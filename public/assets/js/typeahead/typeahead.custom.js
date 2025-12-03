@@ -1,46 +1,49 @@
 document.addEventListener("DOMContentLoaded", function () {
- //config
- var singleNoSearch = new Choices("#choices-single-no-search", {
-  allowHTML: true,
-  searchEnabled: false,
-  removeItemButton: true,
-  choices: [
-    { value: "One", label: "Alabama" },
-    { value: "Two", label: "California", disabled: true },
-    { value: "Three", label: "Colorado" },
-  ],
-}).setChoices(
-  [
-    { value: "Four", label: "Indiana", disabled: true },
-    { value: "Five", label: "Iowa" },
-    { value: "Six", label: "Massachusetts", selected: true },
-  ],
-  "value",
-  "label",
-  false  
-);
-});
-  //Multiple select input
-  var multipleCancelButton = new Choices("#choices-multiple-remove-button", {
+  function initChoices(selector, options){
+    var el = typeof selector === 'string' ? document.querySelector(selector) : selector;
+    if (!el) return null;
+    var isSelect = el.tagName === 'SELECT';
+    var isText = el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'search');
+    if (!isSelect && !isText) return null;
+    try { return new Choices(el, options || { allowHTML: true }); } catch (e) { return null; }
+  }
+
+  var singleNoSearch = initChoices("#choices-single-no-search", {
+    allowHTML: true,
+    searchEnabled: false,
+    removeItemButton: true,
+    choices: [
+      { value: "One", label: "Alabama" },
+      { value: "Two", label: "California", disabled: true },
+      { value: "Three", label: "Colorado" },
+    ],
+  });
+  if (singleNoSearch) {
+    singleNoSearch.setChoices(
+      [
+        { value: "Four", label: "Indiana", disabled: true },
+        { value: "Five", label: "Iowa" },
+        { value: "Six", label: "Massachusetts", selected: true },
+      ],
+      "value",
+      "label",
+      false
+    );
+  }
+
+  var multipleCancelButton = initChoices("#choices-multiple-remove-button", {
     allowHTML: true,
     removeItemButton: true,
   });
-  // Select one inputs
-  new Choices("#choices-scrolling-dropdown", {
+
+  initChoices("#choices-scrolling-dropdown", {
     allowHTML: true,
     shouldSort: false,
   });
-  //Multiple sections with headers
-  var multipleDefault = new Choices(
-    document.getElementById("choices-multiple-groups"),
-    { allowHTML: true }
-  );
-  //Basic typeahead
-  var cities = new Choices(document.getElementById("cities"), {
-    allowHTML: true,
-  });
-  //rtl
-  var rtl = new Choices(document.getElementById("rtl"), {
-    allowHTML: true,
-  });
-// });
+
+  initChoices(document.getElementById("choices-multiple-groups"), { allowHTML: true });
+
+  initChoices(document.getElementById("cities"), { allowHTML: true });
+
+  initChoices(document.getElementById("rtl"), { allowHTML: true });
+});

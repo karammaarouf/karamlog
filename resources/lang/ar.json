@@ -213,7 +213,7 @@
     "LTR":"ترتيب LTR",
     "RTL":"ترتيب RTL",
     "Box":"خطوط Box",
-    "Vertical":"رأس العمودي",
-    "Horizontal":"رأس الأفقي",
+    "Vertical":"عمودي",
+    "Horizontal":"أفقي",
     "Choose between Stroke / Colorful":"اختر بين الخطية / الملونة"
 }

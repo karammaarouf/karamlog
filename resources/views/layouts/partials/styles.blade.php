@@ -20,6 +20,30 @@
     <!-- App css -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"/>
     <link id="color" rel="stylesheet" href="{{ asset('assets/css/color-1.css') }}" media="screen"/>
+    <script>
+      (function(){
+        try {
+          var baseCss = "{{ asset('assets/css') }}";
+          var color = localStorage.getItem('color');
+          if (color) {
+            var el = document.getElementById('color');
+            if (el) { el.setAttribute('href', baseCss + '/' + color + '.css'); }
+          }
+          var primary = localStorage.getItem('primary');
+          if (primary) { document.documentElement.style.setProperty('--theme-default', primary); }
+          var secondary = localStorage.getItem('secondary');
+          if (secondary) { document.documentElement.style.setProperty('--theme-secondary', secondary); }
+
+          var serverLocale = "{{ session('locale', request()->cookie('locale', app()->getLocale())) }}";
+          var locale = localStorage.getItem('locale') || serverLocale;
+          var dir = (locale === 'ar') ? 'rtl' : 'ltr';
+          document.documentElement.setAttribute('dir', dir);
+          document.documentElement.setAttribute('lang', locale);
+          localStorage.setItem('dir', dir);
+          localStorage.setItem('locale', locale);
+        } catch (e) {}
+      })();
+    </script>
     <!--choices.js-->
     <link rel="stylesheet" href="{{ asset('assets/css/vendors/choices.js/public/assets/styles/choices.min.css') }}">
 

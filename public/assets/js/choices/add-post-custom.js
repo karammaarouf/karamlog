@@ -1,9 +1,14 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-    new Choices('#choices-remove-button', {
-        allowHTML: true,
-        removeItemButton: true,
-      });
+    var el = document.querySelector('#choices-remove-button');
+    if (el && (el.tagName === 'SELECT' || (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'search')))) {
+      try {
+        new Choices(el, {
+          allowHTML: true,
+          removeItemButton: true,
+        });
+      } catch (e) {}
+    }
       var editor1 = new Quill("#editor1", {
         modules: { toolbar: "#toolbar1" },
         theme: "snow",

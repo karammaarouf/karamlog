@@ -1,5 +1,5 @@
 <!DOCTYPE html >
-<html lang="en">
+<html lang="{{ session('locale', request()->cookie('locale', app()->getLocale())) }}" dir="{{ session('dir', request()->cookie('dir', (session('locale', request()->cookie('locale', app()->getLocale())) === 'ar' ? 'rtl' : 'ltr'))) }}">
 @include('layouts.partials.head')
   <body>
     @include('layouts.partials.alert')

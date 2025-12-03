@@ -39,7 +39,7 @@
         @endif
         @foreach($options as $optValue => $optLabel)
             @php $isSelected = in_array((string) $optValue, $selectedValues, true); @endphp
-            <option value="{{ $optValue }}" @if($isSelected) selected @endif>{{ $optLabel }}</option>
+            <option value="{{ $optValue }}"  @if($isSelected) selected @endif>{{ $optLabel }}</option>
         @endforeach
     </select>
     @if($help)

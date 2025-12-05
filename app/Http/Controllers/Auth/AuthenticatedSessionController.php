@@ -17,8 +17,8 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $userSettings = $request->user()->userSettings;
         if ($userSettings) {
-            session(['layout' => $userSettings->layout]);
-            $dir = in_array(strtolower($userSettings->layout), ['rtl','ltr']) ? strtolower($userSettings->layout) : 'ltr';
+            $layout = $userSettings->layout;
+            $dir = in_array(strtolower($layout), ['rtl','ltr']) ? strtolower($layout) : 'box';
             session(['dir' => $dir]);
             session(['sidebar_type' => $userSettings->sidebar_type]);
             session(['icon' => $userSettings->icon]);

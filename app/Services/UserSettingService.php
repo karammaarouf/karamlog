@@ -45,14 +45,20 @@ class UserSettingService implements UserSettingServiceInterface
         // Set the user's layout preference.
         $userSetting->update(['layout' => $layout]);
         $userSetting->save();
-        session(['dir' => $layout]);
+        if (strtolower($layout) === 'rtl') {
+            session(['dir' => 'rtl']);
+        } elseif (strtolower($layout) === 'ltr') {
+            session(['dir' => 'ltr']);
+        } else {
+            session(['dir' => 'box']);
+        }
     }
     // Set the user's locale preference.
     public function setLocale(UserSetting $userSetting, $locale)
     {
         // Set the user's locale preference.
-        $userSetting->update(['locale' => $locale]);
         $layout= $locale == 'en' ? 'ltr' : 'rtl';
+        $userSetting->update(['locale' => $locale, 'layout' => $layout]);
         app()->setLocale($locale);
         session(['locale' => $locale]);
         session(['dir' => $layout]);
@@ -77,6 +83,6 @@ class UserSettingService implements UserSettingServiceInterface
         session(['sidebar_type' => $userSetting->sidebar_type]);
         session(['icon' => $userSetting->icon]);
         session(['locale' => $userSetting->locale]);
-        session(['dir' => $userSetting->layout]);
+        session(['dir' => 'ltr']);
     }
 }

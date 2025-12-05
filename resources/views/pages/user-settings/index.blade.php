@@ -159,4 +159,60 @@
 </div>
 @endsection
 
- 
+@push('scripts')
+<script>
+(function(){
+  var body = document.body;
+  var html = document.documentElement;
+  var pageWrapper = document.getElementById('pageWrapper');
+  var sidebars = document.querySelectorAll('.page-sidebar');
+  function setMode(mode){
+    body.classList.remove('dark-only','dark-sidebar','light');
+    if(mode === 'Dark'){ body.classList.add('dark-only'); html.setAttribute('data-theme','dark-only'); }
+    else if(mode === 'Mix'){ body.classList.add('dark-sidebar'); html.setAttribute('data-theme','dark-sidebar'); }
+    else { body.classList.add('light'); html.setAttribute('data-theme','light'); }
+  }
+  function setLayout(layout){
+    body.classList.remove('box-layout');
+    if(layout === 'rtl'){ html.setAttribute('dir','rtl'); }
+    else if(layout === 'ltr'){ html.setAttribute('dir','ltr'); }
+    else if(layout === 'Box'){ body.classList.add('box-layout'); html.removeAttribute('dir'); }
+  }
+  function setSidebarType(type){
+    if(!pageWrapper) return;
+    pageWrapper.classList.remove('horizontal-sidebar','compact-wrapper');
+    if(type === 'Horizontal'){ pageWrapper.classList.add('horizontal-sidebar'); }
+    else { pageWrapper.classList.add('compact-wrapper'); }
+  }
+  function setIconStyle(style){
+    sidebars.forEach(function(el){
+      el.classList.remove('iconcolor-sidebar');
+      el.setAttribute('data-sidebar-layout','stroke-svg');
+      if(style === 'Colorful'){ el.classList.add('iconcolor-sidebar'); el.setAttribute('data-sidebar-layout','iconcolor-sidebar'); }
+    });
+  }
+  function setColor(hex){
+    document.documentElement.style.setProperty('--theme-default', hex);
+  }
+  ['mode-light','mode-dark','mode-mix'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('change', function(e){ if(e.target.checked) setMode(e.target.value); });
+  });
+  ['dir-ltr','dir-rtl','dir-box'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('change', function(e){ if(e.target.checked) setLayout(e.target.value); });
+  });
+  ['layout-vertical','layout-horizontal'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('change', function(e){ if(e.target.checked) setSidebarType(e.target.value); });
+  });
+  ['icon-stroke','icon-color'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('change', function(e){ if(e.target.checked) setIconStyle(e.target.value); });
+  });
+  document.querySelectorAll('input[name="color"]').forEach(function(el){
+    el.addEventListener('change', function(e){ if(e.target.checked) setColor(e.target.value); });
+  });
+})();
+</script>
+@endpush

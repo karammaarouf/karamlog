@@ -225,5 +225,9 @@
     "Reset":"إعادة تعيين",
     "Update language":"تحديث اللغة",
     "Arabic":"العربية",
-    "English":"الإنجليزية"
+    "English":"الإنجليزية",
+    "Default settings set successfully":"تم تعيين الإعدادات الافتراضية بنجاح",
+    "Locale updated successfully":"تم تحديث اللغة بنجاح",
+    "Mode updated successfully":"تم تحديث الوضع بنجاح",
+    "Settings updated successfully":"تم تحديث الإعدادات بنجاح"
 }

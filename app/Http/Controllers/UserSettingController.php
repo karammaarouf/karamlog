@@ -33,7 +33,7 @@ class UserSettingController extends Controller
         $this->userSettingService->setSidebarType($userSetting,$request->sidebar_type);
         $this->userSettingService->setIcon($userSetting,$request->icon);
 
-        return redirect()->back()->with('success', 'Settings updated successfully');
+        return redirect()->back()->with('success', __('Settings updated successfully'));
     }
     public function setMode(Request $request){
         $request->validate([
@@ -41,8 +41,7 @@ class UserSettingController extends Controller
         ]);
         $userSetting = UserSetting::firstOrCreate(['user_id' => $request->user()->id]);
         $this->userSettingService->setMode($userSetting,$request->mode);
-        return redirect()->back()->with('success', 'Mode updated successfully');
-
+        return redirect()->back()->with('success', __('Mode updated successfully'));
     }    public function setLocale(Request $request){
         $request->validate([
             'locale' => 'required|string|in:en,ar',
@@ -50,7 +49,7 @@ class UserSettingController extends Controller
         $locale = strtolower($request->input('locale'));
         $userSetting = UserSetting::firstOrCreate(['user_id' => $request->user()->id]);
         $this->userSettingService->setLocale($userSetting,$locale);
-        return redirect()->back()->with('success', 'Locale updated successfully');
+        return redirect()->back()->with('success', __('Locale updated successfully'));
     }
     /**
      * Set default settings for the user.
@@ -58,6 +57,6 @@ class UserSettingController extends Controller
     public function setDefault(Request $request){
         $userSetting = UserSetting::firstOrCreate(['user_id' => $request->user()->id]);
         $this->userSettingService->setDefault($userSetting);
-        return redirect()->back()->with('success', 'Default settings set successfully');
+        return redirect()->back()->with('success', __('Default settings set successfully'));
     }
 }

@@ -31,7 +31,7 @@
             <ul class="header-right">
                 <li class="custom-dropdown">
                     <div class="translate_wrapper">
-                        <div class="current_lang">
+                        <div class="current_lang d-flex align-items-center gap-2">
                             <a class="lang" href="javascript:void(0)"><i
                                     class="flag-icon {{ session('locale') === 'ar' ? 'flag-icon-sa' : 'flag-icon-us' }}"></i>
                                 <h6 class="lang-txt f-w-700">{{ session('locale') === 'ar' ? __('AR') : __('EN') }}
@@ -43,9 +43,9 @@
                                     @csrf
                                     @method('PUT')
                                     <input type="hidden" name="locale" value="ar">
-                                    <button type="submit" class="lang btn btn-link p-0 text-decoration-none">
+                                    <button type="submit" class="lang btn p-0 text-decoration-none d-flex align-items-center gap-2">
                                         <i class="flag-icon flag-icon-sa"></i>
-                                        <div class="lang-txt">{{ __('AR') }}</div>
+                                        <span class="lang-txt text-uppercase mb-0">{{ __('AR') }}</span>
                                     </button>
                                 </form>
                             </li>
@@ -54,9 +54,9 @@
                                     @csrf
                                     @method('PUT')
                                     <input type="hidden" name="locale" value="en">
-                                    <button type="submit" class="lang btn btn-link p-0 text-decoration-none">
+                                    <button type="submit" class="lang btn p-0 text-decoration-none d-flex align-items-center gap-2">
                                         <i class="flag-icon flag-icon-us"></i>
-                                        <div class="lang-txt">{{ __('EN') }}</div>
+                                        <span class="lang-txt text-uppercase mb-0">{{ __('EN') }}</span>
                                     </button>
                                 </form>
                             </li>

@@ -1,4 +1,4 @@
-<aside class="page-sidebar {{ session('icon') === 'Colorful' ? 'iconcolor-sidebar' : '' }}" style="top: -2%" data-sidebar-layout="{{ session('icon') === 'Colorful' ? 'iconcolor-sidebar' : 'stroke-svg' }}"> 
+<aside class="page-sidebar {{ session('icon') === 'Colorful' ? 'iconcolor-sidebar' : '' }}" data-sidebar-layout="{{ session('icon') === 'Colorful' ? 'iconcolor-sidebar' : 'stroke-svg' }}"> 
   <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
   <div class="main-sidebar" id="main-sidebar">
     <ul class="sidebar-menu" id="simple-bar">

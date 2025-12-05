@@ -35,4 +35,9 @@
         font-variation-settings:"slnt" 0 !important;
     }
 </style>
+@if(session('color'))
+<style>
+:root { --theme-default: {{ session('color') }}; }
+</style>
+@endif
 @stack('styles')

@@ -1,14 +1,14 @@
 <!DOCTYPE html >
-<html lang="{{ session('locale', request()->cookie('locale', app()->getLocale())) }}" dir="{{ session('dir', request()->cookie('dir', (session('locale', request()->cookie('locale', app()->getLocale())) === 'ar' ? 'rtl' : 'ltr'))) }}">
+<html lang="{{ session('locale') }}" dir="{{ session('dir')}}">
 @include('layouts.partials.head')
-  <body>
+  <body class="{{ session('theme_class') }} {{ session('layout') === 'Box' ? 'box-layout' : '' }}">
     @include('layouts.partials.alert')
     <!-- page-wrapper Start-->
     <!-- tap on top starts-->
     <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
     <!-- tap on tap ends-->
     @include('layouts.partials.loader')
-    <div class="page-wrapper compact-wrapper" id="pageWrapper"> 
+    <div class="page-wrapper {{ session('sidebar_type') === 'Horizontal' ? 'horizontal-sidebar' : 'compact-wrapper' }}" id="pageWrapper"> 
         @include('layouts.partials.header')
       <!-- Page Body Start-->
       <div class="page-body-wrapper"> 

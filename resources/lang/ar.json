@@ -216,5 +216,14 @@
     "Vertical":"عمودي",
     "Horizontal":"أفقي",
     "Choose between Stroke / Colorful":"اختر بين الخطية / الملونة",
-    "Customize Appearance":"تخصيص المظهر"
+    "Customize Appearance":"تخصيص المظهر",
+    "Language":"اللغة",
+    "Save changes":"حفظ التغييرات",
+    "Reset to default":"إعادة تعيين الافتراضية",
+    "Confirm reset":"تأكيد إعادة تعيين الافتراضية",
+    "Are you sure you want to reset all settings to default?":"هل أنت متأكد من إعادة تعيين جميع الإعدادات إلى الإفتراضية؟",
+    "Reset":"إعادة تعيين",
+    "Update language":"تحديث اللغة",
+    "Arabic":"العربية",
+    "English":"الإنجليزية"
 }

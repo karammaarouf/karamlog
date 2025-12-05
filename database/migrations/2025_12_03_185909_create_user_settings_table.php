@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('user_settings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->enum('layout',['RTL','LTR','Box'])->default('LTR');
+            $table->enum('layout',['rtl','ltr','Box'])->default('ltr');
             $table->enum('sidebar_type',['Vertical','Horizontal'])->default('Vertical');
             $table->enum('icon',['Stroke','Colorful'])->default('Stroke');
             $table->enum('mode',['Dark','Light','Mix'])->default('Light');
             $table->enum('color',['#308e87','#57375D','#0766AD','#025464','#884A39','#0C356A'])->default('#308e87');
-            $table->enum('locale',['EN','AR'])->default('EN');
+            $table->enum('locale',['en','ar'])->default('en');
             $table->timestamps();
         });
     }

@@ -15,7 +15,22 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         $request->authenticate();
-
+        $userSettings = $request->user()->userSettings;
+        if ($userSettings) {
+            session(['layout' => $userSettings->layout]);
+            $dir = in_array(strtolower($userSettings->layout), ['rtl','ltr']) ? strtolower($userSettings->layout) : 'ltr';
+            session(['dir' => $dir]);
+            session(['sidebar_type' => $userSettings->sidebar_type]);
+            session(['icon' => $userSettings->icon]);
+            session(['color' => $userSettings->color]);
+            $mode = $userSettings->mode;
+            session(['mode' => $mode]);
+            $themeClass = $mode === 'Dark' ? 'dark-only' : ($mode === 'Mix' ? 'dark-sidebar' : 'light');
+            session(['theme_class' => $themeClass]);
+            $code = strtolower($userSettings->locale) === 'ar' ? 'ar' : 'en';
+            session(['locale' => $code]);
+            app()->setLocale($code);
+        }
         $request->session()->regenerate();
         return redirect()->route('home');
     }
@@ -26,6 +41,7 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request)
     {
         Auth::guard('web')->logout();
+        session()->flush();
 
         $request->session()->invalidate();
 

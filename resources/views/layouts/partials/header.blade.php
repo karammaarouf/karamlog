@@ -31,22 +31,35 @@
             <ul class="header-right">
                 <li class="custom-dropdown">
                     <div class="translate_wrapper">
-                        <div class="current_lang"><a class="lang" href="javascript:void(0)"><i
-                                    class="flag-icon {{ app()->getLocale() === 'ar' ? 'flag-icon-sa' : 'flag-icon-us' }}"></i>
-                                <h6 class="lang-txt f-w-700">{{ app()->getLocale() === 'ar' ? __('AR') : __('EN') }}
+                        <div class="current_lang">
+                            <a class="lang" href="javascript:void(0)"><i
+                                    class="flag-icon {{ session('locale') === 'ar' ? 'flag-icon-sa' : 'flag-icon-us' }}"></i>
+                                <h6 class="lang-txt f-w-700">{{ session('locale') === 'ar' ? __('AR') : __('EN') }}
                                 </h6>
                             </a></div>
                         <ul class="custom-menu profile-menu language-menu py-0 more_lang">
-                            <li class="d-block"><a class="lang"
-                                    href="{{ route('locale.switch', ['locale' => 'ar']) }}"><i
-                                        class="flag-icon flag-icon-sa"></i>
-                                    <div class="lang-txt">{{ __('AR') }}</div>
-                                </a></li>
-                            <li class="d-block"><a class="lang"
-                                    href="{{ route('locale.switch', ['locale' => 'en']) }}"><i
-                                        class="flag-icon flag-icon-us"></i>
-                                    <div class="lang-txt">{{ __('EN') }}</div>
-                                </a></li>
+                            <li class="d-block">
+                                <form action="{{ route('settings.setLocale') }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="locale" value="ar">
+                                    <button type="submit" class="lang btn btn-link p-0 text-decoration-none">
+                                        <i class="flag-icon flag-icon-sa"></i>
+                                        <div class="lang-txt">{{ __('AR') }}</div>
+                                    </button>
+                                </form>
+                            </li>
+                            <li class="d-block">
+                                <form action="{{ route('settings.setLocale') }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="locale" value="en">
+                                    <button type="submit" class="lang btn btn-link p-0 text-decoration-none">
+                                        <i class="flag-icon flag-icon-us"></i>
+                                        <div class="lang-txt">{{ __('EN') }}</div>
+                                    </button>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -54,10 +67,18 @@
                         <svg>
                             <use href="{{ asset('assets/svg/iconly-sprite.svg#Search') }}"></use>
                         </svg></a></li>
-                <li> <a class="dark-mode" href="javascript:void(0)">
-                        <svg>
-                            <use href="{{ asset('assets/svg/iconly-sprite.svg#moondark') }}"></use>
-                        </svg></a></li>
+                <li>
+                    <form action="{{ route('settings.setMode') }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="mode" value="{{ session('mode') === 'Dark' ? 'Light' : 'Dark' }}">
+                        <button type="submit" class="dark-mode btn btn-link p-0">
+                            <svg>
+                                <use href="{{ asset('assets/svg/iconly-sprite.svg#moondark') }}"></use>
+                            </svg>
+                        </button>
+                    </form>
+                </li>
 
                 <li><a class="full-screen" href="javascript:void(0)">
                         <svg>

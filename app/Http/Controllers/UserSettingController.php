@@ -25,11 +25,7 @@ class UserSettingController extends Controller
     public function update(UserSettingUpdateRequest $request){
 
         $userSetting =UserSetting::firstOrCreate(['user_id' => $request->user()->id]);
-        $this->userSettingService->setColor($userSetting,$request->color);
-        $this->userSettingService->setMode($userSetting,$request->mode);
-        $this->userSettingService->setLayout($userSetting,$request->layout);
-        $this->userSettingService->setSidebarType($userSetting,$request->sidebar_type);
-        $this->userSettingService->setIcon($userSetting,$request->icon);
+        $this->userSettingService->update($userSetting, $request->toArray());
 
         return redirect()->back()->with('success', __('Settings updated successfully'));
     }
@@ -43,11 +39,10 @@ class UserSettingController extends Controller
 
     }    
     
-    public function setLocale(UserSettingUpdateRequest $request){
-
-        $locale = strtolower($request->input('locale'));
+    public function setLocale(UserSettingUpdateRequest $request)
+    {
         $userSetting = UserSetting::firstOrCreate(['user_id' => $request->user()->id]);
-        $this->userSettingService->setLocale($userSetting,$locale);
+        $this->userSettingService->setLocale($userSetting,$request->locale);
         return redirect()->back()->with('success', __('Locale updated successfully'));
     }
     /**

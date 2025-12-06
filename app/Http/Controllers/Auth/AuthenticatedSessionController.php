@@ -2,36 +2,33 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
+use App\Models\UserSetting;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\UserSettingService;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Auth\LoginRequest;
 
 class AuthenticatedSessionController extends Controller
 {
+    protected $userSettingService;
+    public function __construct(UserSettingService $userSettingService)
+    {
+        $this->userSettingService = $userSettingService;
+    }
     /**
      * Handle an incoming authentication request.
      */
     public function store(LoginRequest $request)
     {
         $request->authenticate();
-        $userSettings = $request->user()->userSettings;
-        if ($userSettings) {
-            $layout = $userSettings->layout;
-            $dir = in_array(strtolower($layout), ['rtl','ltr']) ? strtolower($layout) : 'box';
-            session(['dir' => $dir]);
-            session(['sidebar_type' => $userSettings->sidebar_type]);
-            session(['icon' => $userSettings->icon]);
-            session(['color' => $userSettings->color]);
-            $mode = $userSettings->mode;
-            session(['mode' => $mode]);
-            $themeClass = $mode === 'Dark' ? 'dark-only' : ($mode === 'Mix' ? 'dark-sidebar' : 'light');
-            session(['theme_class' => $themeClass]);
-            $code = strtolower($userSettings->locale) === 'ar' ? 'ar' : 'en';
-            session(['locale' => $code]);
-            app()->setLocale($code);
-        }
+
+        $userSettings = UserSetting::firstOrCreate(['user_id' => $request->user()->id]);
+
+        $this->userSettingService->setSessions($userSettings);
+
         $request->session()->regenerate();
+        
         return redirect()->route('home');
     }
 
@@ -41,11 +38,12 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request)
     {
         Auth::guard('web')->logout();
-        session()->flush();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        session()->flush();
 
         return redirect()->route('login');
     }

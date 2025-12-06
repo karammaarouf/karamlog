@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserSetting extends Model
 {
+    protected $table = 'user_settings';
     protected $fillable = [
-        'user_id',
+        'id',
         'layout',
         'sidebar_type',
         'icon',
@@ -25,7 +26,7 @@ class UserSetting extends Model
     ];
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'id');
     }
     
 }

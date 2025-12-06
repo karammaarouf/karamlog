@@ -1,147 +1,61 @@
-        <div class="page-body">
-          <div class="container-fluid">
-            <div class="page-title">
-              <div class="row">
-                <div class="col-sm-6 col-12"> 
-                  <h2>Edit Profile</h2>
-                </div>
-                <div class="col-sm-6 col-12">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="iconly-Home icli svg-color"></i></a></li>
-                    <li class="breadcrumb-item">Users</li>
-                    <li class="breadcrumb-item active">Edit Profile</li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Container-fluid starts-->
-          <div class="container-fluid">
-            <div class="edit-profile">
-              <div class="row">
-                <div class="col-xl-4">
-                  <div class="card">
-                    <div class="card-header card-no-border pb-0">
-                      <h3 class="card-title mb-0">My Profile</h3>
-                      <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
-                    </div>
-                    <div class="card-body">
-                      <form>
-                        <div class="row mb-2">
-                          <div class="profile-title">
-                            <div class="d-flex gap-3">                       <img class="img-70 rounded-circle" alt="" src="../assets/images/user/7.jpg"/>
-                              <div class="flex-grow-1">
-                                <h3 class="mb-1">MARK JECNO</h3>
-                                <p>DESIGNER</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="mb-3">
-                          <h6 class="form-label">Bio</h6>
-                          <textarea class="form-control" rows="5">On the other hand, we denounce with righteous indignation</textarea>
-                        </div>
-                        <div class="mb-3">
-                          <label class="form-label">Email-Address</label>
-                          <input class="form-control" placeholder="your-email@domain.com"/>
-                        </div>
-                        <div class="mb-3">
-                          <label class="form-label">Password</label>
-                          <input class="form-control" type="password" value="password"/>
-                        </div>
-                        <div class="mb-3">
-                          <label class="form-label">Website</label>
-                          <input class="form-control" placeholder="http://Uplor .com"/>
-                        </div>
-                        <div class="form-footer">
-                          <button class="btn btn-primary btn-block">Save</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-8">
-                  <form class="card">
-                    <div class="card-header card-no-border pb-0">
-                      <h3 class="card-title mb-0">Edit Profile</h3>
-                      <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
-                    </div>
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-5">
-                          <div class="mb-3">
-                            <label class="form-label">Company</label>
-                            <input class="form-control" type="text" placeholder="Company"/>
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                          <div class="mb-3">
-                            <label class="form-label">Username</label>
-                            <input class="form-control" type="text" placeholder="Username"/>
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                          <div class="mb-3">
-                            <label class="form-label">Email address</label>
-                            <input class="form-control" type="email" placeholder="Email"/>
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-md-6">
-                          <div class="mb-3">
-                            <label class="form-label">First Name</label>
-                            <input class="form-control" type="text" placeholder="Company"/>
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-md-6">
-                          <div class="mb-3">
-                            <label class="form-label">Last Name</label>
-                            <input class="form-control" type="text" placeholder="Last Name"/>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="mb-3">
-                            <label class="form-label">Address</label>
-                            <input class="form-control" type="text" placeholder="Home Address"/>
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                          <div class="mb-3">
-                            <label class="form-label">City</label>
-                            <input class="form-control" type="text" placeholder="City"/>
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                          <div class="mb-3">
-                            <label class="form-label">Postal Code</label>
-                            <input class="form-control" type="number" placeholder="ZIP Code"/>
-                          </div>
-                        </div>
-                        <div class="col-md-5">
-                          <div class="mb-3">
-                            <label class="form-label">Country</label>
-                            <select class="form-control btn-square">
-                              <option value="0">--Select--</option>
-                              <option value="1">Germany</option>
-                              <option value="2">Canada</option>
-                              <option value="3">Usa</option>
-                              <option value="4">Aus</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div>
-                            <label class="form-label">About Me</label>
-                            <textarea class="form-control" rows="4" placeholder="Enter About your description"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer text-end">
-                      <button class="btn btn-primary" type="submit">Update Profile</button>
-                    </div>
-                  </form>
-                </div>
+@extends('layouts.app')
+@section('title') {{ __('Profile') }} @endsection
+@section('breadcrumb') {{ __('Users') }} @endsection
+@section('breadcrumbActive') {{ __('Edit Profile') }} @endsection
+@section('content')
+<div class="row">
+  <div class="col-xl-4">
+    <div class="card">
+      <div class="card-header card-no-border pb-0">
+        <h3 class="card-title mb-0">{{ __('My Profile') }}</h3>
+        <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
+      </div>
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="profile-title">
+            <div class="d-flex gap-3 align-items-center">
+              <img class="img-70 rounded-circle" alt="user" src="{{ asset('assets/images/profile.png') }}"/>
+              <div class="flex-grow-1">
+                <h3 class="mb-1">{{ $user->name }}</h3>
+                <p class="mb-0">{{ $user->email }}</p>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-8">
+    <div class="card">
+      <div class="card-header card-no-border pb-0">
+        <h3 class="card-title mb-0">{{ __('Edit Profile') }}</h3>
+        <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
+      </div>
+      <div class="card-body">
+        <x-forms.form :action="route('profile.update')" method="PUT" class="needs-validation" novalidate>
+          <div class="row">
+            <x-forms.input name="name" label="{{ __('Name') }}" :model="$user" col="6" required />
+            <x-forms.input name="email" label="{{ __('Email') }}" type="email" :model="$user" col="6" required />
+            <x-forms.input name="password" label="{{ __('Password') }}" type="password" col="6" help="{{ __('Leave blank to keep current password') }}" />
+            <x-forms.input name="password_confirmation" label="{{ __('Confirm Password') }}" type="password" col="6" />
+          </div>
+          <hr/>
+          <h5 class="mb-3">{{ __('User Information') }}</h5>
+          <div class="row">
+            <x-forms.input name="birth_date" label="{{ __('Birth Date') }}" type="date" :model="$userInformations" col="6" placeholder="{{ __('Not provided') }}" />
+            <x-forms.input name="phone" label="{{ __('Phone') }}" type="tel" :model="$userInformations" col="6" placeholder="{{ __('Not provided') }}" />
+            <x-forms.input name="address" label="{{ __('Address') }}" :model="$userInformations" col="12" placeholder="{{ __('Not provided') }}" />
+            <x-forms.input name="city" label="{{ __('City') }}" :model="$userInformations" col="4" placeholder="{{ __('Not provided') }}" />
+            <x-forms.input name="state" label="{{ __('State') }}" :model="$userInformations" col="4" placeholder="{{ __('Not provided') }}" />
+            <x-forms.input name="country" label="{{ __('Country') }}" :model="$userInformations" col="4" placeholder="{{ __('Not provided') }}" />
+          </div>
+          <div class="text-end">
+            <x-forms.submit-button label="{{ __('Update Profile') }}" class="btn btn-primary" />
+          </div>
+        </x-forms.form>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection

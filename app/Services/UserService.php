@@ -36,16 +36,20 @@ class UserService implements UserServiceInterface
     public function create(array $data)
     {
         $user = User::query()->create($data);
-        $roles=Role::whereIn('id', $data['roles'])->pluck('name')->toArray();
-        $user->syncRoles($roles);
+        if (isset($data['roles'])) {
+            $roles=Role::whereIn('id', $data['roles'])->pluck('name')->toArray();
+            $user->syncRoles($roles);
+        }
         return $user;
     }
     // update data
     public function update(User $user, array $data)
     {
         $user->update($data);
-        $roles=Role::whereIn('id', $data['roles'])->pluck('name')->toArray();
-        $user->syncRoles($roles);
+        if (isset($data['roles'])) {
+            $roles=Role::whereIn('id', $data['roles'])->pluck('name')->toArray();
+            $user->syncRoles($roles);
+        }
         return $user;
     }
     // delete data

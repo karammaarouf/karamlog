@@ -1,7 +1,7 @@
 <!DOCTYPE html >
 <html lang="{{ session('locale') }}" @if(session('dir') !== 'box') dir="{{ session('dir')}}" @endif>
 @include('layouts.partials.head')
-  <body class="{{ session('theme_class') }} {{ session('dir') === 'box' ? 'box-layout' : '' }}">
+  <body data-mode-source="server" class="{{ session('theme_class') }} {{ session('dir') === 'box' ? 'box-layout' : '' }}">
     @include('layouts.partials.alert')
     <!-- page-wrapper Start-->
     <!-- tap on top starts-->

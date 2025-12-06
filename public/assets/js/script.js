@@ -126,37 +126,43 @@ document.addEventListener("DOMContentLoaded", function () {
     $("body").removeClass("offcanvas");
   });
   /*=====================
-       05. Dark Mode js
+       05. Dark Mode js (server-driven)
     ==========================*/
-    if(window.location.pathname.includes("layout-dark.html")){
-      $("body").removeClass("light");
-      $("body").addClass("dark-only");
+    var serverMode = document.body.getAttribute('data-mode-source') === 'server';
+    if(serverMode){
+      $(".dark-mode").on("click", function(){ /* submit handled by form; preview handled elsewhere */ });
+    } else {
+      if(window.location.pathname.includes("layout-dark.html")){
+        $("body").removeClass("light");
+        $("body").addClass("dark-only");
       }else{
-      $(".dark-mode").on("click", function () {
-      const bodyModeDark = $("body").hasClass("dark-only");
-      if(!window.location.pathname.includes("layout-dark.html")){
-      if (!bodyModeDark) {
-      $(".dark-mode").addClass("active");
-      localStorage.setItem("mode", "dark-only");
-      $("body").addClass("dark-only");
-      $("body").removeClass("light");
+        $(".dark-mode").on("click", function () {
+          const bodyModeDark = $("body").hasClass("dark-only");
+          if(!window.location.pathname.includes("layout-dark.html")){
+            if (!bodyModeDark) {
+              $(".dark-mode").addClass("active");
+              localStorage.setItem("mode", "dark-only");
+              $("body").addClass("dark-only");
+              $("body").removeClass("light");
+            }
+            else{
+              $(".dark-mode").removeClass("active");
+              localStorage.setItem("mode", "light");
+              $("body").removeClass("dark-only");
+              $("body").addClass("light");
+            }
+          }
+        });
+        $("body").addClass(
+          localStorage.getItem("mode")
+          ? localStorage.getItem("mode")
+          : "light"
+        );
+        $(".dark-mode").addClass(
+          localStorage.getItem("mode") === "dark-only" ? "active" : " "
+        )
       }
-      else{
-      $(".dark-mode").removeClass("active");
-      localStorage.setItem("mode", "light");
-      $("body").removeClass("dark-only");
-      $("body").addClass("light");
-      }
-      }
-      });
-      $("body").addClass(
-      localStorage.getItem("mode")
-      ? localStorage.getItem("mode")
-      : "light"
-      );
-      $(".dark-mode").addClass(
-      localStorage.getItem("mode") === "dark-only" ? "active" : " "
-      )}
+    }
   // product-page-js-start
   var toggleDataElements = document.querySelectorAll(".toggle-data");
   toggleDataElements.forEach(function (element) {

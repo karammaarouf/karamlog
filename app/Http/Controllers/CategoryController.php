@@ -35,7 +35,7 @@ class CategoryController extends Controller
 
 
 
-        return view('pages.categories.index', compact('categories', 'inactiveCategories', 'activeCategories', 'categoriesCount'));
+        return view('pages.dashboard.categories.index', compact('categories', 'inactiveCategories', 'activeCategories', 'categoriesCount'));
     }
 
     /**
@@ -46,7 +46,7 @@ class CategoryController extends Controller
         // إنشاء فئة جديدة
         $this->authorize('create', Category::class);
         $category = new Category();
-        return view('pages.categories.partials.form', compact('category'));
+        return view('pages.dashboard.categories.partials.form', compact('category'));
     }
 
     /**
@@ -66,7 +66,7 @@ class CategoryController extends Controller
     {
         // تعديل فئة موجودة
         $this->authorize('update', $category);
-        return view('pages.categories.partials.form', compact('category'));
+        return view('pages.dashboard.categories.partials.form', compact('category'));
     }
 
     /**
@@ -93,7 +93,7 @@ class CategoryController extends Controller
         // عرض الفئات المحذوفة
         $this->authorize('viewAny', Category::class);
         $categories = $this->categoryService->getDeleted();
-        return view('pages.categories.partials.deleted', compact('categories'));
+        return view('pages.dashboard.categories.partials.deleted', compact('categories'));
     }
     /**
      * Restore the specified resource from storage.

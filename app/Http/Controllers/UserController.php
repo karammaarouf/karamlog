@@ -36,7 +36,7 @@ class UserController extends Controller
         $usersCountActive = $counts->active;
         $usersCountInactive = $counts->inactive;
 
-        return view('pages.users.index', compact('users', 'usersCount', 'usersCountActive', 'usersCountInactive'));
+        return view('pages.dashboard.users.index', compact('users', 'usersCount', 'usersCountActive', 'usersCountInactive'));
     }
 
     /**
@@ -49,7 +49,7 @@ class UserController extends Controller
         $user = new User();
         $roles = Role::pluck('name', 'id');
         $userRoles = [];
-        return view('pages.users.partials.form', compact('user', 'roles', 'userRoles'));
+        return view('pages.dashboard.users.partials.form', compact('user', 'roles', 'userRoles'));
     }
 
     /**
@@ -68,7 +68,7 @@ class UserController extends Controller
     {
         // عرض تفاصيل المستخدم
         $this->authorize('view', $user);
-        return view('pages.users.partials.show', compact('user'));
+        return view('pages.dashboard.users.partials.show', compact('user'));
     }
 
     /**
@@ -80,7 +80,7 @@ class UserController extends Controller
         $this->authorize('update', $user);
         $roles = Role::pluck('name', 'id');
         $userRoles = $user->roles->pluck('id')->toArray();
-        return view('pages.users.partials.form', compact('user', 'roles', 'userRoles'));
+        return view('pages.dashboard.users.partials.form', compact('user', 'roles', 'userRoles'));
     }
 
     /**
@@ -111,7 +111,7 @@ class UserController extends Controller
         // عرض جميع المستخدمين المحذوفين
         $this->authorize('viewAny', User::class);
         $users = $this->userService->getDeleted();
-        return view('pages.users.partials.deleted', compact('users'));
+        return view('pages.dashboard.users.partials.deleted', compact('users'));
     }
 
     /**

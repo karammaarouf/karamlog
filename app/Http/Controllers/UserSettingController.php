@@ -19,7 +19,7 @@ class UserSettingController extends Controller
     public function index()
     {
         $userSetting = UserSetting::firstOrCreate(['user_id' => auth()->user()->id]);
-        return view('pages.user-settings.index', compact('userSetting'));
+        return view('pages.dashboard.user-settings.index', compact('userSetting'));
     }
 
     public function update(UserSettingUpdateRequest $request){

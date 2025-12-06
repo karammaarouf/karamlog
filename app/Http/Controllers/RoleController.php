@@ -23,7 +23,7 @@ class RoleController extends Controller
         $this->authorize('view-roles', Role::class);
         $search = $request->input('search');
         $roles=($search)?$this->roleService->getSearch($search):$this->roleService->getAll();
-        return view('pages.roles.index', compact('roles'));
+        return view('pages.dashboard.roles.index', compact('roles'));
     }
 
     public function create()
@@ -32,7 +32,7 @@ class RoleController extends Controller
         $role = new Role();
         $permissionGroups = Permission::query()->orderBy('group_name')->get()->groupBy('group_name');
         $selectedPermissions = [];
-        return view('pages.roles.partials.form', compact('role', 'permissionGroups', 'selectedPermissions'));
+        return view('pages.dashboard.roles.partials.form', compact('role', 'permissionGroups', 'selectedPermissions'));
     }
 
     public function store(RoleStoreRequest $request)
@@ -44,7 +44,7 @@ class RoleController extends Controller
     public function show(Role $role)
     {
         $this->authorize('show-roles', $role);
-        return view('pages.roles.partials.show', compact('role'));
+        return view('pages.dashboard.roles.partials.show', compact('role'));
     }
 
     public function edit(Role $role)
@@ -52,7 +52,7 @@ class RoleController extends Controller
         $this->authorize('update-roles', $role);
         $permissionGroups = Permission::query()->orderBy('group_name')->get()->groupBy('group_name');
         $selectedPermissions = $role->permissions()->pluck('name')->toArray();
-        return view('pages.roles.partials.form', compact('role', 'permissionGroups', 'selectedPermissions'));
+        return view('pages.dashboard.roles.partials.form', compact('role', 'permissionGroups', 'selectedPermissions'));
     }
 
     public function update(RoleUpdateRequest $request, Role $role)

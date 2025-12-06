@@ -12,16 +12,16 @@ class UserSettingService implements UserSettingServiceInterface
     {
         $userSetting->update(['mode' => $mode]);
         $userSetting->save();
-        session(['mode' => $mode]);
-        $themeClass = $mode === 'Dark' ? 'dark-only' : ($mode === 'Mix' ? 'dark-sidebar' : 'light');
-        session(['theme_class' => $themeClass]);
+        session()->put(['mode' => $mode]);
+        $themeClass = $mode === 'Dark' ? 'dark-only' : ($mode === 'Light' ? 'light' : 'dark-sidebar');
+        session()->put(['theme_class' => $themeClass]);
     }
     public function setColor(UserSetting $userSetting, $color)
     {
         // Set the user's color preference.
         $userSetting->update(['color' => $color]);
         $userSetting->save();
-        session(['color' => $color]);
+        session()->put(['color' => $color]);
     }
     // Set the user's sidebar type preference.
     public function setSidebarType(UserSetting $userSetting, $sidebar_type)
@@ -29,7 +29,7 @@ class UserSettingService implements UserSettingServiceInterface
         // Set the user's sidebar type preference.
         $userSetting->update(['sidebar_type' => $sidebar_type]);
         $userSetting->save();
-        session(['sidebar_type' => $sidebar_type]);
+        session()->put(['sidebar_type' => $sidebar_type]);
     }
     // Set the user's icon preference.
     public function setIcon(UserSetting $userSetting, $icon)
@@ -37,7 +37,7 @@ class UserSettingService implements UserSettingServiceInterface
         // Set the user's icon preference.
         $userSetting->update(['icon' => $icon]);
         $userSetting->save();
-        session(['icon' => $icon]);
+        session()->put(['icon' => $icon]);
     }
     // Set the user's layout preference.
     public function setLayout(UserSetting $userSetting, $layout)
@@ -46,11 +46,11 @@ class UserSettingService implements UserSettingServiceInterface
         $userSetting->update(['layout' => $layout]);
         $userSetting->save();
         if (strtolower($layout) === 'rtl') {
-            session(['dir' => 'rtl']);
+            session()->put(['dir' => 'rtl']);
         } elseif (strtolower($layout) === 'ltr') {
-            session(['dir' => 'ltr']);
+            session()->put(['dir' => 'ltr']);
         } else {
-            session(['dir' => 'box']);
+            session()->put(['dir' => 'box']);
         }
     }
     // Set the user's locale preference.
@@ -60,8 +60,8 @@ class UserSettingService implements UserSettingServiceInterface
         $layout= $locale == 'en' ? 'ltr' : 'rtl';
         $userSetting->update(['locale' => $locale, 'layout' => $layout]);
         app()->setLocale($locale);
-        session(['locale' => $locale]);
-        session(['dir' => $layout]);
+        session()->put(['locale' => $locale]);
+        session()->put(['dir' => $layout]);
         $userSetting->save();
     }
     // Set default settings for the user.
@@ -77,12 +77,13 @@ class UserSettingService implements UserSettingServiceInterface
             'locale' => 'en',
         ]);
         $userSetting->save();
-        session(['theme_class' => 'light']);
-        session(['mode' => $userSetting->mode]);
-        session(['color' => $userSetting->color]);
-        session(['sidebar_type' => $userSetting->sidebar_type]);
-        session(['icon' => $userSetting->icon]);
-        session(['locale' => $userSetting->locale]);
-        session(['dir' => 'ltr']);
+        session()->flush();
+        session()(['theme_class' => 'light']);
+        session()(['mode' => $userSetting->mode]);
+        session()(['color' => $userSetting->color]);
+        session()(['sidebar_type' => $userSetting->sidebar_type]);
+        session()(['icon' => $userSetting->icon]);
+        session()(['locale' => $userSetting->locale]);
+        session()(['dir' => 'ltr']);
     }
 }

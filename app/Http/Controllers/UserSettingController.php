@@ -5,27 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\UserSetting;
 use Illuminate\Http\Request;
 use App\Services\UserSettingService;
+use App\Http\Requests\UserSettingUpdateRequest;
+
 class UserSettingController extends Controller
 {
     protected $userSettingService;
+
     public function __construct(UserSettingService $userSettingService)
     {
         $this->userSettingService = $userSettingService;
     }
+    
     public function index()
     {
         $userSetting = UserSetting::firstOrCreate(['user_id' => auth()->user()->id]);
         return view('pages.user-settings.index', compact('userSetting'));
     }
 
-    public function update(Request $request){
-        $request->validate([
-            'layout' => 'sometimes|string|in:rtl,ltr,Box',
-            'sidebar_type' => 'sometimes|string|in:Vertical,Horizontal',
-            'icon' => 'sometimes|string|in:Stroke,Colorful',
-            'mode' => 'sometimes|string|in:Dark,Light,Mix',
-            'color' => 'sometimes|string|in:#308e87,#57375D,#0766AD,#025464,#884A39,#0C356A',
-        ]);
+    public function update(UserSettingUpdateRequest $request){
+
         $userSetting =UserSetting::firstOrCreate(['user_id' => $request->user()->id]);
         $this->userSettingService->setColor($userSetting,$request->color);
         $this->userSettingService->setMode($userSetting,$request->mode);
@@ -35,17 +33,18 @@ class UserSettingController extends Controller
 
         return redirect()->back()->with('success', __('Settings updated successfully'));
     }
-    public function setMode(Request $request){
-        $request->validate([
-            'mode' => 'required|string|in:Dark,Light,Mix',
-        ]);
+
+    public function setMode(UserSettingUpdateRequest $request){
+
         $userSetting = UserSetting::firstOrCreate(['user_id' => $request->user()->id]);
         $this->userSettingService->setMode($userSetting,$request->mode);
         return redirect()->back()->with('success', __('Mode updated successfully'));
-    }    public function setLocale(Request $request){
-        $request->validate([
-            'locale' => 'required|string|in:en,ar',
-        ]);
+
+
+    }    
+    
+    public function setLocale(UserSettingUpdateRequest $request){
+
         $locale = strtolower($request->input('locale'));
         $userSetting = UserSetting::firstOrCreate(['user_id' => $request->user()->id]);
         $this->userSettingService->setLocale($userSetting,$locale);
@@ -54,8 +53,9 @@ class UserSettingController extends Controller
     /**
      * Set default settings for the user.
      */
-    public function setDefault(Request $request){
-        $userSetting = UserSetting::firstOrCreate(['user_id' => $request->user()->id]);
+    public function setDefault(){
+
+        $userSetting = UserSetting::firstOrCreate(['user_id' => auth()->user()->id]);
         $this->userSettingService->setDefault($userSetting);
         return redirect()->back()->with('success', __('Default settings set successfully'));
     }

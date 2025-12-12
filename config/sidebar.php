@@ -5,6 +5,7 @@ return [
         'title' => 'general',
         'items' => [
             ['label' => 'dashboard', 'icon' => 'Home-dashboard', 'url' => '/'],
+            ['label' => 'profile', 'icon' => 'Profile', 'route' => 'profile.index'],
             ['label' => 'users', 'icon' => 'Profile',
             'children'=>[
                 ['label' => 'Users List', 'icon' => 'Users', 'route' => 'users.index'],

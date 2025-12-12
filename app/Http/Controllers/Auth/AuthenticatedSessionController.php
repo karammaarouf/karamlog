@@ -22,9 +22,8 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         $request->authenticate();
-        $userSettings = UserSetting::firstOrCreate([
-            'id' => auth()->user()->id,
-        ]);
+        
+        $userSettings = UserSetting::firstOrCreate(['id' => auth()->user()->id]);
 
         $this->userSettingService->setSessions($userSettings);
 

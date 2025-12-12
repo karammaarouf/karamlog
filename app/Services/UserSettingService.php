@@ -80,6 +80,7 @@ class UserSettingService implements UserSettingServiceInterface
         $userSetting->save();
         $this->setSessions($userSetting);
     }
+    
     public function setSessions(UserSetting $userSetting)
     {
         $theme_class= $userSetting->mode === 'Dark' ? 'dark-only' : ($userSetting->mode === 'Mix' ? 'dark-sidebar' : 'light');

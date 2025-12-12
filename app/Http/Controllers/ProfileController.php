@@ -4,49 +4,39 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserInformation;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\ProfilePasswordUpdateRequest;
+use App\Services\PrfileService;
 
 class ProfileController extends Controller
 {
+    protected $profileService;
+
+    public function __construct(PrfileService $profileService)
+    {
+        $this->profileService = $profileService;
+    }
     public function index()
     {
         $user = auth()->user();
-        $userInformations = $user->userInformations;
+        $userInformations = $this->profileService->getUserInformations();
         return view('pages.dashboard.profile.index', compact('user', 'userInformations'));
     }
 
-    public function update(Request $request)
+    public function update(ProfileUpdateRequest $request)
     {
-        $user = auth()->user();
-
-        $validatedUser = $request->validate([
-            'name' => ['required','string','max:255'],
-            'email' => ['required','email','max:255','unique:users,email,'.$user->id],
-            'password' => ['nullable','confirmed','min:8'],
-        ]);
-
-        $userData = [
-            'name' => $validatedUser['name'],
-            'email' => $validatedUser['email'],
-        ];
-        if (!empty($validatedUser['password'])) {
-            $userData['password'] = bcrypt($validatedUser['password']);
-        }
-        $user->update($userData);
-
-        $validatedInfo = $request->validate([
-            'birth_date' => ['nullable','date'],
-            'phone' => ['nullable','string','max:50'],
-            'address' => ['nullable','string','max:255'],
-            'city' => ['nullable','string','max:100'],
-            'state' => ['nullable','string','max:100'],
-            'country' => ['nullable','string','max:100'],
-        ]);
-
-        $info = UserInformation::firstOrNew(['id' => $user->id]);
-        $info->fill($validatedInfo);
-        $info->id = $user->id;
-        $info->save();
+        $userInformations = $this->profileService->getUserInformations();
+        $this->profileService->update($userInformations, $request->all());
 
         return redirect()->route('profile.index')->with('success', __('Profile updated successfully'));
+    }
+
+    public function updatePassword(ProfilePasswordUpdateRequest $request)
+    {
+        $user = auth()->user();
+        $this->profileService->updatePassword($user, $request->all());
+
+        return redirect()->route('profile.index')->with('success', __('Password updated successfully'));
     }
 }

@@ -32,7 +32,8 @@ return [
                     ['label' => 'content',
                 'icon' => 'Document',
                 'children' => [
-                    ['label' => 'collections', 'url' => '#'],
+                    ['label' => 'collections', 'route' => 'groups.index'],
+                    ['label' => 'Deleted Groups','color' => 'red' , 'route' =>'groups.deleted']
                 ],
             ],
         ],

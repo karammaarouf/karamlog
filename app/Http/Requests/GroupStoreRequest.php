@@ -11,7 +11,7 @@ class GroupStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user() ? $this->user()->can('create-groups') : false;
     }
 
     /**
@@ -22,7 +22,9 @@ class GroupStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:255',
+            'is_active' => 'boolean',
         ];
     }
 }

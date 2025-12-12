@@ -62,8 +62,20 @@ class PermissionSeeder extends Seeder
                 'force-delete-categories',
             ]
         ];
+        $groupPermissions = [
+            'group_name' => 'groups',
+            'guard_name' => 'web',
+            'permissions' => [
+                'view-groups',
+                'create-groups',
+                'update-groups',
+                'delete-groups',
+                'restore-groups',
+                'force-delete-groups',
+            ]
+        ];
 
-        $permissions=[$userPermissions,$itemPermissions,$rolePermissions,$categoryPermissions];
+        $permissions=[$userPermissions,$itemPermissions,$rolePermissions,$categoryPermissions,$groupPermissions];
 
 
         foreach($permissions as $permission){

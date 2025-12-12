@@ -6,6 +6,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserSettingController;
 
 Route::middleware(['auth'])->group(function () {
@@ -40,6 +41,13 @@ Route::put('/settings/default', [UserSettingController::class, 'setDefault'])->n
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
+
+// Group page
+Route::resource('/groups',GroupController::class);
+Route::get('/groupsdeleted', [GroupController::class, 'deleted'])->name('groups.deleted');
+Route::put('/groups/{group}/restore', [GroupController::class, 'restore'])->withTrashed()->name('groups.restore');
+Route::delete('/groups/{group}/force-delete', [GroupController::class, 'forceDelete'])->withTrashed()->name('groups.forceDelete');
+Route::put('/groups/{group}/toggle-active', [GroupController::class, 'toggleActive'])->name('groups.toggleActive');
 
 
 });

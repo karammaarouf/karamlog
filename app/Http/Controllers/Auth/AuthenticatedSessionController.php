@@ -23,12 +23,11 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
         
+        
+        $request->session()->regenerate();
         $userSettings = UserSetting::firstOrCreate(['id' => auth()->user()->id]);
 
         $this->userSettingService->setSessions($userSettings);
-
-        $request->session()->regenerate();
-        
         return redirect()->route('home');
     }
 

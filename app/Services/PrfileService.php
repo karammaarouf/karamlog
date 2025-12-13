@@ -10,13 +10,14 @@ class PrfileService implements ProfileServiceInterface
 {
     public function getUserInformations()
     {
-        return auth()->user()->userInformations;
+        $user = auth()->user();
+        return UserInformation::firstOrCreate(['id' => $user->id]);
     }
     // Update the user's profile information.
     public function update(array $data)
     {
     $user = auth()->user();
-    $userInformations = $user->userInformations;
+    $userInformations = $this->getUserInformations();
 
     // حقول جدول users فقط
     $userData = [
@@ -26,7 +27,6 @@ class PrfileService implements ProfileServiceInterface
 
     // حقول جدول user_informations
     $infoData = collect($data)->except(['name', 'email'])->toArray();
-
     $user->update($userData);
     $userInformations->update($infoData);   
     }

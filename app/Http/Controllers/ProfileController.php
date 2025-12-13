@@ -26,7 +26,6 @@ class ProfileController extends Controller
 
     public function update(ProfileUpdateRequest $request)
     {
-        $userInformations = $this->profileService->getUserInformations();
         $this->profileService->update( $request->all());
 
         return redirect()->route('profile.index')->with('success', __('Profile updated successfully'));

@@ -67,6 +67,7 @@ class PermissionSeeder extends Seeder
             'guard_name' => 'web',
             'permissions' => [
                 'view-groups',
+                'show-groups',
                 'create-groups',
                 'update-groups',
                 'delete-groups',

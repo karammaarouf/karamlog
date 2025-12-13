@@ -10,10 +10,10 @@
 @endsection
 @section('content')
     <x-cards.container>
-        <x-cards.card :value="$groupsCount ?? 0" label="{{ __('Total Groups') }}" icon="users" roundColor="primary" trendText="+0%"
+        <x-cards.card :value="$groupsCount ?? 0" label="{{ __('Total Groups') }}" icon="menu" roundColor="primary" trendText="+0%"
             trendClass="font-primary" />
-        <x-cards.card :value="$activeGroups ?? 0" label="{{ __('Active Groups') }}" icon="users" roundColor="success" />
-        <x-cards.card :value="$inactiveGroups ?? 0" label="{{ __('Inactive Groups') }}" icon="users" roundColor="danger" />
+        <x-cards.card :value="$activeGroups ?? 0" label="{{ __('Active Groups') }}" icon="eye" roundColor="success" />
+        <x-cards.card :value="$inactiveGroups ?? 0" label="{{ __('Inactive Groups') }}" icon="eye-off" roundColor="danger" />
     </x-cards.container>
     <div class="row">
         <div class="col-md-12">
@@ -50,11 +50,15 @@
                                             @can('update-groups')
                                                 <x-buttons.toggle-active :model="$group" action="groups.toggleActive" />
                                             @else
-                                                <span class="badge bg-{{ $group->is_active ? 'success' : 'danger' }}">{{ $group->is_active ? __('active') : __('inactive') }}</span>
+                                                <span
+                                                    class="badge bg-{{ $group->is_active ? 'success' : 'danger' }}">{{ $group->is_active ? __('active') : __('inactive') }}</span>
                                             @endcan
                                         </td>
                                         @canany(['update-groups', 'delete-groups'])
                                             <td>
+                                                @can('show-groups')
+                                                    <x-buttons.show :action="route('groups.show', $group)" />
+                                                @endcan
                                                 @can('update-groups')
                                                     <x-buttons.edit :action="route('groups.edit', $group)" />
                                                 @endcan
@@ -70,7 +74,7 @@
                                     </tr>
                                 @endforelse
                             </tbody>
-                            @if(isset($groups) && $groups->count())
+                            @if (isset($groups) && $groups->count())
                                 <x-table.tfoot :page="$groups" />
                             @endif
                         </table>

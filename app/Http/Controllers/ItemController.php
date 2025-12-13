@@ -37,7 +37,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        return view('pages.items.partials.show', compact('item'));
+        return view('pages.dashboard.items.partials.show', compact('item'));
     }
 
     /**
@@ -66,7 +66,7 @@ class ItemController extends Controller
     public function deleted()
     {
         $items = Item::onlyTrashed()->get();
-        return view('pages.items.partials.deleted', compact('items'));
+        return view('pages.dashboard.items.partials.deleted', compact('items'));
     }
     
 }

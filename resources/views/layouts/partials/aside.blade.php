@@ -31,6 +31,7 @@
               }
             }
           @endphp
+          @if(!empty($item['permissions']) && auth()->user()->canAny($item['permissions'])||!isset($item['permissions']))
           <li class="sidebar-list {{ $open ? 'active' : '' }}">
             <i class="fa-solid fa-thumbtack"></i>
             <a class="sidebar-link" href="{{ $href }}" @if($hasChildren) aria-expanded="{{ $open ? 'true' : 'false' }}" @endif>
@@ -51,13 +52,16 @@
                     $childHref = isset($child['route']) ? route($child['route']) : ($child['url'] ?? '#');
                     $childActive = isset($child['route']) ? request()->routeIs($child['route']) : (isset($child['url']) ? request()->is(ltrim(parse_url($child['url'], PHP_URL_PATH) ?? '', '/')) : false);
                   @endphp
+                  @if(!empty($child['permission']) && auth()->user()->can($child['permission']))
                   <li class="{{ $childActive ? 'active' : '' }}"> 
                     <a href="{{ $childHref }}" @if(!empty($child['color'])) style="color: {{ $child['color'] }}" @endif>{{ __($child['label'] ?? '') }}</a>
                   </li>
+                  @endif
                 @endforeach
               </ul>
             @endif
           </li>
+          @endif
         @endforeach
       @endforeach
     </ul>

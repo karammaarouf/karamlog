@@ -6,27 +6,27 @@ use App\Models\Group;
 use App\Http\Requests\GroupStoreRequest;
 use App\Http\Requests\GroupUpdateRequest;
 use Illuminate\Http\Request;
+use App\Services\GroupService;
 
 class GroupController extends Controller
 {
+    protected $groupService;
+
+    public function __construct(GroupService $groupService)
+    {
+        $this->groupService = $groupService;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
+        $this->authorize('viewAny', Group::class);
         $search = $request->input('search');
-        $groups = ($search)
-            ? Group::query()
-                ->where('name', 'like', "%{$search}%")
-                ->orWhere('description', 'like', "%{$search}%")
-                ->paginate()
-            : Group::query()->paginate();
+        $groups = ($search) ? $this->groupService->getSearch($search) : $this->groupService->getAll();
 
-        $counts = Group::selectRaw("
-                    COUNT(*) as total,
-                    SUM(is_active = 1) as active,
-                    SUM(is_active = 0) as inactive
-                ")->first();
+        $counts = $this->groupService->getCounts();
 
         $groupsCount = $counts->total ?? 0;
         $activeGroups = $counts->active ?? 0;
@@ -40,7 +40,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        abort_unless(auth()->user()->can('create-groups'), 403);
+        $this->authorize('create', Group::class);
         $group = new Group();
         return view('pages.dashboard.groups.partials.form', compact('group'));
     }
@@ -50,8 +50,7 @@ class GroupController extends Controller
      */
     public function store(GroupStoreRequest $request)
     {
-        abort_unless(auth()->user()->can('create-groups'), 403);
-        Group::query()->create($request->validated());
+        $this->groupService->create($request->validated());
         return redirect()->route('groups.index')->with('success', __('Group created successfully'));
     }
 
@@ -60,8 +59,8 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        // يمكن إضافة صفحة عرض التفاصيل لاحقاً عند الحاجة
-        return redirect()->route('groups.index');
+        $this->authorize('view', $group);
+        return view('pages.dashboard.groups.partials.show', compact('group'));
     }
 
     /**
@@ -69,7 +68,7 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        abort_unless(auth()->user()->can('update-groups'), 403);
+        $this->authorize('update', $group);
         return view('pages.dashboard.groups.partials.form', compact('group'));
     }
 
@@ -78,8 +77,7 @@ class GroupController extends Controller
      */
     public function update(GroupUpdateRequest $request, Group $group)
     {
-        abort_unless(auth()->user()->can('update-groups'), 403);
-        $group->update($request->validated());
+        $this->groupService->update( $request->all(), $group);
         return redirect()->route('groups.index')->with('success', __('Group updated successfully'));
     }
 
@@ -88,8 +86,8 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        abort_unless(auth()->user()->can('delete-groups'), 403);
-        $group->delete();
+        $this->authorize('delete', $group);
+        $this->groupService->delete($group);
         return redirect()->route('groups.index')->with('success', __('Group deleted successfully'));
     }
 
@@ -98,8 +96,8 @@ class GroupController extends Controller
      */
     public function deleted()
     {
-        abort_unless(auth()->user()->can('view-groups', Group::class), 403);
-        $groups = Group::onlyTrashed()->paginate();
+        $this->authorize('viewAny', Group::class);
+        $groups = $this->groupService->getDeleted();
         return view('pages.dashboard.groups.partials.deleted', compact('groups'));
     }
 
@@ -108,8 +106,8 @@ class GroupController extends Controller
      */
     public function restore(Group $group)
     {
-        abort_unless(auth()->user()->can('restore-groups'), 403);
-        $group->restore();
+        $this->authorize('restore', $group);
+        $this->groupService->restore($group);
         return redirect()->route('groups.deleted')->with('success', __('Group restored successfully'));
     }
 
@@ -118,8 +116,8 @@ class GroupController extends Controller
      */
     public function forceDelete(Group $group)
     {
-        abort_unless(auth()->user()->can('force-delete-groups'), 403);
-        $group->forceDelete();
+        $this->authorize('forceDelete', $group);
+        $this->groupService->forceDelete($group);
         return redirect()->route('groups.deleted')->with('success', __('Group permanently deleted'));
     }
 
@@ -128,9 +126,8 @@ class GroupController extends Controller
      */
     public function toggleActive(Group $group)
     {
-        abort_unless(auth()->user()->can('update-groups'), 403);
-        $group->is_active = !$group->is_active;
-        $group->save();
+        $this->authorize('update', $group);
+        $this->groupService->toggleActive($group);
         return back()->with('success', __('Group status updated'));
     }
 }

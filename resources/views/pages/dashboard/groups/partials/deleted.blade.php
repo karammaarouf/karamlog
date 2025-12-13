@@ -24,6 +24,7 @@
               <tr>
                 <th>#</th>
                 <th>{{ __('name') }}</th>
+                <th>{{ __('description') }}</th>
                 <th>{{ __('deleted_at') }}</th>
                 @canany(['restore-groups', 'force-delete-groups'])
                 <th>{{ __('actions') }}</th>
@@ -35,6 +36,7 @@
                 <tr>
                   <td>{{ $group->id }}</td>
                   <td>{{ $group->name }}</td>
+                  <td>{{ $group->description }}</td>
                   <td>{{ optional($group->deleted_at)->format('Y-m-d H:i') }}</td>
                   @canany(['restore-groups', 'force-delete-groups'])
                   <td>

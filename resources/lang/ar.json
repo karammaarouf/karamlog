@@ -281,6 +281,15 @@
     "Add New Group":"إضافة مجموعة جديدة",
     "Edit Group":"تعديل المجموعة",
     "Group restored successfully":"تم استعادة المجموعة بنجاح",
-    "Group permanently deleted":"تم حذف المجموعة بشكل نهائي."
-    
+    "Group permanently deleted":"تم حذف المجموعة بشكل نهائي.",
+    "validation.integer":"يجب أن يكون الرقم صحيحًا.",
+    "group details":"تفاصيل المجموعة",
+    "groups":"المجموعات",
+    "view-groups":"عرض المجموعات",
+    "show-groups":"عرض تفاصيل المجموعات",
+    "create-groups":"إنشاء مجموعات جديدة",
+    "update-groups":"تحديث المجموعات",
+    "delete-groups":"حذف المجموعات",
+    "restore-groups":"استعادة المجموعات",
+    "force-delete-groups":"حذف نهائي للمجموعات"
 }

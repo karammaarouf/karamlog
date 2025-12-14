@@ -28,7 +28,7 @@
                         <div class="col-md-12">
                             <div class="row">
                                 @foreach(($permissionGroups ?? collect()) as $group => $perms)
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mb-4">
                                         @php $groupKey = \Illuminate\Support\Str::slug($group); @endphp
                                         <div class="card h-100 border border-1">
                                             <div class="card-header d-flex justify-content-between align-items-center">

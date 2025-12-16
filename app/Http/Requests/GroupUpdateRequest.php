@@ -27,4 +27,18 @@ class GroupUpdateRequest extends FormRequest
             'is_active' => 'boolean',
         ];
     }
+
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => __('The group name is required.'),
+            'description.max' => __('The group description may not be greater than 255 characters.'),
+            'is_active.boolean' => __('The group active status must be a boolean value.'),
+        ];
+    }
 }

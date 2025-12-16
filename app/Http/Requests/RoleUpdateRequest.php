@@ -36,8 +36,8 @@ class RoleUpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'The role name is required.',
-            'description.max' => 'The role description may not be greater than 255 characters.',
+            'name.required' => __('The role name is required.'),
+            'description.max' => __('The role description may not be greater than 255 characters.'),
         ];
     }
 }

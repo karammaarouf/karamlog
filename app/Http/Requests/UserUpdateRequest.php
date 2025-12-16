@@ -38,11 +38,11 @@ class UserUpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'The user name is required.',
-            'email.required' => 'The user email is required.',
-            'password.required' => 'The user password is required.',
-            'is_active.required' => 'The user active status is required.',
-            'roles.required' => 'The user roles are required.',
+            'name.required' => __('The user name is required.'),
+            'email.required' => __('The user email is required.'),
+            'password.required' => __('The user password is required.'),
+            'is_active.required' => __('The user active status is required.'),
+            'roles.required' => __('The user roles are required.'),
         ];
     }
 }

@@ -31,4 +31,18 @@ class ProfilePasswordUpdateRequest extends FormRequest
             'new_password' => ['required','string','min:8','confirmed'],
         ];
     }
+    
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'current_password.required' => __('The current password is required.'),
+            'new_password.required' => __('The new password is required.'),
+            'new_password.confirmed' => __('The new password confirmation does not match.'),
+        ];
+    }
 }

@@ -36,8 +36,9 @@ class CategoryStoreRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'The category name is required.',
-            'description.max' => 'The category description may not be greater than 255 characters.',
+            'name.required' => __('The category name is required.'),
+            'description.max' => __('The category description may not be greater than 255 characters.'),
+            'is_active.boolean' => __('The category active status must be a boolean value.'),
         ];
     }
 

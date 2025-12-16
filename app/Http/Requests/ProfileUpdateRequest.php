@@ -32,4 +32,23 @@ class ProfileUpdateRequest extends FormRequest
             'birth_date' => ['nullable','date'],
         ];
     }
+
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => __('The name is required.'),
+            'email.required' => __('The email is required.'),
+            'email.email' => __('The email must be a valid email address.'),
+            'email.unique' => __('The email has already been taken.'),
+            'phone.integer' => __('The phone must be an integer.'),
+            'phone.max' => __('The phone may not be greater than 20 digits.'),
+            'address.max' => __('The address may not be greater than 255 characters.'),
+            'city.max' => __('The city may not be greater than 255 characters.'),
+            'state.max' => __('The state may not be greater than 255 characters.'),
+            'country.max' => __('The country may not be greater than 255 characters.'),
 }

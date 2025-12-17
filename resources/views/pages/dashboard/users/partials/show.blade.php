@@ -44,7 +44,7 @@
                 <td>
                   @if($user->roles->count() > 0)
                     @foreach($user->roles as $role)
-                      <span class="badge bg-primary">{{ $role->name }}</span>
+                      <span class="badge badge-light-primary">{{ $role->name }}</span>
                     @endforeach
                   @else
                     {{ __('No roles assigned') }}
@@ -53,11 +53,11 @@
               </tr>
               <tr>
                 <th>{{__('email verified')}}</th>
-                <td>{{ $user->email_verified_at ? __('yes') : __('no') }}</td>
+                <td class="text-{{ $user->email_verified_at ? 'success' : 'danger' }}">{{ $user->email_verified_at ? __('yes') : __('no') }}</td>
               </tr>
               <tr>
                 <th>{{__('status')}}</th>
-                <td>{{ $user->is_active ? __('active') : __('inactive') }}</td>
+                <td class="text-{{ $user->is_active ? 'success' : 'danger' }}">{{ $user->is_active ? __('active') : __('inactive') }}</td>
               </tr>
               <tr>
                 <th>{{__('created at')}}</th>

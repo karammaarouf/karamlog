@@ -41,7 +41,7 @@
               </tr>
               <tr>
                 <th>{{ __('status') }}</th>
-                <td>{{ $group->is_active ? __('active') : __('inactive') }}</td>
+                <td class="text-{{ $group->is_active ? 'success' : 'danger' }}">{{ $group->is_active ? __('active') : __('inactive') }}</td>
               </tr>
               <tr>
                 <th>{{ __('created at') }}</th>

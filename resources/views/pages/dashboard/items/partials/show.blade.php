@@ -49,7 +49,7 @@
               </tr>
               <tr>
                 <th>{{__('discount')}}</th>
-                <td>{{ $item->discount }}</td>
+                <td>{{ $item->discount }} %</td>
               </tr>
               <tr>
                 <th>{{__('description')}}</th>
@@ -57,7 +57,7 @@
               </tr>
               <tr>
                 <th>{{__('status')}}</th>
-                <td>{{ $item->is_active ? __('active') : __('inactive') }}</td>
+                <td class="text-{{ $item->is_active ? 'success' : 'danger' }}">{{ $item->is_active ? __('active') : __('inactive') }}</td>
               </tr>
               <tr>
                 <th>{{__('created at')}}</th>

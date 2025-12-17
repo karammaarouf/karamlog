@@ -40,7 +40,7 @@
                                         <td>{{ $role->id }}</td>
                                         <td>{{ $role->name }}</td>
                                         <td>{{ $role->description }}</td>
-                                        <td>{{ $role->permissions->count() }}</td>
+                                        <td><span class="badge badge-light-primary">{{ $role->permissions->count() }}</span></td>
                                         @canany(['show-roles', 'update-roles', 'delete-roles'])
                                             <td>
                                                 @can('show-roles')

@@ -51,7 +51,7 @@
                                                 <x-buttons.toggle-active :model="$group" action="groups.toggleActive" />
                                             @else
                                                 <span
-                                                    class="badge bg-{{ $group->is_active ? 'success' : 'danger' }}">{{ $group->is_active ? __('active') : __('inactive') }}</span>
+                                                    class="badge badge-light-{{ $group->is_active ? 'success' : 'danger' }}">{{ $group->is_active ? __('active') : __('inactive') }}</span>
                                             @endcan
                                         </td>
                                         @canany(['update-groups', 'delete-groups'])

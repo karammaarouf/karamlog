@@ -25,6 +25,7 @@
                 <th>#</th>
                 <th>{{ __('name') }}</th>
                 <th>{{ __('email') }}</th>
+                <th>{{ __('roles') }}</th>
                 <th>{{ __('deleted_at') }}</th>
                 @canany(['restore-users', 'force-delete-users'])
                 <th>{{ __('actions') }}</th>
@@ -37,6 +38,15 @@
                   <td>{{ $user->id }}</td>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
+                  <td>
+                    @if ($user->roles->count() > 0)
+                        @foreach ($user->roles as $role)
+                            <span class="badge badge-light-primary">{{ $role->name }}</span>
+                        @endforeach
+                    @else
+                        <span class="badge badge-light-secondary">{{ __('No roles assigned') }}</span>
+                    @endif
+                  </td>
                   <td>{{ optional($user->deleted_at)->format('Y-m-d H:i') }}</td>
                   @canany(['restore-users', 'force-delete-users'])
                   <td>

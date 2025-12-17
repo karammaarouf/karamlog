@@ -55,7 +55,7 @@
                                                 <x-buttons.toggle-active :model="$item" action="items.toggleActive" />
                                             @else
                                                 <span
-                                                    class="badge bg-{{ $item->is_active ? 'success' : 'danger' }}">{{ $item->is_active ? __('active') : __('inactive') }}</span>
+                                                    class="badge badge-light-{{ $item->is_active ? 'success' : 'danger' }}">{{ $item->is_active ? __('active') : __('inactive') }}</span>
                                             @endcan
                                         </td>
                                         @canany(['update-items', 'delete-items'])

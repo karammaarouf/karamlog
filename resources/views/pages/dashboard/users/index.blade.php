@@ -50,17 +50,17 @@
                                         <td>
                                             @if ($user->roles->count() > 0)
                                                 @foreach ($user->roles as $role)
-                                                    <span class="badge bg-primary">{{ $role->name }}</span>
+                                                    <span class="badge badge-light-primary">{{ $role->name }}</span>
                                                 @endforeach
                                             @else
-                                                <span class="badge bg-secondary">{{ __('No roles assigned') }}</span>
+                                                <span class="badge badge-light-secondary">{{ __('No roles assigned') }}</span>
                                             @endif
                                         </td>
                                         <td>
                                             @can('update-users')
                                             <x-buttons.toggle-active :model="$user" action="users.toggleActive" />
                                             @else
-                                            <span class="badge bg-{{ $user->is_active ? 'success' : 'danger' }}">{{ $user->is_active ? __('active') : __('inactive') }}</span>
+                                            <span class="badge badge-light-{{ $user->is_active ? 'success' : 'danger' }}">{{ $user->is_active ? __('active') : __('inactive') }}</span>
                                             @endcan
                                         </td>
                                         @canany(['show-users', 'update-users', 'delete-users'])

@@ -53,7 +53,7 @@
                                                 <x-buttons.toggle-active :model="$category" action="categories.toggleActive" />
                                             @else
                                                 <span
-                                                    class="badge bg-{{ $category->is_active ? 'success' : 'danger' }}">{{ $category->is_active ? __('active') : __('inactive') }}</span>
+                                                    class="badge badge-light-{{ $category->is_active ? 'success' : 'danger' }}">{{ $category->is_active ? __('active') : __('inactive') }}</span>
                                             @endcan
                                         </td>
                                         @canany(['update-categories', 'delete-categories'])

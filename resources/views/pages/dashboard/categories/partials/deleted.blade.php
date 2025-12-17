@@ -24,6 +24,7 @@
               <tr>
                 <th>#</th>
                 <th>{{ __('name') }}</th>
+                <th>{{ __('description') }}</th>
                 <th>{{ __('deleted_at') }}</th>
                 @canany(['restore-categories', 'force-delete-categories'])
                 <th>{{ __('actions') }}</th>
@@ -35,6 +36,7 @@
                 <tr>
                   <td>{{ $category->id }}</td>
                   <td>{{ $category->name }}</td>
+                  <td>{{ $category->description }}</td>
                   <td>{{ optional($category->deleted_at)->format('Y-m-d H:i') }}</td>
                   @canany(['restore-categories', 'force-delete-categories'])
                   <td>

@@ -27,6 +27,7 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    @if( isset($users) && $users->count() > 0)
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -42,7 +43,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($users as $user)
+                                @foreach($users as $user)
                                     <tr>
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
@@ -77,17 +78,14 @@
                                         </td>
                                         @endcanany
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="6">{{ __('No users found') }}</td>
-                                    </tr>
-                                @endforelse
+                                @endforeach
                             </tbody>
-                            @if($users->count())
-                                <x-table.tfoot :page="$users" />
-                            @endif
+                            <x-table.tfoot :page="$users" />
                         </table>
                     </div>
+                    @else
+                    <x-table.empty :message="__('There are no users to display.')" />
+                    @endif
                 </div>
                 @if ($users->count())
                     <div class="card-footer">

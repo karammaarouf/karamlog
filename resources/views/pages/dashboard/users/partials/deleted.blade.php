@@ -38,6 +38,7 @@
         </div>
       </div>
       <div class="card-body">
+        @if(isset($users) && $users->count() > 0)
         <div class="table-responsive">
           <table class="table table-striped">
             <thead>
@@ -53,7 +54,7 @@
               </tr>
             </thead>
             <tbody>
-              @forelse($users as $user)
+              @foreach($users as $user)
                 <tr>
                   <td>{{ $user->id }}</td>
                   <td>{{ $user->name }}</td>
@@ -79,14 +80,13 @@
                   </td>
                   @endcan
                 </tr>
-              @empty
-                <tr>
-                  <td colspan="6">{{ __('No deleted users found') }}</td>
-                </tr>
-              @endforelse
+              @endforeach
             </tbody>
           </table>
         </div>
+        @else
+        <x-table.empty :message="__('There are no deleted users to display.')" />
+        @endif
       </div>
       @if ($users instanceof \Illuminate\Pagination\LengthAwarePaginator && $users->count())
           <div class="card-footer">

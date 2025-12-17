@@ -29,6 +29,7 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    @if(isset($categories) && $categories->count())
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -43,7 +44,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($categories as $category)
+                                @foreach($categories as $category)
                                     <tr>
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
@@ -67,17 +68,14 @@
                                             </td>
                                         @endcanany
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="6">{{ __('No categories found') }}</td>
-                                    </tr>
-                                @endforelse
+                                @endforeach
                             </tbody>
-                            @if ($categories->count())
-                                <x-table.tfoot :page="$categories" />
-                            @endif
+                            <x-table.tfoot :page="$categories" />
                         </table>
                     </div>
+                    @else
+                    <x-table.empty :message="__('There are no categories to display.')" />
+                    @endif
                 </div>
                 @if ($categories->count())
                     <div class="card-footer">

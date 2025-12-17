@@ -27,6 +27,7 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    @if(isset($groups) && $groups->count())
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -41,7 +42,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse(($groups ?? collect()) as $group)
+                                @foreach(($groups ?? collect()) as $group)
                                     <tr>
                                         <td>{{ $group->id }}</td>
                                         <td>{{ $group->name }}</td>
@@ -68,17 +69,14 @@
                                             </td>
                                         @endcanany
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="6">{{ __('No groups found') }}</td>
-                                    </tr>
-                                @endforelse
+                                @endforeach
                             </tbody>
-                            @if (isset($groups) && $groups->count())
-                                <x-table.tfoot :page="$groups" />
-                            @endif
+                            <x-table.tfoot :page="$groups" />
                         </table>
                     </div>
+                    @else
+                    <x-table.empty :message="__('There are no groups to display.')" />
+                    @endif
                 </div>
                 @if (isset($groups) && $groups->count())
                     <div class="card-footer">

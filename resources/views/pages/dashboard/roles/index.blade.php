@@ -21,6 +21,7 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    @if(isset($roles) && $roles->count())
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -35,7 +36,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($roles as $role)
+                                @foreach($roles as $role)
                                     <tr>
                                         <td>{{ $role->id }}</td>
                                         <td>{{ $role->name }}</td>
@@ -55,17 +56,14 @@
                                             </td>
                                         @endcanany
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="6">{{ __('No roles found') }}</td>
-                                    </tr>
-                                @endforelse
+                                @endforeach
                             </tbody>
-                            @if ($roles->count())
-                                <x-table.tfoot :page="$roles" />
-                            @endif
+                            <x-table.tfoot :page="$roles" />
                         </table>
                     </div>
+                    @else
+                    <x-table.empty :message="__('There are no roles to display.')" />
+                    @endif
                 </div>
                 @if ($roles->count())
                     <div class="card-footer">

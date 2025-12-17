@@ -38,6 +38,7 @@
         </div>
       </div>
       <div class="card-body">
+        @if(isset($categories) && $categories->count() > 0)
         <div class="table-responsive">
           <table class="table table-striped">
             <thead>
@@ -52,7 +53,7 @@
               </tr>
             </thead>
             <tbody>
-              @forelse(($categories ?? collect()) as $category)
+              @foreach(($categories ?? collect()) as $category)
                 <tr>
                   <td>{{ $category->id }}</td>
                   <td>{{ $category->name }}</td>
@@ -69,14 +70,12 @@
                   </td>
                   @endcan
                 </tr>
-              @empty
-                <tr>
-                  <td colspan="6">{{ __('No deleted categories found') }}</td>
-                </tr>
-              @endforelse
+              @endforeach
             </tbody>
           </table>
         </div>
+        @else
+        <x-table.empty :message="__('There are no deleted categories to display.')" />
       </div>
       @if (isset($categories) && $categories instanceof \Illuminate\Pagination\LengthAwarePaginator && $categories->count())
           <div class="card-footer">

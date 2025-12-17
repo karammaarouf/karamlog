@@ -372,6 +372,18 @@
     "Restore All":"استعادة الكل",
     "Restore all items?":"هل أنت متأكد من استعادة جميع العناصر?",
     "This will reinstate all deleted items.":"سيتم استعادة جميع العناصر المحذوفة.",
-    "Yes, restore all!":"نعم, استعادة جميع العناصر!"
+    "Yes, restore all!":"نعم, استعادة جميع العناصر!",
+    "All users force deleted":"تم حذف جميع المستخدمين نهائياً بنجاح.",
+    "No Data Found":"لم يتم العثور على أي بيانات.",
+    "There are no deleted users to display.":"لا يوجد مستخدمين محذوفين للعرض.",
+    "There are no roles to display.":"لا يوجد أدوار للعرض.",
+    "There are no users to display.":"لا يوجد مستخدمين للعرض.",
+    "There are no data to display.":"لا يوجد بيانات للعرض.",
+    "There are no items to display.":"لا يوجد عناصر للعرض.",
+    "There are no deleted items to display.":"لا يوجد عناصر محذوفة للعرض.",
+    "There are no groups to display.":"لا يوجد مجموعات للعرض.",
+    "There are no deleted groups to display.":"لا يوجد مجموعات محذوفة للعرض.",
+    "There are no categories to display.":"لا يوجد فئات للعرض.",
+    "There are no deleted categories to display.":"لا يوجد فئات محذوفة للعرض."
     
 }

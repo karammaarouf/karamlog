@@ -27,6 +27,7 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    @if(isset($items) && $items->count())
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -43,7 +44,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse(($items ?? collect()) as $item)
+                                @foreach(($items ?? collect()) as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
@@ -72,17 +73,14 @@
                                             </td>
                                         @endcanany
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="7">{{ __('No items found') }}</td>
-                                    </tr>
-                                @endforelse
+                                @endforeach
                             </tbody>
-                            @if (isset($items) && $items->count())
-                                <x-table.tfoot :page="$items" />
-                            @endif
+                            <x-table.tfoot :page="$items" />
                         </table>
                     </div>
+                    @else
+                    <x-table.empty :message="__('There are no items to display.')" />
+                    @endif
                 </div>
                 @if (isset($items) && $items->count())
                     <div class="card-footer">

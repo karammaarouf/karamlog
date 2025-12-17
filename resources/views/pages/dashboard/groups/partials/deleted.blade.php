@@ -38,6 +38,7 @@
         </div>
       </div>
       <div class="card-body">
+        @if(isset($groups) && $groups->count())
         <div class="table-responsive">
           <table class="table table-striped">
             <thead>
@@ -52,7 +53,7 @@
               </tr>
             </thead>
             <tbody>
-              @forelse(($groups ?? collect()) as $group)
+              @foreach(($groups ?? collect()) as $group)
                 <tr>
                   <td>{{ $group->id }}</td>
                   <td>{{ $group->name }}</td>
@@ -69,14 +70,13 @@
                   </td>
                   @endcan
                 </tr>
-              @empty
-                <tr>
-                  <td colspan="6">{{ __('No deleted groups found') }}</td>
-                </tr>
-              @endforelse
+              @endforeach
             </tbody>
           </table>
         </div>
+        @else
+        <x-table.empty :message="__('There are no deleted groups to display.')" />
+        @endif
       </div>
       @if (isset($groups) && $groups instanceof \Illuminate\Pagination\LengthAwarePaginator && $groups->count())
           <div class="card-footer">

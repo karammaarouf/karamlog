@@ -23,6 +23,9 @@ Route::resource('/roles', RoleController::class);
 
 Route::resource('/items', ItemController::class);
 Route::get('/itemsdeleted', [ItemController::class, 'deleted'])->name('items.deleted');
+Route::put('/items/{item}/restore', [ItemController::class, 'restore'])->withTrashed()->name('items.restore');
+Route::delete('/items/{item}/force-delete', [ItemController::class, 'forceDelete'])->withTrashed()->name('items.forceDelete');
+Route::put('/items/{item}/toggle-active', [ItemController::class, 'toggleActive'])->name('items.toggleActive');
 
 Route::resource('/categories', CategoryController::class);
 Route::get('/categoriesdeleted', [CategoryController::class, 'deleted'])->name('categories.deleted');

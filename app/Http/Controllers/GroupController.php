@@ -130,4 +130,18 @@ class GroupController extends Controller
         $this->groupService->toggleActive($group);
         return back()->with('success', __('Group status updated'));
     }
+
+    public function restoreAll()
+    {
+        $this->authorize('restoreAll', Group::class);
+        $this->groupService->restoreAll();
+        return redirect()->route('groups.deleted')->with('success', __('All groups restored successfully'));
+    }
+
+    public function forceDeleteAll()
+    {
+        $this->authorize('forceDeleteAll', Group::class);
+        $this->groupService->forceDeleteAll();
+        return redirect()->route('groups.deleted')->with('success', __('All groups force deleted successfully'));
+    }
 }

@@ -14,6 +14,26 @@
     <div class="card">
       <div class="card-header">
         <div class="d-flex justify-content-end align-items-center">
+          @if(isset($users) && $users->count() > 0)
+              @can('restore-users')
+                  <x-buttons.restore-form :action="route('users.restoreAll')" 
+                      text="Restore All"
+                      confirmTitle="Restore all items?"
+                      confirmText="This will reinstate all deleted items."
+                      confirmButtonText="Yes, restore all!"
+                      class="btn btn-outline-success btn-sm me-2"
+                  />
+              @endcan
+              @can('force-delete-users')
+                  <x-buttons.delete-form :action="route('users.forceDeleteAll')" 
+                      text="Delete All"
+                      confirmTitle="Are you sure?"
+                      confirmText="You won't be able to revert this! All items will be permanently deleted."
+                      confirmButtonText="Yes, delete all!"
+                      class="btn btn-outline-danger btn-sm me-2"
+                  />
+              @endcan
+          @endif
           <x-buttons.back :action="route('users.index')" />
         </div>
       </div>

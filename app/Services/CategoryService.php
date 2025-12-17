@@ -72,4 +72,14 @@ class CategoryService implements CategoryServiceInterface
         $category->forceDelete();
         return $category;
     }
+
+    public function restoreAll()
+    {
+        Category::onlyTrashed()->restore();
+    }
+
+    public function forceDeleteAll()
+    {
+        Category::onlyTrashed()->forceDelete();
+    }
 }

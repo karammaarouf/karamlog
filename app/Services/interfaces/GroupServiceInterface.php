@@ -16,4 +16,6 @@ interface GroupServiceInterface
     public function getDeleted();
     public function restore(Group $group);
     public function forceDelete(Group $group);
+    public function restoreAll();
+    public function forceDeleteAll();
 }

@@ -115,6 +115,20 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')->with('success', __('Category force deleted successfully'));
     }
 
+    public function restoreAll()
+    {
+        $this->authorize('restoreAll', Category::class);
+        $this->categoryService->restoreAll();
+        return redirect()->route('categories.deleted')->with('success', __('All categories restored successfully'));
+    }
+
+    public function forceDeleteAll()
+    {
+        $this->authorize('forceDeleteAll', Category::class);
+        $this->categoryService->forceDeleteAll();
+        return redirect()->route('categories.deleted')->with('success', __('All categories force deleted successfully'));
+    }
+
     /**
      * Toggle the active status of the specified resource.
      */

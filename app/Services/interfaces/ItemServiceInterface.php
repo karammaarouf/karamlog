@@ -16,4 +16,6 @@ interface ItemServiceInterface
     public function getDeleted();
     public function restore(Item $item);
     public function forceDelete(Item $item);
+    public function restoreAll();
+    public function forceDeleteAll();
 }

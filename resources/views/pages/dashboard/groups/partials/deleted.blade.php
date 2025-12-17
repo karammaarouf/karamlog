@@ -14,6 +14,26 @@
     <div class="card">
       <div class="card-header">
         <div class="d-flex justify-content-end align-items-center">
+          @if(isset($groups) && $groups->count() > 0)
+              @can('restore-groups')
+                  <x-buttons.restore-form :action="route('groups.restoreAll')" 
+                      text="{{ __('Restore All') }}"
+                      confirmTitle="{{ __('Restore all groups?') }}"
+                      confirmText="{{ __('This will reinstate all deleted groups.') }}"
+                      confirmButtonText="{{ __('Yes, restore all!') }}"
+                      class="btn btn-outline-success btn-sm me-2"
+                  />
+              @endcan
+              @can('force-delete-groups')
+                  <x-buttons.delete-form :action="route('groups.forceDeleteAll')" 
+                      text="{{ __('Delete All') }}"
+                      confirmTitle="{{ __('Are you sure?') }}"
+                      confirmText="{{ __('You won\'t be able to revert this! All groups will be permanently deleted.') }}"
+                      confirmButtonText="{{ __('Yes, delete all!') }}"
+                      class="btn btn-outline-danger btn-sm me-2"
+                  />
+              @endcan
+          @endif
           <x-buttons.back :action="route('groups.index')" />
         </div>
       </div>

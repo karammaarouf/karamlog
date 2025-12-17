@@ -62,4 +62,14 @@ class ItemPolicy
     {
         return $user->can('force-delete-items');
     }
+
+    public function restoreAll(User $user): bool
+    {
+        return $user->can('restore-items');
+    }
+
+    public function forceDeleteAll(User $user): bool
+    {
+        return $user->can('force-delete-items');
+    }
 }

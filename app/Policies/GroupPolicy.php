@@ -63,4 +63,14 @@ class GroupPolicy
     {
         return $user->can('force-delete-groups');
     }
+
+    public function restoreAll(User $user): bool
+    {
+        return $user->can('restore-groups');
+    }
+
+    public function forceDeleteAll(User $user): bool
+    {
+        return $user->can('force-delete-groups');
+    }
 }

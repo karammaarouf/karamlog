@@ -120,4 +120,18 @@ class ItemController extends Controller
         $this->itemService->forceDelete($item);
         return back()->with('success', __('Item deleted permanently'));
     }
+
+    public function restoreAll()
+    {
+        $this->authorize('restoreAll', Item::class);
+        $this->itemService->restoreAll();
+        return redirect()->route('items.deleted')->with('success', __('All items restored successfully'));
+    }
+
+    public function forceDeleteAll()
+    {
+        $this->authorize('forceDeleteAll', Item::class);
+        $this->itemService->forceDeleteAll();
+        return redirect()->route('items.deleted')->with('success', __('All items force deleted successfully'));
+    }
 }

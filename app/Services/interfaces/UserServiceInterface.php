@@ -26,4 +26,8 @@ interface UserServiceInterface
     public function getDeleted();
     // toggel active
     public function toggelActive(User $user);
+    // restore all data
+    public function restoreAll();
+    // force delete all data
+    public function forceDeleteAll();
 }

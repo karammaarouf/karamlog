@@ -14,6 +14,26 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-end align-items-center">
+                        @if(isset($items) && $items->count() > 0)
+                            @can('restore-items')
+                                <x-buttons.restore-form :action="route('items.restoreAll')" 
+                                    text="{{ __('Restore All') }}"
+                                    confirmTitle="{{ __('Restore all items?') }}"
+                                    confirmText="{{ __('This will reinstate all deleted items.') }}"
+                                    confirmButtonText="{{ __('Yes, restore all!') }}"
+                                    class="btn btn-outline-success btn-sm me-2"
+                                />
+                            @endcan
+                            @can('force-delete-items')
+                                <x-buttons.delete-form :action="route('items.forceDeleteAll')" 
+                                    text="{{ __('Delete All') }}"
+                                    confirmTitle="{{ __('Are you sure?') }}"
+                                    confirmText="{{ __('You won\'t be able to revert this! All items will be permanently deleted.') }}"
+                                    confirmButtonText="{{ __('Yes, delete all!') }}"
+                                    class="btn btn-outline-danger btn-sm me-2"
+                                />
+                            @endcan
+                        @endif
                         <x-buttons.back :action="route('items.index')" />
                     </div>
                 </div>

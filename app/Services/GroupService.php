@@ -69,4 +69,13 @@ class GroupService implements GroupServiceInterface
         return $group;
     }
 
+    public function restoreAll()
+    {
+        Group::onlyTrashed()->restore();
+    }
+
+    public function forceDeleteAll()
+    {
+        Group::onlyTrashed()->forceDelete();
+    }
 }

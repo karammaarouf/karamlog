@@ -26,5 +26,8 @@ interface CategoryServiceInterface
     public function restore(Category $category);
     // force delete data
     public function forceDelete(Category $category);
-
+    // restore all data
+    public function restoreAll();
+    // force delete all data
+    public function forceDeleteAll();
 }

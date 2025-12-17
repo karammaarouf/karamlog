@@ -83,4 +83,14 @@ class UserService implements UserServiceInterface
         $user->save();
         return $user;
     }
+    // restore all data
+    public function restoreAll()
+    {
+        User::onlyTrashed()->restore();
+    }
+    // force delete all data
+    public function forceDeleteAll()
+    {
+        User::onlyTrashed()->forceDelete();
+    }
 }

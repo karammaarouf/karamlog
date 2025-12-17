@@ -69,4 +69,14 @@ class ItemService implements ItemServiceInterface
         $item->forceDelete();
         return $item;
     }
+
+    public function restoreAll()
+    {
+        Item::onlyTrashed()->restore();
+    }
+
+    public function forceDeleteAll()
+    {
+        Item::onlyTrashed()->forceDelete();
+    }
 }

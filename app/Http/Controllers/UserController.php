@@ -146,4 +146,18 @@ class UserController extends Controller
         $this->userService->toggelActive($user);
         return redirect()->route('users.index')->with('success', __('User active status updated'));
     }
+
+    public function restoreAll()
+    {
+        $this->authorize('restoreAll', User::class);
+        $this->userService->restoreAll();
+        return redirect()->route('users.deleted')->with('success', __('All users restored'));
+    }
+
+    public function forceDeleteAll()
+    {
+        $this->authorize('forceDeleteAll', User::class);
+        $this->userService->forceDeleteAll();
+        return redirect()->route('users.deleted')->with('success', __('All users force deleted'));
+    }
 }

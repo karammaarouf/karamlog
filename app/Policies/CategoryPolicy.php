@@ -57,4 +57,14 @@ class CategoryPolicy
     {
         return $user->can('force-delete-categories');
     }
+
+    public function restoreAll(User $user): bool
+    {
+        return $user->can('restore-categories');
+    }
+
+    public function forceDeleteAll(User $user): bool
+    {
+        return $user->can('force-delete-categories');
+    }
 }

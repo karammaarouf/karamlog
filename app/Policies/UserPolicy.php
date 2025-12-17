@@ -62,4 +62,20 @@ class UserPolicy
     {
         return $user->can('force-delete-users');
     }
+
+    /**
+     * Determine whether the user can restore any models.
+     */
+    public function restoreAll(User $user): bool
+    {
+        return $user->can('restore-users');
+    }
+
+    /**
+     * Determine whether the user can permanently delete any models.
+     */
+    public function forceDeleteAll(User $user): bool
+    {
+        return $user->can('force-delete-users');
+    }
 }

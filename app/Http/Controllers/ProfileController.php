@@ -26,7 +26,7 @@ class ProfileController extends Controller
 
     public function update(ProfileUpdateRequest $request)
     {
-        $this->profileService->update( $request->all());
+        $this->profileService->update($request->validated());
 
         return redirect()->route('profile.index')->with('success', __('Profile updated successfully'));
     }
@@ -34,7 +34,7 @@ class ProfileController extends Controller
     public function updatePassword(ProfilePasswordUpdateRequest $request)
     {
         $user = auth()->user();
-        $this->profileService->updatePassword($user, $request->all());
+        $this->profileService->updatePassword($user, $request->validated());
 
         return redirect()->route('profile.index')->with('success', __('Password updated successfully'));
     }

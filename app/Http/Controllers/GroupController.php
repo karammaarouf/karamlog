@@ -77,7 +77,7 @@ class GroupController extends Controller
      */
     public function update(GroupUpdateRequest $request, Group $group)
     {
-        $this->groupService->update( $request->all(), $group);
+        $this->groupService->update($request->validated(), $group);
         return redirect()->route('groups.index')->with('success', __('Group updated successfully'));
     }
 

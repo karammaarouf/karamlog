@@ -46,6 +46,7 @@ class UserService implements UserServiceInterface
     public function update(User $user, array $data)
     {
         $user->update($data);
+        $user->roles()->detach();
         if (isset($data['roles'])) {
             $roles=Role::whereIn('id', $data['roles'])->pluck('name')->toArray();
             $user->syncRoles($roles);

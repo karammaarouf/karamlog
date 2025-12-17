@@ -318,5 +318,10 @@
     "The password must contain at least one number.":"يجب أن تحتوي كلمة المرور على على الأقل رقمًا.",
     "The password must contain at least one special character.":"يجب أن تحتوي كلمة المرور على على الأقل حرفًا خاصًا.",
     "The layout must be rtl, ltr, or Box.":"يجب أن يكون التخطيط rtl, ltr, أو Box.",
-    "The sidebar type must be Vertical or Horizontal.":"يجب أن يكون نوع الجانب الجانبي Vertical أو Horizontal."
+    "The sidebar type must be Vertical or Horizontal.":"يجب أن يكون نوع الجانب افقي أو عمودي.",
+    "The icon must be Stroke or Colorful.":"يجب أن يكون الرمز خطي أو مُلون.",
+    "The mode must be Dark, Light, or Mix.":"يجب أن يكون الوضع داكنًا, نهارياً, أو مزيجًا.",
+    "The color must be #308e87, #57375D, #0766AD, #025464, #884A39, or #0C356A.":"يجب أن يكون اللون من ضمن قائمة الألوان المسموح بها.",
+    "validation.string":"يجب أن يكون الحقل نصًا.",
+    "validation.email":"يجب أن يكون الحقل بريدًا إلكترونيًا صالحًا."
 }

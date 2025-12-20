@@ -8,10 +8,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserSettingController;
+use App\Http\Controllers\DashboardController;
 
 Route::middleware(['auth'])->group(function () {
 
-Route::get('/', function () {return view('layouts.app');})->name('home');
+Route::get('/', [DashboardController::class, 'index'])->name('home');
 
 Route::resource('/users', UserController::class);
 Route::get('/usersDeleted', [UserController::class, 'deleted'])->name('users.deleted');

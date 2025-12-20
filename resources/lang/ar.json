@@ -384,6 +384,9 @@
     "There are no groups to display.":"لا يوجد مجموعات للعرض.",
     "There are no deleted groups to display.":"لا يوجد مجموعات محذوفة للعرض.",
     "There are no categories to display.":"لا يوجد فئات للعرض.",
-    "There are no deleted categories to display.":"لا يوجد فئات محذوفة للعرض."
+    "There are no deleted categories to display.":"لا يوجد فئات محذوفة للعرض.",
+    "Compare to last month":"مقارنة مع الشهر الماضي",
+    "Total Inventory Value":"إجمالي قيمة العناصر",
+    "Dashboard":"لوحة التحكم"
     
 }

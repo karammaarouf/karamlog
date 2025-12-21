@@ -1,4 +1,4 @@
-@props(['title', 'value', 'percentage', 'text' => 'Compare to last month', 'id', 'data', 'categories', 'color' => null])
+@props(['title', 'value', 'percentage', 'text' => __('Compare to last month'), 'id', 'data', 'categories', 'color' => null])
 
 <div class="col-xl-4 col-md-12 box-col-12">
     <div class="card overflow-hidden">

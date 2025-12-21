@@ -34,10 +34,10 @@ function initDashboardChart(selector, chartData, categories, color) {
         grid: {
             show: false,
             padding: {
-                left: -10,
-                top: -25,
-                right: -60,
-                bottom: -40,
+                left: 0,
+                top: 0,
+                right: 0,
+                bottom: 0,
             },
         },
         fill: {

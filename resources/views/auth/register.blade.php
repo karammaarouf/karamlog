@@ -49,7 +49,7 @@
                   <div class="form-group mb-0 checkbox-checked">
                     <div class="form-check checkbox-solid-info">
                       <input name="terms" class="form-check-input" id="solid6" type="checkbox">
-                      <label class="form-check-label" for="solid6">{{__('Agree with')}}<a class="ms-3 link" href="forget-password.html">{{__('Privacy Policy')}}</a></label>
+                      <label class="form-check-label" for="solid6">{{__('Agree with')}}<a class="ms-3 link" href="#">{{__('Privacy Policy')}}</a></label>
                     </div>
                     <button class="btn btn-primary btn-block w-100 mt-3" type="submit">{{__('Create Account')}}</button>
                   </div>

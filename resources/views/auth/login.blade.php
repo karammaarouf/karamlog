@@ -35,7 +35,7 @@
                     <div class="form-check checkbox-solid-info">
                       <input name="remember" class="form-check-input" id="solid6" type="checkbox">
                       <label class="form-check-label" for="solid6">{{__('Remember password')}}</label>
-                    </div><a class="link" href="forget-password.html">{{__('Forgot password?')}}</a>
+                    </div><a class="link" href="#">{{__('Forgot password?')}}</a>
                     <div class="text-end mt-3">
                       <button class="btn btn-primary btn-block w-100" type="submit">{{__('Sign in')}}</button>
                     </div>

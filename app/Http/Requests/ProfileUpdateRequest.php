@@ -51,4 +51,7 @@ class ProfileUpdateRequest extends FormRequest
             'city.max' => __('The city may not be greater than 255 characters.'),
             'state.max' => __('The state may not be greater than 255 characters.'),
             'country.max' => __('The country may not be greater than 255 characters.'),
+            'birth_date.date' => __('The birth date must be a valid date.'),
+        ];
+    }
 }

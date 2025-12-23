@@ -44,6 +44,6 @@ class AuthenticatedSessionController extends Controller
 
         session()->flush();
 
-        return redirect()->route('login');
+        return redirect()->route('customer.index');
     }
 }

@@ -41,7 +41,7 @@ return [
                     ['label' => 'Deleted Groups', 'color' => 'red', 'route' => 'groups.deleted', 'permission' => 'view-groups'],
                 ]
             ],
-            ['label' => 'items', 'icon' => 'Bag', 'permission' => 'view-items', 'children' => [
+            ['label' => 'items', 'icon' => 'Bag', 'permissions' => ['view-items'], 'children' => [
                 ['label' => 'Items List', 'route' => 'items.index', 'permission' => 'view-items'],
                 ['label' => 'Deleted Items', 'color' => 'red', 'route' => 'items.deleted', 'permission' => 'view-items'],
             ]],

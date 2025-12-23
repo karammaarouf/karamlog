@@ -37,6 +37,7 @@
                                 <h6 class="lang-txt f-w-700">{{ session('locale') === 'ar' ? __('AR') : __('EN') }}
                                 </h6>
                             </a></div>
+                            @auth
                         <ul class="custom-menu profile-menu language-menu py-0 more_lang">
                             <li class="d-block">
                                 <form action="{{ route('settings.setLocale') }}" method="POST">
@@ -61,6 +62,7 @@
                                 </form>
                             </li>
                         </ul>
+                        @endauth
                     </div>
                 </li>
                 <li class="search d-lg-none d-flex"> <a href="javascript:void(0)">
@@ -68,6 +70,7 @@
                             <use href="{{ asset('assets/svg/iconly-sprite.svg#Search') }}"></use>
                         </svg></a></li>
                 <li>
+                    @auth
                     <form action="{{ route('settings.setMode') }}" method="POST" class="d-inline">
                         @csrf
                         @method('PUT')
@@ -78,6 +81,7 @@
                             </svg>
                         </button>
                     </form>
+                    @endauth
                 </li>
 
                 <li><a class="full-screen" href="javascript:void(0)">
@@ -117,16 +121,22 @@
                         <div class="user-img"><img src="{{ asset('assets/images/profile.png') }}" alt="user" />
                         </div>
                         <div class="user-content">
-                            <h6>{{ Auth::user()->name }}</h6>
-                            <p class="mb-0">{{ Auth::user()->email }}<i class="fa-solid fa-chevron-down"></i></p>
+                            @auth
+                                <h6>{{ Auth::user()->name }}</h6>
+                                <p class="mb-0">{{ Auth::user()->email }}<i class="fa-solid fa-chevron-down"></i></p>
+                            @else
+                                <h6>{{ __('Guest') }}</h6>
+                                <p class="mb-0">{{ __('Welcome') }}<i class="fa-solid fa-chevron-down"></i></p>
+                            @endauth
                         </div>
                     </div>
                     <div class="custom-menu overflow-hidden">
                         <ul class="profile-body">
+                            @auth
                             <li class="d-flex">
                                 <svg class="svg-color">
                                     <use href="{{ asset('assets/svg/iconly-sprite.svg#Profile') }}"></use>
-                                </svg><a class="ms-2" href="#">{{ __('Account') }}</a>
+                                </svg><a class="ms-2" href="{{ route('profile.index') }}">{{ __('Account') }}</a>
                             </li>
                             <li class="d-flex">
                                 <svg class="svg-color">
@@ -138,6 +148,13 @@
                                         class="btn btn-link text-danger text-decoration-none text-nowrap">{{ __('Log Out') }}</button>
                                 </form>
                             </li>
+                            @else
+                            <li class="d-flex">
+                                <svg class="svg-color">
+                                    <use href="{{ asset('assets/svg/iconly-sprite.svg#Login') }}"></use>
+                                </svg><a class="ms-2" href="{{ route('login') }}">{{ __('Log In') }}</a>
+                            </li>
+                            @endauth
                         </ul>
                     </div>
                 </li>

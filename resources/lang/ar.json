@@ -387,6 +387,12 @@
     "There are no deleted categories to display.":"لا يوجد فئات محذوفة للعرض.",
     "Compare to last month":"مقارنة مع الشهر الماضي",
     "Total Inventory Value":"إجمالي قيمة العناصر",
-    "Dashboard":"لوحة التحكم"
+    "Dashboard":"لوحة التحكم",
+    "All Groups":"جميع المجموعات",
+    "All Categories":"جميع الفئات",
+    "Search":"بحث",
+    "Search for items...":"بحث عن عناصر...",
+    "View Details":"عرض التفاصيل",
+    "In Stock":"متوفر"
     
 }

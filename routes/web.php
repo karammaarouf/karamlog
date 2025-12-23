@@ -4,11 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\GroupController;
-use App\Http\Controllers\UserSettingController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserSettingController;
 
 Route::middleware(['auth'])->group(function () {
 
@@ -61,6 +62,8 @@ Route::put('/groups/{group}/restore', [GroupController::class, 'restore'])->with
 Route::delete('/groups/{group}/force-delete', [GroupController::class, 'forceDelete'])->withTrashed()->name('groups.forceDelete');
 Route::put('/groups/{group}/toggle-active', [GroupController::class, 'toggleActive'])->name('groups.toggleActive');
 
-
+});
+Route::middleware(['web'])->group(function () {
+    Route::get('/customer', [CustomerController::class, 'index'])->name('customer.index');
 });
 require __DIR__.'/auth.php';

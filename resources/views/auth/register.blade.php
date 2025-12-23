@@ -58,13 +58,10 @@
                   </div>
                   <div class="form-group">
                     <ul class="login-social">
-                      <li><a href="https://www.linkedin.com" target="_blank"><i class="icon-linkedin"></i></a></li>
-                      <li><a href="https://twitter.com" target="_blank"><i class="icon-twitter"></i></a></li>
-                      <li><a href="https://www.facebook.com" target="_blank"><i class="icon-facebook"></i></a></li>
-                      <li><a href="https://www.instagram.com" target="_blank"><i class="icon-instagram"></i></a></li>
+                      <li><a href="{{ route('social.redirect', 'google') }}" target="_blank"><i class="icon-google"></i></a></li>
                     </ul>
                   </div>
-                  <p class="mt-4 mb-0 text-center">{{__('Already have an account?')}}<a class="ms-2" href="login.html">{{__('Sign in')}}</a></p>
+                  <p class="mt-4 mb-0 text-center">{{__('Already have an account?')}}<a class="ms-2" href="{{ route('login') }}">{{__('Sign in')}}</a></p>
                 </form>
               </div>
             </div>

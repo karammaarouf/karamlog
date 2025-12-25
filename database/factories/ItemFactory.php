@@ -24,7 +24,7 @@ class ItemFactory extends Factory
             'quantity' => $this->faker->numberBetween(1, 10),
             'is_active' => true,
             'discount' => $this->faker->randomFloat(2, 0, 50),
-            'created_at' => $this->faker->dateTimeBetween('-1 week', 'now'),
+            'created_at' => $this->faker->dateTimeBetween('-10 days', 'now'),
             'updated_at' => now(),
         ];
     }

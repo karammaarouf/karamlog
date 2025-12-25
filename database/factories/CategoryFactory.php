@@ -20,6 +20,8 @@ class CategoryFactory extends Factory
             'name' => fake()->unique()->words(2, true),
             'description' => fake()->sentence(),
             'is_active' => fake()->boolean(),
+            'created_at' => $this->faker->dateTimeBetween('-10 days', 'now'),
+            'updated_at' => now(),
         ];
     }
 }

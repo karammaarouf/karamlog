@@ -21,11 +21,16 @@ class CategoryStoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string|max:255',
+        $rules = [
             'is_active' => 'boolean',
         ];
+
+        foreach (config('app.available_locales', ['en', 'ar']) as $locale) {
+            $rules['name_' . $locale] = 'required|string|max:255';
+            $rules['description_' . $locale] = 'nullable|string|max:255';
+        }
+
+        return $rules;
     }
 
     /**

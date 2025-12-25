@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\Category;
@@ -9,7 +10,7 @@ class CategoryService implements CategoryServiceInterface
     // return all data
     public function getAll()
     {
-       $categories= Category::paginate();
+        $categories = Category::paginate();
         return $categories;
     }
     // return search data
@@ -32,13 +33,52 @@ class CategoryService implements CategoryServiceInterface
     // create data
     public function create(array $data)
     {
-        $category = Category::query()->create($data);
+        $name = $data['name_en']??$data['name_ar'];
+        $description = $data['description_en']??$data['description_ar'];
+        // إنشاء الفئة
+        $category = Category::create([
+            'name' => $name,
+            'description' => $description,
+            'is_active' => $data['is_active'],
+        ]);
+        $locales = config('app.available_locales', ['en', 'ar']);
+        foreach ($locales as $locale) {
+            $translations = [
+                'name' => $data['name_' . $locale],
+                'description' => $data['description_' . $locale],
+            ];
+            if ($translations['name'] || $translations['description']) {
+                $category->saveTranslation($translations, $locale);
+            }
+        }
+        // حفظ الترجمات
+
         return $category;
     }
     // update data
     public function update(Category $category, array $data)
     {
-        $category->update($data);
+        $name = $data['name_en']??$data['name_ar'];
+        $description = $data['description_en']??$data['description_ar'];
+        $category->update(
+            [
+                'name' => $name,
+                'description' => $description,
+                'is_active' => $data['is_active'],
+            ]
+        );
+
+        $locales = config('app.available_locales', ['en', 'ar']);
+        foreach ($locales as $locale) {
+            $translations = [
+                'name' => $data['name_' . $locale],
+                'description' => $data['description_' . $locale],
+            ];
+            if ($translations['name'] || $translations['description']) {
+                $category->saveTranslation($translations, $locale);
+            }
+        }
+
         return $category;
     }
     // toggle active data

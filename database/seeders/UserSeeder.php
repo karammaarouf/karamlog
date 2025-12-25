@@ -22,8 +22,7 @@ class UserSeeder extends Seeder
         $superAdmin = User::where('email', 'superadmin@gmail.com')->first();
         $superAdmin->assignRole('super-admin');
 
-        // إنشاء 20 مستخدم باستخدام الـ Factory
-        User::factory(20)->create();
+        User::factory(10)->create();
 
     }
 }

@@ -19,7 +19,7 @@ class CategoryFactory extends Factory
         return [
             'name' => fake()->unique()->words(2, true),
             'description' => fake()->sentence(),
-            'is_active' => fake()->boolean(),
+            'is_active' => true,
             'created_at' => $this->faker->dateTimeBetween('-10 days', 'now'),
             'updated_at' => now(),
         ];

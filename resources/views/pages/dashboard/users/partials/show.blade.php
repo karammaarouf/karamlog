@@ -47,7 +47,7 @@
                       <span class="badge badge-light-primary">{{ $role->name }}</span>
                     @endforeach
                   @else
-                    {{ __('No roles assigned') }}
+                    <span class="badge badge-light-secondary">{{ __('No roles assigned') }}</span>
                   @endif
                 </td>
               </tr>

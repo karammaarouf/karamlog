@@ -31,12 +31,53 @@ class ItemService implements ItemServiceInterface
 
     public function create(array $data)
     {
-        return Item::create($data);
+        $name=$data['name_en']??$data['name_ar'];
+        $description=$data['description_en']??$data['description_ar'];
+        $item = Item::create([
+            'name'=>$name,
+            'description'=>$description,
+            'price'=>$data['price'],
+            'code'=>$data['code'],
+            'quantity'=>$data['quantity'],
+            'is_active'=>$data['is_active'],
+            'discount'=>$data['discount'],
+        ]);
+        $locales = config('app.available_locales', ['en', 'ar']);
+        foreach ($locales as $locale) {
+            $translations = [
+                'name' => $data['name_' . $locale],
+                'description' => $data['description_' . $locale],
+            ];
+            if ($translations['name'] || $translations['description']) {
+                $item->saveTranslation($translations, $locale);
+            }
+        }
+        return $item;
     }
 
     public function update(array $data, Item $item)
     {
-        $item->update($data);
+        $name=$data['name_en']??$data['name_ar'];
+        $description=$data['description_en']??$data['description_ar'];
+        $item->update([
+            'name'=>$name,
+            'description'=>$description,
+            'price'=>$data['price'],
+            'code'=>$data['code'],
+            'quantity'=>$data['quantity'],
+            'is_active'=>$data['is_active'],
+            'discount'=>$data['discount'],
+        ]);
+        $locales = config('app.available_locales', ['en', 'ar']);
+        foreach ($locales as $locale) {
+            $translations = [
+                'name' => $data['name_' . $locale],
+                'description' => $data['description_' . $locale],
+            ];
+            if ($translations['name'] || $translations['description']) {
+                $item->saveTranslation($translations, $locale);
+            }
+        }
         return $item;
     }
 

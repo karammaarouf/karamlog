@@ -2,5 +2,7 @@
     "models.category.11.name": "test",
     "models.category.11.description": "test1",
     "models.group.11.name": "test1",
-    "models.group.11.description": "test1"
+    "models.group.11.description": "test1",
+    "models.item.11.name": "testt",
+    "models.item.11.description": "testt"
 }

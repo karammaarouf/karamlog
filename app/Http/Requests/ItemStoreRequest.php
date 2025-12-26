@@ -21,15 +21,18 @@ class ItemStoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string|max:255',
+        $rules=[
             'price' => 'required|numeric|min:0',
             'code' => 'required|string|unique:items,code',
             'quantity' => 'required|integer|min:0',
             'is_active' => 'boolean',
             'discount' => 'nullable|numeric|min:0',
         ];
+        foreach (config('app.available_locales',['en','ar']) as $locale) {
+            $rules['name_'.$locale] = 'required|string|max:255';
+            $rules['description_'.$locale] = 'nullable|string|max:255';
+        }
+        return $rules;
     }
 
     /**

@@ -71,22 +71,25 @@
         </div>
         @forelse($items as $item)
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="card h-100 shadow-sm">
-                    {{-- <img src="{{ $item->image_url ?? asset('assets/images/product/1.png') }}" class="card-img-top p-3" alt="{{ $item->name }}" style="height: 200px; object-fit: contain;"> --}}
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ $item->name }}</h5>
-                        <p class="card-text text-muted text-truncate">{{ $item->description }}</p>
+                <div class="card h-100 border-1 shadow-none">
+                    <div class="card-body d-flex flex-column p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="card-title mb-0 text-truncate fw-bold" style="max-width: 70%;" title="{{ $item->name }}">{{ $item->name }}</h6>
+                            @if($item->quantity <= 0)
+                                <span class="badge bg-light text-danger border border-danger px-2 py-1" style="font-size: 0.7rem;">{{ __('Out') }}</span>
+                            @endif
+                        </div>
                         
-                        <div class="mt-auto">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="h5 mb-0 text-primary">${{ number_format($item->price, 2) }}</span>
-                                @if($item->quantity > 0)
-                                    <span class="badge bg-success">{{ __('In Stock') }}</span>
-                                @else
-                                    <span class="badge bg-danger">{{ __('Out of Stock') }}</span>
-                                @endif
-                            </div>
-                            <button class="btn btn-primary w-100">{{ __('View Details') }}</button>
+                        <p class="text-muted small text-truncate mb-4">{{ $item->description }}</p>
+                        
+                        <div class="mt-auto d-flex justify-content-between align-items-center pt-3 border-top border-light">
+                            <h5 class="mb-0 text-primary fw-bold">${{ number_format($item->price, 2) }}</h5>
+                            
+                            @if($item->quantity > 0)
+                                <button class="btn btn-primary btn-sm px-3 rounded-3" title="{{ __('Add to Cart') }}">
+                                    <i class="iconly-Buy icli"></i>
+                                </button>
+                            @endif
                         </div>
                     </div>
                 </div>

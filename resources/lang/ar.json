@@ -403,7 +403,9 @@
     "Oops! This Page is Not Found.":"عذراً، هذه الصفحة غير موجودة.",
     "Internal Server Error":"خطأ في الخادم",
     "Shop":"متجر",
-    "Browse our collection":"تصفح مجموعة المنتجات"
+    "Browse our collection":"تصفح مجموعة المنتجات",
+    "Price":"السعر",
+    "Add to Cart":"إضافة إلى السلة"
     
     
 }

@@ -71,25 +71,21 @@
         </div>
         @forelse($items as $item)
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="card h-100 border-1 shadow-none">
-                    <div class="card-body d-flex flex-column p-4">
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h6 class="card-title mb-0 text-truncate fw-bold" style="max-width: 70%;" title="{{ $item->name }}">{{ $item->name }}</h6>
-                            @if($item->quantity <= 0)
-                                <span class="badge bg-light text-danger border border-danger px-2 py-1" style="font-size: 0.7rem;">{{ __('Out') }}</span>
-                            @endif
-                        </div>
-                        
-                        <p class="text-muted small text-truncate mb-4">{{ $item->description }}</p>
-                        
-                        <div class="mt-auto d-flex justify-content-between align-items-center pt-3 border-top border-light">
-                            <h5 class="mb-0 text-primary fw-bold">${{ number_format($item->price, 2) }}</h5>
-                            
-                            @if($item->quantity > 0)
-                                <button class="btn btn-primary btn-sm px-3 rounded-3" title="{{ __('Add to Cart') }}">
-                                    <i class="iconly-Buy icli"></i>
-                                </button>
-                            @endif
+                <div class="project-box font-dark bg-light-primary">
+                    <span class="badge {{ $item->quantity > 0 ? 'badge-primary' : 'badge-danger' }}">{{ $item->quantity > 0 ? __('In Stock') : __('Out of Stock') }}</span>
+                    <h5 class="f-w-500 mb-2 text-primary text-truncate">{{ $item->name }}</h5>
+                    <div class="d-flex mb-2 align-items-center">
+                        <p class="font-light text-truncate">{{ $item->description }}</p>
+                    </div>
+                    <div class="row details">
+                        <div class="col-6"><span>{{ __('Price') }}</span></div>
+                        <div class="col-6 font-primary">${{ number_format($item->price, 2) }}</div>
+                    </div>
+                    <div class="project-status mt-4">
+                        <div class="d-flex align-items-center gap-1 mb-2">
+                             <button class="btn btn-primary btn-sm w-100" {{ $item->quantity <= 0 ? 'disabled' : '' }}>
+                                <i class="iconly-Buy icli me-1"></i> {{ __('Add to Cart') }}
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,6 @@
 @extends('layouts.customer-app')
 
 @section('title', __('Shop'))
-@section('subTitle', __('Browse our collection'))
 
 @section('content')
     <!-- Search Section -->

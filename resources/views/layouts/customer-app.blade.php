@@ -8,13 +8,10 @@
     <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
     <!-- tap on tap ends-->
     @include('layouts.partials.loader')
-    <div class="page-wrapper horizontal-sidebar" id="pageWrapper">
-        @include('layouts.partials.header')
+    @include('layouts.partials.header')
         <!-- Page Body Start-->
-        <div class="page-body-wrapper">
-            <!-- Page sidebar removed for customer view -->
-            
-            <div class="page-body" style="margin-left: 0 !important; margin-right: 0 !important; margin-top: 80px;">
+        <div class="page-body-wrapper">            
+            <div class="page-body">
                 <!-- Container-fluid starts-->
                 <div class="container-fluid default-dashboard">
                     <div class="row">
@@ -25,10 +22,8 @@
                 </div>
                 <!-- Container-fluid Ends-->
             </div>
-
             @include('layouts.partials.footer')
         </div>
-    </div>
     @include('layouts.partials.scripts')
 </body>
 </html>

@@ -21,11 +21,14 @@ class RoleUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string'],
+        $rules=[
             'permissions' => ['array'],
         ];
+        foreach(config('app.available_locales') as $locale){
+            $rules['name_'.$locale] = ['required', 'string', 'max:255'];
+            $rules['description_'.$locale] = ['nullable', 'string'];
+        }
+        return $rules;
     }
 
     /**

@@ -22,9 +22,31 @@
                 <div class="card-header d-flex justify-content-end align-items-center">
                 </div>
                 <div class="card-body">
+                    {{-- table for languages --}}
+                    <ul class="nav nav-tabs" id="languageTabs" role="tablist">
+                        @foreach (config('app.available_locales', ['en', 'ar']) as $index => $locale)
+                            <li class="nav-item">
+                                <a class="nav-link {{$index == 0 ? 'active' : ''}}" 
+                                id="{{$locale}}-tab" 
+                                data-bs-toggle="tab" 
+                                data-bs-target="#{{$locale}}"
+                                href="#{{$locale}}" 
+                                role="tab"
+                                aria-controls="{{$locale}}" 
+                                aria-selected="{{$index == 0 ? 'true' : 'false'}}">
+                                {{__($locale)}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
                     <x-forms.form :action="$action" :method="$method" class="row g-3" novalidate>
-                        <x-forms.input name="name" label="{{__('name')}}" :model="$role" required />
-                        <x-forms.textarea name="description" label="{{__('description')}}" :model="$role" />
+                        <div class="tab-content" id="languageTabsContent">
+                        @foreach (config('app.available_locales', ['en', 'ar']) as $index => $locale)
+                            <div class="tab-pane fade {{$index == 0 ? 'show active' : ''}}" id="{{$locale}}" role="tabpanel" aria-labelledby="{{$locale}}-tab">
+                                <x-forms.input :value="old('name_' . $locale, $isEdit?$role->getTranslation('name', $locale) : '')" name="name_{{$locale}}" label="{{__('name')}} ({{__($locale)}})" :model="$role" required />
+                                <x-forms.textarea :value="old('description_' . $locale, $isEdit?$role->getTranslation('description', $locale) : '')" name="description_{{$locale}}" label="{{__('description')}} ({{__($locale)}})" :model="$role" />
+                            </div>
+                        @endforeach
+                        </div>
                         <div class="col-md-12">
                             <div class="row">
                                 @foreach(($permissionGroups ?? collect()) as $group => $perms)

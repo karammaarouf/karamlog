@@ -12,7 +12,13 @@
 
 @php
     $id = $id ?? $name . '_input';
-    $current = old($name, $value ?? ($model ? data_get($model, $name) : null));
+    $rawValue = $value ?? ($model ? data_get($model, $name) : null);
+
+    if ($type === 'date' && $rawValue instanceof \DateTimeInterface) {
+        $rawValue = $rawValue->format('Y-m-d');
+    }
+
+    $current = old($name, $rawValue);
 @endphp
 
 <div class="col-md-{{ $col }}">

@@ -34,7 +34,7 @@ public function callback()
 
     auth()->login($user);
 
-    return redirect()->route('home');
+    return redirect()->route('dashboard.index');
 }
 
 }

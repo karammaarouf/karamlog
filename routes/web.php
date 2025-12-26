@@ -13,7 +13,7 @@ use App\Http\Controllers\UserSettingController;
 
 Route::middleware(['auth'])->group(function () {
 
-Route::get('/', [DashboardController::class, 'index'])->name('home');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::resource('/users', UserController::class);
 Route::get('/usersDeleted', [UserController::class, 'deleted'])->name('users.deleted');
@@ -64,6 +64,6 @@ Route::put('/groups/{group}/toggle-active', [GroupController::class, 'toggleActi
 
 });
 Route::middleware(['web'])->group(function () {
-    Route::get('/customer', [CustomerController::class, 'index'])->name('customer.index');
+    Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
 });
 require __DIR__.'/auth.php';

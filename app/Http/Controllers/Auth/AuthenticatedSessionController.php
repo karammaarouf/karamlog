@@ -28,7 +28,7 @@ class AuthenticatedSessionController extends Controller
         $userSettings = UserSetting::firstOrCreate(['id' => auth()->user()->id]);
 
         $this->userSettingService->setSessions($userSettings);
-        return redirect()->route('home');
+        return redirect()->route('dashboard.index');
     }
 
     /**

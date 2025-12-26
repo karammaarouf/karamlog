@@ -1,4 +1,6 @@
 {
     "models.category.11.name": "test",
-    "models.category.11.description": "test1"
+    "models.category.11.description": "test1",
+    "models.group.11.name": "test1",
+    "models.group.11.description": "test1"
 }

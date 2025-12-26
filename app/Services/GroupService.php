@@ -30,12 +30,46 @@ class GroupService implements GroupServiceInterface
 
     public function create(array $data)
     {
-        return Group::create($data);
+        $name=$data['name_en']??$data['name_ar'];
+        $description=$data['description_en']??$data['description_ar'];
+
+        $group= Group::create([
+            'name'=>$name,
+            'description'=>$description,
+            'is_active'=>$data['is_active']??true,
+        ]);
+        $locales = config('app.available_locales', ['en', 'ar']);
+        foreach ($locales as $locale) {
+            $translations = [
+                'name' => $data['name_' . $locale],
+                'description' => $data['description_' . $locale],
+            ];
+            if ($translations['name'] || $translations['description']) {
+                $group->saveTranslation($translations, $locale);
+            }
+        }
+        return $group;
     }
 
     public function update(array $data, Group $group)
     {
-        $group->update($data);
+        $name=$data['name_en']??$data['name_ar'];
+        $description=$data['description_en']??$data['description_ar'];
+        $group->update([
+            'name'=>$name,
+            'description'=>$description,
+            'is_active'=>$data['is_active']??true,
+        ]);
+        $locales = config('app.available_locales', ['en', 'ar']);
+        foreach ($locales as $locale) {
+            $translations = [
+                'name' => $data['name_' . $locale],
+                'description' => $data['description_' . $locale],
+            ];
+            if ($translations['name'] || $translations['description']) {
+                $group->saveTranslation($translations, $locale);
+            }
+        }
         return $group;
     }
 

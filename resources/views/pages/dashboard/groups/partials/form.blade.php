@@ -40,9 +40,9 @@
                                     <div class="tab-pane fade {{ $index == 0 ? 'show active' : '' }}"
                                         id="{{ $locale }}" role="tabpanel"
                                         aria-labelledby="{{ $locale }}-tab">
-                                        <x-forms.input name="name_{{ $locale }}" label="{{ __('name') }} ({{ __($locale) }})" :model="$group"
+                                        <x-forms.input :value="old('name_' . $locale,$isEdit ? $group->getTranslation('name', $locale) : '')" name="name_{{ $locale }}" label="{{ __('name') }} ({{ __($locale) }})" :model="$group"
                                             required />
-                                        <x-forms.textarea name="description_{{ $locale }}" label="{{ __('description') }} ({{ __($locale) }})"
+                                        <x-forms.textarea :value="old('description_' . $locale,$isEdit ? $group->getTranslation('description', $locale) : '')" name="description_{{ $locale }}" label="{{ __('description') }} ({{ __($locale) }})"
                                             :model="$group" />
                                     </div>
                                 @endforeach

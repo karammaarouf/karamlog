@@ -32,6 +32,21 @@ class ItemStoreRequest extends FormRequest
             $rules['name_'.$locale] = 'required|string|max:255';
             $rules['description_'.$locale] = 'nullable|string|max:255';
         }
+
+        $rules['details.width'] = 'nullable|string|max:255';
+        $rules['details.height'] = 'nullable|string|max:255';
+        $rules['details.depth'] = 'nullable|string|max:255';
+        $rules['details.weight'] = 'nullable|string|max:255';
+        $rules['details.material'] = 'nullable|string|max:255';
+        $rules['details.color'] = 'nullable|string|max:255';
+        $rules['details.size'] = 'nullable|string|max:255';
+        $rules['details.shape'] = 'nullable|string|max:255';
+        $rules['details.type'] = 'nullable|string|max:255';
+        $rules['details.brand'] = 'nullable|string|max:255';
+        $rules['details.model'] = 'nullable|string|max:255';
+        $rules['details.serial_number'] = 'nullable|string|max:255';
+        $rules['details.other_details'] = 'nullable|string|max:255';
+
         return $rules;
     }
 

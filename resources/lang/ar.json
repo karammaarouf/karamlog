@@ -407,7 +407,22 @@
     "Price":"السعر",
     "Add to Cart":"إضافة إلى السلة",
     "validation.unique":"هذا الحقل مستخدم بالفعل.",
-    "The role name has already been taken.":"اسم الدور مستخدم بالفعل."
+    "The role name has already been taken.":"اسم الدور مستخدم بالفعل.",
+    "Item Specifications":"تفاصيل مخصصة للعنصر",
+    "Width":"العرض",
+    "Height":"الطول",
+    "Depth":"العمق",
+    "Material":"المادة",
+    "Color":"اللون",
+    "Size":"الحجم",
+    "Shape":"الشكل",
+    "Type":"النوع",
+    "Brand":"العلامة",
+    "Model":"النموذج",
+    "Serial Number":"الرقم التسلسلي",
+    "Other Details":"تفاصيل أخرى",
+    "Weight":"الوزن",
+    "Add More Details":"إضافة تفاصيل أخرى"
     
     
 }

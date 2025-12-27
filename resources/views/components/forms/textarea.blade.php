@@ -8,7 +8,10 @@
     'rows' => 3,
     'col' => 12,
     'required' => false,
+    'textColor' => 'text-dark',
 ])
+
+
 
 @php
     $id = $id ?? $name . '_textarea';
@@ -18,7 +21,7 @@
 <div class="col-md-{{ $col }}">
     <div class="mb-3">
         @if($label)
-            <label class="form-label" for="{{ $id }}">{{ $label }}</label>
+            <label class="form-label {{ $textColor }}" for="{{ $id }}">{{ $label }}</label>
         @endif
 
         <textarea

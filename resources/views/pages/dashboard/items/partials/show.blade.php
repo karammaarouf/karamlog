@@ -75,6 +75,39 @@
         @endisset
       </div>
     </div>
+
+    @if(isset($item) && $item->details)
+    <div class="card mt-3">
+        <div class="card-header">
+            <h5>{{ __('Item Specifications') }}</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tbody>
+                        @if($item->details->width) <tr> <th style="width: 200px">{{ __('Width') }}</th> <td>{{ $item->details->width }}</td> </tr> @endif
+                        @if($item->details->height) <tr> <th>{{ __('Height') }}</th> <td>{{ $item->details->height }}</td> </tr> @endif
+                        @if($item->details->depth) <tr> <th>{{ __('Depth') }}</th> <td>{{ $item->details->depth }}</td> </tr> @endif
+                        @if($item->details->weight) <tr> <th>{{ __('Weight') }}</th> <td>{{ $item->details->weight }}</td> </tr> @endif
+
+                        @if($item->details->material) <tr> <th>{{ __('Material') }}</th> <td>{{ $item->details->material }}</td> </tr> @endif
+                        @if($item->details->color) <tr> <th>{{ __('Color') }}</th> <td>{{ $item->details->color }}</td> </tr> @endif
+                        @if($item->details->size) <tr> <th>{{ __('Size') }}</th> <td>{{ $item->details->size }}</td> </tr> @endif
+
+                        @if($item->details->shape) <tr> <th>{{ __('Shape') }}</th> <td>{{ $item->details->shape }}</td> </tr> @endif
+                        @if($item->details->type) <tr> <th>{{ __('Type') }}</th> <td>{{ $item->details->type }}</td> </tr> @endif
+                        @if($item->details->brand) <tr> <th>{{ __('Brand') }}</th> <td>{{ $item->details->brand }}</td> </tr> @endif
+
+                        @if($item->details->model) <tr> <th>{{ __('Model') }}</th> <td>{{ $item->details->model }}</td> </tr> @endif
+                        @if($item->details->serial_number) <tr> <th>{{ __('Serial Number') }}</th> <td>{{ $item->details->serial_number }}</td> </tr> @endif
+
+                        @if($item->details->other_details) <tr> <th>{{ __('Other Details') }}</th> <td>{{ $item->details->other_details }}</td> </tr> @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @endif
   </div>
 </div>
 @endsection

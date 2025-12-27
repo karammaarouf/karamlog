@@ -52,6 +52,11 @@ class ItemService implements ItemServiceInterface
                 $item->saveTranslation($translations, $locale);
             }
         }
+
+        if (isset($data['details'])) {
+            $item->details()->create($data['details']);
+        }
+
         return $item;
     }
 
@@ -78,6 +83,11 @@ class ItemService implements ItemServiceInterface
                 $item->saveTranslation($translations, $locale);
             }
         }
+
+        if (isset($data['details'])) {
+            $item->details()->updateOrCreate(['id' => $item->id], $data['details']);
+        }
+
         return $item;
     }
 

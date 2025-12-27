@@ -33,7 +33,11 @@ class Item extends Model
     {
         return $this->belongsToMany(Category::class);
     }
-        /**
+    public function details()
+    {
+        return $this->hasOne(ItemDetail::class, 'id', 'id');
+    }
+    /**
      * Get the translatable attributes.
      *
      * @return array

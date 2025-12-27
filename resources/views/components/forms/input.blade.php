@@ -8,6 +8,7 @@
     'help' => null,
     'col' => 12,
     'required' => false,
+    'textColor' => 'text-dark',
 ])
 
 @php
@@ -24,7 +25,7 @@
 <div class="col-md-{{ $col }}">
     <div class="mb-3">
         @if($label)
-            <label class="form-label" for="{{ $id }}">{{ $label }}</label>
+            <label class="form-label {{ $textColor }}" for="{{ $id }}">{{ $label }}</label>
         @endif
 
         <input
@@ -33,6 +34,7 @@
             id="{{ $id }}"
             value="{{ $type === 'password' ? '' : ($current ?? '') }}"
             @if($required) required @endif
+            @if($type === 'number') step="0.01" @endif
             {{ $attributes->merge(['class' => 'form-control']) }}
         >
 

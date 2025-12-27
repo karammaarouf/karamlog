@@ -405,7 +405,9 @@
     "Shop":"متجر",
     "Browse our collection":"تصفح مجموعة المنتجات",
     "Price":"السعر",
-    "Add to Cart":"إضافة إلى السلة"
+    "Add to Cart":"إضافة إلى السلة",
+    "validation.unique":"هذا الحقل مستخدم بالفعل.",
+    "The role name has already been taken.":"اسم الدور مستخدم بالفعل."
     
     
 }

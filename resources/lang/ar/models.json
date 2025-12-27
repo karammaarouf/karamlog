@@ -6,5 +6,7 @@
     "models.item.11.name": "ششش",
     "models.item.11.description": "شششش",
     "models.role.3.name": "يي1",
-    "models.role.3.description": "يي1"
+    "models.role.3.description": "يي1",
+    "models.role.4.name": "المدير",
+    "models.role.4.description": "المدير المسؤول"
 }

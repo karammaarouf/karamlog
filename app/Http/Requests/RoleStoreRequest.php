@@ -26,7 +26,7 @@ class RoleStoreRequest extends FormRequest
             'permissions' => ['array'],
         ];
         foreach(config('app.available_locales') as $locale){
-            $rules['name_'.$locale] = ['required', 'string', 'max:255'];
+            $rules['name_'.$locale] = ['required', 'string', 'max:255','unique:roles,name'];
             $rules['description_'.$locale] = ['nullable', 'string'];
         }
         return $rules;
@@ -42,6 +42,7 @@ class RoleStoreRequest extends FormRequest
         return [
             'name.required' => __('The role name is required.'),
             'description.max' => __('The role description may not be greater than 255 characters.'),
+            'name.unique' => __('The role name has already been taken.'),
         ];
     }
 }

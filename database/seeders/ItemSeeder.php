@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Item;
+use App\Models\ItemDetail;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ItemSeeder extends Seeder
 {
@@ -14,6 +13,9 @@ class ItemSeeder extends Seeder
      */
     public function run(): void
     {
-        Item::factory()->count(10)->create();
+        Item::factory()
+            ->count(10)
+            ->has(ItemDetail::factory(), 'details')
+            ->create();
     }
 }

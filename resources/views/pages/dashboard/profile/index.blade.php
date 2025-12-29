@@ -14,9 +14,6 @@
             <div class="card">
                 <div class="card-header card-no-border pb-0">
                     <h3 class="card-title mb-0">{{ __('My Profile') }}</h3>
-                    <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i
-                                class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#"
-                            data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -28,22 +25,24 @@
                                     <p class="mb-0">{{ $user->email }}</p>
                                 </div>
                             </div>
+                            <hr class="my-4">
                             <div class="mt-2 text-muted small">
-                                <div>{{ __('Phone') }}:{{ optional($userInformations)->phone ?? __('Not provided') }}</div>
-                                <div>{{ __('Address') }}:{{ optional($userInformations)->address ?? __('Not provided') }}</div>
-                                <div>{{ __('City') }}:{{ optional($userInformations)->city ?? __('Not provided') }}</div>
-                                <div>{{ __('State') }}:{{ optional($userInformations)->state ?? __('Not provided') }}</div>
-                                <div>{{ __('Country') }}:{{ optional($userInformations)->country ?? __('Not provided') }}</div>
-                                <div>{{ __('Birth Date') }}:{{ $userInformations && $userInformations->birth_date ? $userInformations->birth_date->format('Y-m-d') : __('Not provided') }}</div>
-                                <hr class="my-2">
-                                <div><strong>{{ __('Contact Info') }}:</strong></div>
-                                <div>{{ __('Phone') }}: {{ optional($contactInformations)->phone ?? __('Not provided') }}</div>
-                                <div>{{ __('Whatsapp') }}: {{ optional($contactInformations)->whatsapp ?? __('Not provided') }}</div>
-                                <div>{{ __('Facebook') }}: {{ optional($contactInformations)->facebook ?? __('Not provided') }}</div>
-                                <div>{{ __('Tiktok') }}: {{ optional($contactInformations)->tiktok ?? __('Not provided') }}</div>
-                                <div>{{ __('Instagram') }}: {{ optional($contactInformations)->instagram ?? __('Not provided') }}</div>
-                                <div>{{ __('Telegram') }}: {{ optional($contactInformations)->telegram ?? __('Not provided') }}</div>
-                                <div>{{ __('Email') }}: {{ optional($contactInformations)->email ?? __('Not provided') }}</div>
+                                <div class="mb-2"><strong>{{ __('General Info') }}:</strong></div>
+                                <div class="mb-1">{{ __('Phone') }}:{{ optional($userInformations)->phone ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('Address') }}:{{ optional($userInformations)->address ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('City') }}:{{ optional($userInformations)->city ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('State') }}:{{ optional($userInformations)->state ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('Country') }}:{{ optional($userInformations)->country ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('Birth Date') }}:{{ $userInformations && $userInformations->birth_date ? $userInformations->birth_date->format('Y-m-d') : __('Not provided') }}</div>
+                                <hr class="my-4">
+                                <div class="mb-2"><strong>{{ __('Contact Info') }}:</strong></div>
+                                <div class="mb-1">{{ __('Phone') }}: {{ optional($contactInformations)->phone ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('Whatsapp') }}: {{ optional($contactInformations)->whatsapp ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('Facebook') }}: {{ optional($contactInformations)->facebook ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('Tiktok') }}: {{ optional($contactInformations)->tiktok ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('Instagram') }}: {{ optional($contactInformations)->instagram ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('Telegram') }}: {{ optional($contactInformations)->telegram ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('Email') }}: {{ optional($contactInformations)->email ?? __('Not provided') }}</div>
                             </div>
                         </div>
                     </div>
@@ -52,7 +51,6 @@
             <div class="card">
                 <div class="card-header card-no-border pb-0">
                     <h3 class="card-title mb-0">{{ __('Change Password') }}</h3>
-                    <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
                 </div>
                 <div class="card-body">
                     <x-forms.form :action="route('profile.password.update')" method="PUT" class="needs-validation" novalidate>
@@ -73,14 +71,6 @@
             <div class="card">
                 <div class="card-header card-no-border pb-0">
                     <h3 class="card-title mb-0">{{ __('Edit Profile') }}</h3>
-                    <div class="card-options">
-                        <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse">
-                            <i class="fe fe-chevron-up"></i>
-                        </a>
-                        <a class="card-options-remove" href="#" data-bs-toggle="card-remove">
-                            <i class="fe fe-x"></i>
-                        </a>
-                    </div>
                 </div>
                 <div class="card-body">
                     <x-forms.form :action="route('profile.update')" method="PUT" class="needs-validation" novalidate>
@@ -89,7 +79,7 @@
                             <x-forms.input name="email" label="{{ __('Email') }}" type="email" :model="$user" col="6" required />
                         </div>
                         <hr />
-                        <h5 class="mb-3">{{ __('User Information') }}</h5>
+                        <h5 class="mb-3">{{ __('General Information') }}</h5>
                         <div class="row">
                             <x-forms.input name="birth_date" label="{{ __('Birth Date') }}" type="date" :model="$userInformations" col="6" placeholder="{{ __('Not provided') }}" />
                             <x-forms.input name="phone" label="{{ __('Phone') }}" type="tel" :model="$userInformations" col="6" placeholder="{{ __('Not provided') }}" />

@@ -12,13 +12,12 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         $query = Item::query()->where('is_active', true);
-
-        // if ($request->has('category')) {
-        //     $query->whereHas('categories', function ($q) use ($request) {
-        //         $q->where('id', $request->category);
-        //     });
-        // }
-
+        
+        if ($request->has('category')) {
+            $query->whereHas('categories', function ($q) use ($request) {
+                $q->where('categories.id', $request->category);
+            });
+        }
         // if ($request->has('group')) {
         //     $query->whereHas('group', function ($q) use ($request) {
         //         $q->where('id', $request->group);

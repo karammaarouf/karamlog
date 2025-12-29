@@ -116,7 +116,7 @@
           </div>
         </div>
         <div class="d-flex gap-2">
-          <button type="submit" class="btn btn-primary">{{ __('Save changes') }}</button>
+          <button type="submit" class="btn btn-outline-primary">{{ __('Save changes') }}</button>
           <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#resetModal">{{ __('Reset to default') }}</button>
         </div>
         </form>
@@ -144,7 +144,7 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">{{ __('Update language') }}</button>
+          <button type="submit" class="btn btn-outline-primary">{{ __('Update language') }}</button>
         </form>
         <div class="modal fade" id="resetModal" tabindex="-1" aria-hidden="true">
           <div class="modal-dialog">
@@ -159,7 +159,7 @@
                 <form method="POST" action="{{ route('settings.setDefault') }}">
                   @csrf
                   @method('PUT')
-                  <button type="submit" class="btn btn-danger">{{ __('Reset') }}</button>
+                  <button type="submit" class="btn btn-outline-danger">{{ __('Reset') }}</button>
                 </form>
               </div>
             </div>

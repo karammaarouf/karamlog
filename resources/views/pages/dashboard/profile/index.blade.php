@@ -28,12 +28,12 @@
                             <hr class="my-4">
                             <div class="mt-2 text-muted small">
                                 <div class="mb-2"><strong>{{ __('General Info') }}:</strong></div>
-                                <div class="mb-1">{{ __('Phone') }}:{{ optional($userInformations)->phone ?? __('Not provided') }}</div>
-                                <div class="mb-1">{{ __('Address') }}:{{ optional($userInformations)->address ?? __('Not provided') }}</div>
-                                <div class="mb-1">{{ __('City') }}:{{ optional($userInformations)->city ?? __('Not provided') }}</div>
-                                <div class="mb-1">{{ __('State') }}:{{ optional($userInformations)->state ?? __('Not provided') }}</div>
-                                <div class="mb-1">{{ __('Country') }}:{{ optional($userInformations)->country ?? __('Not provided') }}</div>
-                                <div class="mb-1">{{ __('Birth Date') }}:{{ $userInformations && $userInformations->birth_date ? $userInformations->birth_date->format('Y-m-d') : __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('Phone') }}: {{ optional($userInformations)->phone ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('Address') }}: {{ optional($userInformations)->address ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('City') }}: {{ optional($userInformations)->city ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('State') }}: {{ optional($userInformations)->state ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('Country') }}: {{ optional($userInformations)->country ?? __('Not provided') }}</div>
+                                <div class="mb-1">{{ __('Birth Date') }}: {{ $userInformations && $userInformations->birth_date ? $userInformations->birth_date->format('Y-m-d') : __('Not provided') }}</div>  
                                 <hr class="my-4">
                                 <div class="mb-2"><strong>{{ __('Contact Info') }}:</strong></div>
                                 <div class="mb-1">{{ __('Phone') }}: {{ optional($contactInformations)->phone ?? __('Not provided') }}</div>
@@ -60,7 +60,7 @@
                             <x-forms.input name="new_password_confirmation" label="{{ __('Confirm New Password') }}" type="password" col="6" required />
                         </div>
                         <div class="text-end">
-                            <x-forms.submit-button label="{{ __('Update Password') }}" class="btn btn-warning" />
+                            <x-forms.submit-button label="{{ __('Update Password') }}" class="btn btn-outline-warning" />
                         </div>
                     </x-forms.form>
                 </div>
@@ -82,7 +82,7 @@
                         <h5 class="mb-3">{{ __('General Information') }}</h5>
                         <div class="row">
                             <x-forms.input name="birth_date" label="{{ __('Birth Date') }}" type="date" :model="$userInformations" col="6" placeholder="{{ __('Not provided') }}" />
-                            <x-forms.input name="phone" label="{{ __('Phone') }}" type="tel" :model="$userInformations" col="6" placeholder="{{ __('Not provided') }}" />
+                            <x-forms.input name="phone" label="{{ __('Phone') }}" type="text" :model="$userInformations" col="6" placeholder="{{ __('Not provided') }}" />
                             <x-forms.input name="address" label="{{ __('Address') }}" :model="$userInformations" col="12" placeholder="{{ __('Not provided') }}" />
                             <x-forms.input name="city" label="{{ __('City') }}" :model="$userInformations" col="4" placeholder="{{ __('Not provided') }}" />
                             <x-forms.input name="state" label="{{ __('State') }}" :model="$userInformations" col="4" placeholder="{{ __('Not provided') }}" />
@@ -91,8 +91,8 @@
                         <hr />
                         <h5 class="mb-3">{{ __('Contact Information') }}</h5>
                         <div class="row">
-                            <x-forms.input name="contact[phone]" label="{{ __('Contact Phone') }}" type="tel"  :value="old('contact.phone', $contactInformations->phone ?? '')" col="6" placeholder="{{ __('Not provided') }}" />
-                            <x-forms.input name="contact[whatsapp]" label="{{ __('Whatsapp') }}" type="tel" :value="old('contact.whatsapp', $contactInformations->whatsapp ?? '')" col="6" placeholder="{{ __('Not provided') }}" />
+                            <x-forms.input name="contact[phone]" label="{{ __('Contact Phone') }}" type="text"  :value="old('contact.phone', $contactInformations->phone ?? '')" col="6" placeholder="{{ __('Not provided') }}" />
+                            <x-forms.input name="contact[whatsapp]" label="{{ __('Whatsapp') }}" type="text" :value="old('contact.whatsapp', $contactInformations->whatsapp ?? '')" col="6" placeholder="{{ __('Not provided') }}" />
                             <x-forms.input name="contact[telegram]" label="{{ __('Telegram') }}" type="text" :value="old('contact.telegram', $contactInformations->telegram ?? '')" col="6" placeholder="{{ __('Not provided') }}" />
                             <x-forms.input name="contact[facebook]" label="{{ __('Facebook') }}" type="url" :value="old('contact.facebook', $contactInformations->facebook ?? '')" col="6" placeholder="{{ __('Not provided') }}" />
                             <x-forms.input name="contact[instagram]" label="{{ __('Instagram') }}" type="url" :value="old('contact.instagram', $contactInformations->instagram ?? '')" col="6" placeholder="{{ __('Not provided') }}" />
@@ -100,7 +100,7 @@
                             <x-forms.input name="contact[email]" label="{{ __('Contact Email') }}" type="email" :value="old('contact.email', $contactInformations->email ?? '')" col="12" placeholder="{{ __('Not provided') }}" />
                         </div>
                         <div class="text-end">
-                            <x-forms.submit-button label="{{ __('Update Profile') }}" class="btn btn-primary" />
+                            <x-forms.submit-button label="{{ __('Update Profile') }}" class="btn btn-outline-primary" />
                         </div>
                     </x-forms.form>
                 </div>

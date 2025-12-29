@@ -4,7 +4,7 @@ return [
     [
         'title' => 'general',
         'items' => [
-            ['label' => 'dashboard', 'icon' => 'Home-dashboard', 'url' => '/'],
+            ['label' => 'dashboard', 'icon' => 'Home-dashboard', 'route' => 'dashboard.index'],
             ['label' => 'profile', 'icon' => 'Profile', 'route' => 'profile.index'],
             [
                 'label' => 'users',

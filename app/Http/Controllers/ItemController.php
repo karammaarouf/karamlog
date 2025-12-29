@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
-use App\Http\Requests\ItemStoreRequest;
-use App\Http\Requests\ItemUpdateRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Services\ItemService;
+use App\Http\Requests\ItemStoreRequest;
+use App\Http\Requests\ItemUpdateRequest;
 
 class ItemController extends Controller
 {
@@ -42,7 +43,8 @@ class ItemController extends Controller
     {
         $this->authorize('create', Item::class);
         $item = new Item();
-        return view('pages.dashboard.items.partials.form', compact('item'));
+        $categories = Category::all();
+        return view('pages.dashboard.items.partials.form', compact('item','categories'));
     }
 
     /**
@@ -69,7 +71,8 @@ class ItemController extends Controller
     public function edit(Item $item)
     {
         $this->authorize('update', $item);
-        return view('pages.dashboard.items.partials.form', compact('item'));
+        $categories = Category::all();
+        return view('pages.dashboard.items.partials.form', compact('item','categories'));
     }
 
     /**

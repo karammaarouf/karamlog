@@ -60,6 +60,13 @@
                 <td class="text-{{ $item->is_active ? 'success' : 'danger' }}">{{ $item->is_active ? __('active') : __('inactive') }}</td>
               </tr>
               <tr>
+                <th>{{__('categories')}}</th>
+                <td>
+                  @foreach($item->categories as $category)
+                   <span class="badge badge-light-primary">{{ $category->name }}</span>
+                  @endforeach</td>
+              </tr>
+              <tr>
                 <th>{{__('created at')}}</th>
                 <td>{{ \Illuminate\Support\Carbon::parse($item->created_at)->format('Y-m-d H:i') }}</td>
               </tr>

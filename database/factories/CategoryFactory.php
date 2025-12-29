@@ -17,7 +17,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->unique()->words(2, true),
+            'name' => fake()->unique()->word(),
             'description' => fake()->sentence(),
             'is_active' => true,
             'created_at' => $this->faker->dateTimeBetween('-10 days', 'now'),

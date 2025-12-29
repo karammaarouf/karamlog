@@ -42,25 +42,17 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="col-md-6">
-                            <x-forms.input name="code" label="{{__('code')}}" :model="$item" required />
-                        </div>
-                        <div class="col-md-6">
-                            <x-forms.input type="number" name="price" label="{{__('price')}}" :model="$item" required step="0.01" />
-                        </div>
-                        <div class="col-md-6">
-                            <x-forms.input type="number" name="quantity" label="{{__('quantity')}}" :model="$item" required />
-                        </div>
-                        <div class="col-md-6">
-                            <x-forms.input type="number" name="discount" label="{{__('discount')}}" :model="$item" step="0.01" />
-                        </div>
-                        <div class="col-md-12">
-                             <x-forms.switch-checkbox name="is_active" label="{{__('status')}}" :model="$item" />
-                        </div>
 
-                        <div class="col-12 mb-3">
-                            <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#itemDetailsCollapse" aria-expanded="false" aria-controls="itemDetailsCollapse">
-                                <i class="iconly-Plus icli me-1"></i> {{ __('Add More Details') }}
+                            <x-forms.input name="code" label="{{__('code')}}" :model="$item" col="6" required />
+                            <x-forms.input type="number" name="price" label="{{__('price')}}" :model="$item" col="6" required step="0.01" /> 
+                            <x-forms.input type="number" name="quantity" label="{{__('quantity')}}" :model="$item" col="6" required />
+                            <x-forms.input type="number" name="discount" label="{{__('discount')}}" :model="$item" col="6" step="0.01" />
+                            <x-forms.multiple-select name="category_ids" label="{{__('category')}}" :model="$item" :value="old('category_ids',$isEdit ? $item->categories->pluck('id')->all() : [])" :options="$categories->pluck('name','id')" col="12" required />
+                            <x-forms.switch-checkbox name="is_active" label="{{__('status')}}" col="12" :model="$item" />
+
+                        <div class="col-12 mb-3 d-flex justify-content-center">
+                            <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#itemDetailsCollapse" aria-expanded="false" aria-controls="itemDetailsCollapse" onclick="this.querySelector('i').classList.toggle('fa-plus'); this.querySelector('i').classList.toggle('fa-times');">
+                                <i class="fas fa-plus me-1"></i> {{ __('Add More Details') }}
                             </button>
                         </div>
 

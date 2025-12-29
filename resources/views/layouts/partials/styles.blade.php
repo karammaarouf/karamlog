@@ -1,7 +1,6 @@
     <!-- Favicon icon-->
     <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon"/>
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon"/>
-
     <!-- Flag icon css -->
     <link rel="stylesheet" href="{{ asset('assets/css/vendors/flag-icon.css') }}"/>
     <!-- iconly-icon-->

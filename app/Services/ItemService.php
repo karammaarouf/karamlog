@@ -56,6 +56,10 @@ class ItemService implements ItemServiceInterface
         if (isset($data['details'])) {
             $item->details()->create($data['details']);
         }
+        if(isset($data['category_ids'])){
+        $item->categories()->attach($data['category_ids']);
+        }
+
 
         return $item;
     }
@@ -87,6 +91,9 @@ class ItemService implements ItemServiceInterface
         if (isset($data['details'])) {
             $item->details()->updateOrCreate(['id' => $item->id], $data['details']);
         }
+        
+        $item->categories()->sync($data['category_ids']);
+
 
         return $item;
     }

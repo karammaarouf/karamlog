@@ -47,6 +47,9 @@ class ItemStoreRequest extends FormRequest
         $rules['details.serial_number'] = 'nullable|string|max:255';
         $rules['details.other_details'] = 'nullable|string|max:255';
 
+        $rules['category_ids'] = 'required|array';
+        $rules['category_ids.*'] = 'exists:categories,id';
+        
         return $rules;
     }
 

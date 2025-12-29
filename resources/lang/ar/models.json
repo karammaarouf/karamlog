@@ -1,15 +1,4 @@
 {
-    "models.category.11.name": "تجربة",
-    "models.category.11.description": "تجربة1",
-    "models.group.11.name": "ت12",
-    "models.group.11.description": "ت12",
-    "models.item.11.name": "Colleen Stevens",
-    "models.item.11.description": "Incididunt est temp",
-    "models.role.3.name": "يي1",
-    "models.role.3.description": "يي1",
-    "models.role.4.name": "المدير",
-    "models.role.4.description": "المدير المسؤول",
-    "models.item.12.name": "sdv",
-    "models.item.13.name": "ثثثثثثثثثثثثثثثثث",
-    "models.item.13.description": "Dicta dolores provid"
+    "models.item.1.name": "تجربة",
+    "models.item.1.description": "تجربة"
 }

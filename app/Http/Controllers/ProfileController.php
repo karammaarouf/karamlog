@@ -20,13 +20,16 @@ class ProfileController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $userInformations = $this->profileService->getUserInformations();
-        return view('pages.dashboard.profile.index', compact('user', 'userInformations'));
+        $userInformations = $this->profileService->getUserInformations($user);
+        $contactInformations = $this->profileService->getContactInformations($user);
+        return view('pages.dashboard.profile.index', compact('user', 'userInformations', 'contactInformations'));
     }
 
     public function update(ProfileUpdateRequest $request)
     {
-        $this->profileService->update($request->validated());
+        
+        $this->profileService->updateInformations($request->user(), $request->validated());
+        $this->profileService->updateContactInformations($request->user(), $request->validated());
 
         return redirect()->route('profile.index')->with('success', __('Profile updated successfully'));
     }

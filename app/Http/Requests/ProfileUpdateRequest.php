@@ -30,6 +30,13 @@ class ProfileUpdateRequest extends FormRequest
             'state' => ['nullable','string','max:255'],
             'country' => ['nullable','string','max:255'],
             'birth_date' => ['nullable','date'],
+            'contact.phone' => ['nullable','string','max:20'],
+            'contact.whatsapp' => ['nullable','string','max:20'],
+            'contact.telegram' => ['nullable','string','max:255'],
+            'contact.facebook' => ['nullable','url','max:255'],
+            'contact.instagram' => ['nullable','url','max:255'],
+            'contact.tiktok' => ['nullable','url','max:255'],
+            'contact.email' => ['nullable','email','max:255'],
         ];
     }
 

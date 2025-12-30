@@ -90,11 +90,7 @@
                 </div>
             </div>
         @empty
-            <div class="col-12">
-                <div class="alert alert-info text-center">
-                    {{ __('No items found matching your criteria.') }}
-                </div>
-            </div>
+            <x-table.empty />
         @endforelse
     </div>
 

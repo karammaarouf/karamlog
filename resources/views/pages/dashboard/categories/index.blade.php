@@ -37,6 +37,7 @@
                                     <th>#</th>
                                     <th>{{ __('name') }}</th>
                                     <th>{{ __('description') }}</th>
+                                    <th>{{__('items')}}</th>
                                     <th>{{ __('status') }}</th>
                                     @canany(['update-categories', 'delete-categories'])
                                         <th>{{ __('actions') }}</th>
@@ -49,6 +50,7 @@
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->description }}</td>
+                                        <td><span class="badge badge-light-{{ $category->items_count ? 'primary' : 'secondary' }}">{{ $category->items_count }}</span></td>
                                         <td>
                                             @can('update-categories')
                                                 <x-buttons.toggle-active :model="$category" action="categories.toggleActive" />

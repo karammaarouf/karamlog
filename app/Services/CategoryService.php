@@ -10,13 +10,15 @@ class CategoryService implements CategoryServiceInterface
     // return all data
     public function getAll()
     {
-        $categories = Category::paginate();
+        $categories = Category::withCount('items')
+            ->paginate();
         return $categories;
     }
     // return search data
     public function getSearch(string $search)
     {
         $categories = Category::where('name', 'like', "%$search%")
+            ->withCount('items')
             ->paginate();
         return $categories;
     }

@@ -55,7 +55,7 @@
                                            <span class="badge badge-light-{{ $item->quantity > 0 ? 'primary' : 'danger' }}">{{ $item->quantity }}</span>
                                         </td>
                                         <td>
-                                            <span class="badge badge-light-{{ $item->categories->count() ? 'primary' : 'secondary' }}">{{ $item->categories->count() }}</span>
+                                            <span class="badge badge-light-{{ $item->categories_count ? 'primary' : 'secondary' }}">{{ $item->categories_count }}</span>
                                         </td>
                                         <td>
                                             @can('update-items')

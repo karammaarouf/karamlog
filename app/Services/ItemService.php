@@ -8,7 +8,7 @@ class ItemService implements ItemServiceInterface
 
     public function getAll()
     {
-        return Item::query()->with('categories')->paginate();
+        return Item::query()->withCount('categories')->paginate();
     }
 
     public function getSearch(string $query)
@@ -17,7 +17,7 @@ class ItemService implements ItemServiceInterface
                 ->where('name', 'like', "%{$query}%")
                 ->orWhere('description', 'like', "%{$query}%")
                 ->orWhere('code', 'like', "%{$query}%")
-                ->with('categories')
+                ->withCount('categories')
                 ->paginate();
     }
 

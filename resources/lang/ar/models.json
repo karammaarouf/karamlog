@@ -1,4 +1,6 @@
 {
     "models.item.1.name": "تجربة",
-    "models.item.1.description": "تجربة"
+    "models.item.1.description": "تجربة",
+    "models.role.2.name": "المدير",
+    "models.role.2.description": "المدير"
 }

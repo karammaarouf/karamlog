@@ -1,4 +1,6 @@
 {
     "models.item.1.name": "test",
-    "models.item.1.description": "test"
+    "models.item.1.description": "test",
+    "models.role.2.name": "admin",
+    "models.role.2.description": "admin"
 }

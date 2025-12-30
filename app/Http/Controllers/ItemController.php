@@ -26,7 +26,7 @@ class ItemController extends Controller
         $this->authorize('viewAny', Item::class);
         $search = $request->input('search');
         $items = ($search) ? $this->itemService->getSearch($search) : $this->itemService->getAll();
-
+        
         $counts = $this->itemService->getCounts();
 
         $itemsCount = $counts->total ?? 0;

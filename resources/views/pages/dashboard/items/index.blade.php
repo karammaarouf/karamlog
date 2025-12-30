@@ -37,6 +37,7 @@
                                     <th>{{ __('code') }}</th>
                                     <th>{{ __('price') }}</th>
                                     <th>{{ __('quantity') }}</th>
+                                    <th>{{ __('categories') }}</th>
                                     <th>{{ __('status') }}</th>
                                     @canany(['update-items', 'delete-items'])
                                         <th>{{ __('actions') }}</th>
@@ -51,6 +52,9 @@
                                         <td>{{ $item->code }}</td>
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $item->quantity }}</td>
+                                        <td>
+                                            <span class="badge badge-light-{{ $item->categories->count() ? 'primary' : 'secondary' }}">{{ $item->categories->count() }}</span>
+                                        </td>
                                         <td>
                                             @can('update-items')
                                                 <x-buttons.toggle-active :model="$item" action="items.toggleActive" />

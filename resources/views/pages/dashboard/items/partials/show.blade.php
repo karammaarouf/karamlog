@@ -62,9 +62,11 @@
               <tr>
                 <th>{{__('categories')}}</th>
                 <td>
-                  @foreach($item->categories as $category)
+                  @forelse($item->categories as $category)
                    <span class="badge badge-light-primary">{{ $category->name }}</span>
-                  @endforeach</td>
+                  @empty
+                  <span class="badge badge-light-secondary">{{ __('no categories') }}</span>
+                  @endforelse</td>
               </tr>
               <tr>
                 <th>{{__('created at')}}</th>

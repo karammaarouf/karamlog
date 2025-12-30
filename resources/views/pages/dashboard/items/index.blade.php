@@ -51,7 +51,9 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->code }}</td>
                                         <td>{{ $item->price }}</td>
-                                        <td>{{ $item->quantity }}</td>
+                                        <td>
+                                           <span class="badge badge-light-{{ $item->quantity > 0 ? 'primary' : 'danger' }}">{{ $item->quantity }}</span>
+                                        </td>
                                         <td>
                                             <span class="badge badge-light-{{ $item->categories->count() ? 'primary' : 'secondary' }}">{{ $item->categories->count() }}</span>
                                         </td>

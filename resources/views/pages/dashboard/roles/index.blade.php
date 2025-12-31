@@ -47,12 +47,14 @@
                                                 @can('show-roles')
                                                     <x-buttons.show :action="route('roles.show', $role)" />
                                                 @endcan
+                                                @if($role->name != 'super-admin')
                                                 @can('update-roles')
                                                     <x-buttons.edit :action="route('roles.edit', $role)" />
                                                 @endcan
                                                 @can('delete-roles')
                                                     <x-buttons.delete-form :action="route('roles.destroy', $role)" />
                                                 @endcan
+                                                @endif
                                             </td>
                                         @endcanany
                                     </tr>

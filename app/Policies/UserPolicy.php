@@ -36,7 +36,7 @@ class UserPolicy
      */
     public function update(User $user, User $model): bool
     {
-        return $user->can('update-users');
+        return $user->can('update-users')&&$model->roles->pluck('name')->contains('super-admin') == false;
     }
 
     /**
@@ -44,7 +44,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model): bool
     {
-        return $user->can('delete-users');
+        return $user->can('delete-users')&&$model->roles->pluck('name')->contains('super-admin') == false;
     }
 
     /**
@@ -60,7 +60,7 @@ class UserPolicy
      */
     public function forceDelete(User $user, User $model): bool
     {
-        return $user->can('force-delete-users');
+        return $user->can('force-delete-users')&&$model->roles->pluck('name')->contains('super-admin') == false;
     }
 
     /**

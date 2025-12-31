@@ -19,6 +19,7 @@ class UserService implements UserServiceInterface
         $users = User::with('roles')
             ->where('name', 'like', "%$search%")
             ->orWhere('email', 'like', "%$search%")
+            ->with('roles')
             ->paginate();
         return $users;
     }

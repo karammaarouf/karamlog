@@ -58,23 +58,27 @@
                                             @endif
                                         </td>
                                         <td>
+                                            @if($user->roles->pluck('name')->contains('super-admin') == false)
                                             @can('update-users')
                                             <x-buttons.toggle-active :model="$user" action="users.toggleActive" />
                                             @else
                                             <span class="badge badge-light-{{ $user->is_active ? 'success' : 'danger' }}">{{ $user->is_active ? __('active') : __('inactive') }}</span>
                                             @endcan
+                                            @endif
                                         </td>
                                         @canany(['show-users', 'update-users', 'delete-users'])
                                         <td>
                                             @can('show-users')
                                             <x-buttons.show :action="route('users.show', $user)" />
                                             @endcan
+                                            @if($user->roles->pluck('name')->contains('super-admin') == false)
                                             @can('update-users')
                                             <x-buttons.edit :action="route('users.edit', $user)" />
                                             @endcan
                                             @can('delete-users')
                                             <x-buttons.delete-form :action="route('users.destroy', $user)" />
                                             @endcan 
+                                            @endif
                                         </td>
                                         @endcanany
                                     </tr>

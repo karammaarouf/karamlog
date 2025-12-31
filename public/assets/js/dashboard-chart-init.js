@@ -69,3 +69,58 @@ function initDashboardChart(selector, chartData, categories, color) {
 
     chartlinechart.render();
 }
+
+function initMonthlyHistoryChart(selector, series, categories) {
+    "use strict";
+    var options = {
+        series: series,
+        chart: {
+            type: 'bar',
+            height: 350,
+            toolbar: {
+                show: false
+            }
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                endingShape: 'rounded'
+            },
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+        },
+        xaxis: {
+            categories: categories,
+        },
+        yaxis: {
+            title: {
+                text: 'Count'
+            }
+        },
+        fill: {
+            opacity: 1
+        },
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                    return val
+                }
+            }
+        },
+        colors: [AdmiroAdminConfig.primary, AdmiroAdminConfig.secondary, '#51bb25']
+    };
+
+    var chart = new ApexCharts(document.querySelector(selector), options);
+    chart.render();
+}
+
+if (typeof monthlyHistoryData !== 'undefined') {
+    initMonthlyHistoryChart("#chart-widget4", monthlyHistoryData.series, monthlyHistoryData.categories);
+}

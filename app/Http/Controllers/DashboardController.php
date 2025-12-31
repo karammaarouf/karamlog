@@ -11,7 +11,8 @@ class DashboardController extends Controller
         $itemData = $dashboardService->getItemsData();
         $userData = $dashboardService->getUsersData();
         $groupData = $dashboardService->getGroupsData();
+        $monthlyHistoryData = $dashboardService->getMonthlyHistoryData();
 
-        return view('pages.dashboard.index', compact('itemData','userData','groupData'));
+        return view('pages.dashboard.index', compact('itemData','userData','groupData', 'monthlyHistoryData'));
     }
 }

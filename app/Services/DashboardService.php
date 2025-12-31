@@ -134,6 +134,50 @@ class DashboardService implements DashboardServiceInterface
             'chart_data' => $chartData,
             'categories' => $categories,
         ];
+    }
 
+    public function getMonthlyHistoryData()
+    {
+        // We will collect data for the last 12 months
+        $months = [];
+        $itemsData = [];
+        $groupsData = [];
+        $usersData = [];
+
+        for ($i = 11; $i >= 0; $i--) {
+            $date = Carbon::now()->subMonths($i);
+            $monthName = $date->format('M'); // e.g. "Jan", "Feb"
+            $months[] = $monthName;
+
+            $itemsData[] = Item::whereYear('created_at', $date->year)
+                                ->whereMonth('created_at', $date->month)
+                                ->count();
+            
+            $groupsData[] = Group::whereYear('created_at', $date->year)
+                                 ->whereMonth('created_at', $date->month)
+                                 ->count();
+
+            $usersData[] = User::whereYear('created_at', $date->year)
+                                ->whereMonth('created_at', $date->month)
+                                ->count();
+        }
+
+        return [
+            'categories' => $months,
+            'series' => [
+                [
+                    'name' => 'Items',
+                    'data' => $itemsData
+                ],
+                [
+                    'name' => 'Groups',
+                    'data' => $groupsData
+                ],
+                [
+                    'name' => 'Users',
+                    'data' => $usersData
+                ]
+            ]
+        ];
     }
 }

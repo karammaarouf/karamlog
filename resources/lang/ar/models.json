@@ -1,6 +1,19 @@
 {
-    "models.item.1.name": "تجربة",
-    "models.item.1.description": "تجربة",
+    "models.item.1.name": "اي 10",
+    "models.item.1.description": "سامسونك كالاكسي اي 10",
     "models.role.2.name": "المدير",
-    "models.role.2.description": "المدير"
+    "models.role.2.description": "المدير",
+    "models.category.1.name": "رياضي",
+    "models.category.1.description": "ادوات رياضية",
+    "models.category.2.name": "غذائي",
+    "models.category.2.description": "مواد غذائية",
+    "models.category.3.name": "منزلية",
+    "models.category.3.description": "ادوات منزلية",
+    "models.group.1.name": "هواتف",
+    "models.group.1.description": "هواتف جديدة و مستعملة",
+    "models.group.2.name": "لابتوب",
+    "models.group.2.description": "كومبيوتر محمول جديد و مستعمل",
+    "models.group.3.name": "بلاي ستيشن",
+    "models.item.2.name": "كي 15",
+    "models.item.2.description": "لابتوب كي 15 اسوس"
 }

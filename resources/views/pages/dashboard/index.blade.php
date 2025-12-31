@@ -38,9 +38,28 @@
             :categories="$groupData['categories']"
             color="#33FF57"
         />
+        <div class="col-md-12 box-col-12">
+            <div class="card overflow-hidden">
+                <div class="card-header card-no-border pb-0">
+                    <h3>{{ __('Monthly History') }}</h3>
+                </div>
+                <div class="bar-chart-widget">
+                    <div class="bottom-content card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div id="chart-widget4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
 @push('scripts')
+    <script>
+        var monthlyHistoryData = @json($monthlyHistoryData);
+    </script>
     <script src="{{ asset('assets/js/dashboard-chart-init.js') }}"></script>
 @endpush

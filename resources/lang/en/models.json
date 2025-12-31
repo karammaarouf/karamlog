@@ -1,6 +1,19 @@
 {
-    "models.item.1.name": "test",
-    "models.item.1.description": "test",
+    "models.item.1.name": "a10",
+    "models.item.1.description": "samsung galaxy a10",
     "models.role.2.name": "admin",
-    "models.role.2.description": "admin"
+    "models.role.2.description": "admin",
+    "models.category.1.name": "sport",
+    "models.category.1.description": "sports",
+    "models.category.2.name": "food",
+    "models.category.2.description": "foods",
+    "models.category.3.name": "home",
+    "models.category.3.description": "home tools",
+    "models.group.1.name": "phones",
+    "models.group.1.description": "phones",
+    "models.group.2.name": "labtops",
+    "models.group.2.description": "labtops",
+    "models.group.3.name": "playstasions",
+    "models.item.2.name": "k15",
+    "models.item.2.description": "labtop"
 }

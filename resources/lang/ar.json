@@ -437,6 +437,9 @@
     "no categories":"لا يوجد فئات",
     "Item updated successfully":"تم تحديث العنصر بنجاح.",
     "Out of Stock":"غير متوفر",
-    "Monthly History":"أحداث الشهر"
+    "Monthly History":"أحداث الشهر",
+    "Try adjusting your search or filters.":"حاول تعديل بحث أو عوامل التصفية.",
+    "Close":"إغلاق",
+    "Specifications":"تفاصيل مخصصة"
     
 }

@@ -9,6 +9,7 @@
     'col' => 12,
     'required' => false,
     'textColor' => 'text-dark',
+    'placeholder' => null,
 ])
 
 
@@ -28,6 +29,7 @@
             name="{{ $name }}"
             id="{{ $id }}"
             rows="{{ $rows }}"
+            placeholder="{{ $placeholder ?? '' }}"
             @if($required) required @endif
             {{ $attributes->merge(['class' => 'form-control']) }}
         >{{ $current }}</textarea>

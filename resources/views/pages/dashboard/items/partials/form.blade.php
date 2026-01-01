@@ -35,18 +35,18 @@
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}"
                                 id="{{ $locale }}" role="tabpanel"
                                 aria-labelledby="{{ $locale }}-tab">
-                                    <x-forms.input :value="old('name_' . $locale,$isEdit ? $item->getTranslation('name', $locale) : '')" name="name_{{ $locale }}" label="{{ __('name') }} ({{ __($locale) }})" :model="$item"
+                                    <x-forms.input :value="old('name_' . $locale,$isEdit ? $item->getTranslation('name', $locale) : '')" name="name_{{ $locale }}" placeholder="{{__('name in ') . __($locale)}}" label="{{ __('name') }} ({{ __($locale) }})" :model="$item"
                                     required />
-                                    <x-forms.textarea :value="old('description_' . $locale,$isEdit ? $item->getTranslation('description', $locale) : '')" name="description_{{ $locale }}" label="{{ __('description') }} ({{ __($locale) }})"
+                                    <x-forms.textarea :value="old('description_' . $locale,$isEdit ? $item->getTranslation('description', $locale) : '')" name="description_{{ $locale }}" placeholder="{{__('description in ') . __($locale)}}" label="{{ __('description') }} ({{ __($locale) }})"
                                     :model="$item" />
                                 </div>
                             @endforeach
                         </div>
 
-                            <x-forms.input name="code" label="{{__('code')}}" :model="$item" col="6" required />
-                            <x-forms.input type="number" name="price" label="{{__('price')}}" :model="$item" col="6" required step="0.01" /> 
-                            <x-forms.input type="number" name="quantity" label="{{__('quantity')}}" :model="$item" col="6" required />
-                            <x-forms.input type="number" name="discount" label="{{__('discount')}}" :model="$item" col="6" step="0.01" />
+                            <x-forms.input name="code" placeholder="{{__('code-9467')}}" label="{{__('code')}}" :model="$item" col="6" required />
+                            <x-forms.input type="number" name="price" placeholder="{{__('100.00')}}" label="{{__('price')}}" :model="$item" col="6" required step="0.01" /> 
+                            <x-forms.input type="number" name="quantity" placeholder="{{__('100')}}" label="{{__('quantity')}}" :model="$item" col="6" required />
+                            <x-forms.input type="number" name="discount" placeholder="{{__('10.00')}}" label="{{__('discount')}}" :model="$item" col="6" step="0.01" />
                             <x-forms.multiple-select id="choices-multiple-groups" name="group_ids" label="{{__('groups')}}" :model="$item" :value="old('group_ids',$isEdit ? $item->groups->pluck('id')->all() : [])" :options="$groups->pluck('name','id')" col="12" />
                             <x-forms.multiple-select name="category_ids" label="{{__('categories')}}" :model="$item" :value="old('category_ids',$isEdit ? $item->categories->pluck('id')->all() : [])" :options="$categories->pluck('name','id')" col="12" />
                             <x-forms.switch-checkbox name="is_active" label="{{__('status')}}" col="12" :model="$item" />

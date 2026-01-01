@@ -441,6 +441,8 @@
     "Try adjusting your search or filters.":"حاول تعديل بحث أو عوامل التصفية.",
     "Close":"إغلاق",
     "Specifications":"تفاصيل مخصصة",
-    "no groups":"لا يوجد مجموعات"
+    "no groups":"لا يوجد مجموعات",
+    "name in ":"الاسم في ",
+    "description in ":"الوصف في "
     
 }

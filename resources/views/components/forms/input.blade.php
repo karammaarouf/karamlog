@@ -9,6 +9,7 @@
     'col' => 12,
     'required' => false,
     'textColor' => 'text-dark',
+    'placeholder' => null,
 ])
 
 @php
@@ -32,6 +33,7 @@
             type="{{ $type }}"
             name="{{ $name }}"
             id="{{ $id }}"
+            placeholder="{{ $placeholder ?? '' }}"
             value="{{ $type === 'password' ? '' : ($current ?? '') }}"
             @if($required) required @endif
             @if($type === 'number') step="0.01" @endif

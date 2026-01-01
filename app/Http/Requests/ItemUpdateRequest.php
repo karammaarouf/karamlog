@@ -46,8 +46,11 @@ class ItemUpdateRequest extends FormRequest
         $rules['details.model'] = 'nullable|string|max:255';
         $rules['details.serial_number'] = 'nullable|string|max:255';
         $rules['details.other_details'] = 'nullable|string|max:255';
+        
+        $rules['group_ids'] = 'nullable|array';
+        $rules['group_ids.*'] = 'exists:groups,id';
 
-        $rules['category_ids'] = 'required|array';
+        $rules['category_ids'] = 'nullable|array';
         $rules['category_ids.*'] = 'exists:categories,id';
 
 

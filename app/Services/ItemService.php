@@ -8,7 +8,7 @@ class ItemService implements ItemServiceInterface
 
     public function getAll()
     {
-        return Item::query()->withCount('categories')->paginate();
+        return Item::query()->withCount(['categories','groups'])->paginate();
     }
 
     public function getSearch(string $query)
@@ -17,7 +17,7 @@ class ItemService implements ItemServiceInterface
                 ->where('name', 'like', "%{$query}%")
                 ->orWhere('description', 'like', "%{$query}%")
                 ->orWhere('code', 'like', "%{$query}%")
-                ->withCount('categories')
+                ->withCount(['categories','groups'])
                 ->paginate();
     }
 
@@ -54,8 +54,11 @@ class ItemService implements ItemServiceInterface
             }
         }
 
-        if (isset($data['details'])) {
+        if (isset($data['details']) && !empty(array_filter($data['details']))) {
             $item->details()->create($data['details']);
+        }
+        if(isset($data['group_ids'])){
+            $item->groups()->attach($data['group_ids']);
         }
         if(isset($data['category_ids'])){
         $item->categories()->attach($data['category_ids']);
@@ -89,10 +92,10 @@ class ItemService implements ItemServiceInterface
             }
         }
 
-        if (isset($data['details'])) {
+        if (isset($data['details']) && !empty(array_filter($data['details']))) {
             $item->details()->updateOrCreate(['id' => $item->id], $data['details']);
         }
-        
+        $item->groups()->sync($data['group_ids']);
         $item->categories()->sync($data['category_ids']);
 
 

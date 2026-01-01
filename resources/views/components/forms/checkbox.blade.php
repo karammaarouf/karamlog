@@ -29,7 +29,7 @@
             {{ $attributes }}
         >
         @if($label)
-            <label class="form-check-label" for="{{ $id }}">{{ $label }}</label>
+            <label class="form-check-label {{ $textColor }}" for="{{ $id }}">{{ $label }}@if($required) <span class="text-danger">*</span> @endif</label>
         @endif
 
         @error($name)

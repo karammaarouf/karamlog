@@ -45,7 +45,9 @@
               </tr>
               <tr>
                 <th>{{__('quantity')}}</th>
-                <td>{{ $item->quantity }}</td>
+                <td>
+                  <span class="badge badge-light-{{ $item->quantity > 0 ? 'success' : 'danger' }}">{{ $item->quantity }}</span>
+                </td>
               </tr>
               <tr>
                 <th>{{__('discount')}}</th>
@@ -58,6 +60,15 @@
               <tr>
                 <th>{{__('status')}}</th>
                 <td class="text-{{ $item->is_active ? 'success' : 'danger' }}">{{ $item->is_active ? __('active') : __('inactive') }}</td>
+              </tr>
+              <tr>
+                <th>{{__('groups')}}</th>
+                <td>
+                  @forelse($item->groups as $group)
+                   <span class="badge badge-light-primary">{{ $group->name }}</span>
+                  @empty
+                  <span class="badge badge-light-secondary">{{ __('no groups') }}</span>
+                  @endforelse</td>
               </tr>
               <tr>
                 <th>{{__('categories')}}</th>

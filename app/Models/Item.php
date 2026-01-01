@@ -25,9 +25,9 @@ class Item extends Model
         'discount' => 'decimal:2',
         'price' => 'decimal:2',
     ];
-    public function group()
+    public function groups()
     {
-        return $this->belongsTo(Group::class);
+        return $this->belongsToMany(Group::class);
     }
     public function categories()
     {

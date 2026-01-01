@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Group;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Services\ItemService;
@@ -44,7 +45,8 @@ class ItemController extends Controller
         $this->authorize('create', Item::class);
         $item = new Item();
         $categories = Category::all();
-        return view('pages.dashboard.items.partials.form', compact('item','categories'));
+        $groups = Group::all();
+        return view('pages.dashboard.items.partials.form', compact('item','categories','groups'));
     }
 
     /**
@@ -72,7 +74,8 @@ class ItemController extends Controller
     {
         $this->authorize('update', $item);
         $categories = Category::all();
-        return view('pages.dashboard.items.partials.form', compact('item','categories'));
+        $groups = Group::all();
+        return view('pages.dashboard.items.partials.form', compact('item','categories','groups'));
     }
 
     /**

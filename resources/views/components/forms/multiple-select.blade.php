@@ -10,6 +10,7 @@
     'id' => null,
     'col' => 12,
     'selectClass' => 'form-control',
+    'textColor' => null,
 ])
 @php
     // Use requested identifiers for styling integrations (Choices.js, etc.)
@@ -22,7 +23,7 @@
 @endphp
 <div class="{{ $colClass }}">
     @if($label)
-        <label class="form-label" for="{{ $id }}">{{ $label }} @if($required)<span class="text-danger">*</span>@endif</label>
+        <label class="form-label {{ $textColor }}" for="{{ $id }}">{{ $label }} @if($required)<span class="text-danger">*</span>@endif</label>
     @endif
     <select
         id="{{ $id }}"

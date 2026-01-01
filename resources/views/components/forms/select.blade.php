@@ -19,8 +19,10 @@
 <div class="col-md-{{ $col }}">
     <div class="mb-3">
         @if($label)
-            <label class="form-label" for="{{ $id }}">{{ $label }}</label>
+            <label class="form-label {{ $textColor }}" for="{{ $id }}">{{ $label }}@if($required) <span class="text-danger">*</span> @endif</label>
         @endif
+
+
 
         <select
             id="{{ $id }}"

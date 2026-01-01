@@ -37,6 +37,7 @@
                                     <th>{{ __('code') }}</th>
                                     <th>{{ __('price') }}</th>
                                     <th>{{ __('quantity') }}</th>
+                                    <th>{{ __('groups') }}</th>
                                     <th>{{ __('categories') }}</th>
                                     <th>{{ __('status') }}</th>
                                     @canany(['update-items', 'delete-items'])
@@ -52,7 +53,10 @@
                                         <td>{{ $item->code }}</td>
                                         <td>{{ $item->price }}</td>
                                         <td>
-                                           <span class="badge badge-light-{{ $item->quantity > 0 ? 'primary' : 'danger' }}">{{ $item->quantity }}</span>
+                                           <span class="badge badge-light-{{ $item->quantity > 0 ? 'success' : 'danger' }}">{{ $item->quantity }}</span>
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-light-{{ $item->groups_count ? 'primary' : 'secondary' }}">{{ $item->groups_count }}</span>
                                         </td>
                                         <td>
                                             <span class="badge badge-light-{{ $item->categories_count ? 'primary' : 'secondary' }}">{{ $item->categories_count }}</span>

@@ -41,7 +41,10 @@ document.addEventListener("DOMContentLoaded", function () {
     shouldSort: false,
   });
 
-  initChoices(document.getElementById("choices-multiple-groups"), { allowHTML: true });
+  initChoices(document.getElementById("choices-multiple-groups"), {
+    allowHTML: true,
+    removeItemButton: true,
+  });
 
   initChoices(document.getElementById("cities"), { allowHTML: true });
 

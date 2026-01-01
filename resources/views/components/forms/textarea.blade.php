@@ -21,7 +21,7 @@
 <div class="col-md-{{ $col }}">
     <div class="mb-3">
         @if($label)
-            <label class="form-label {{ $textColor }}" for="{{ $id }}">{{ $label }}</label>
+            <label class="form-label {{ $textColor }}" for="{{ $id }}">{{ $label }}@if($required) <span class="text-danger">*</span> @endif</label>
         @endif
 
         <textarea

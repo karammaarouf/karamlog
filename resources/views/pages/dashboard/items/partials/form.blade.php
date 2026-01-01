@@ -47,7 +47,8 @@
                             <x-forms.input type="number" name="price" label="{{__('price')}}" :model="$item" col="6" required step="0.01" /> 
                             <x-forms.input type="number" name="quantity" label="{{__('quantity')}}" :model="$item" col="6" required />
                             <x-forms.input type="number" name="discount" label="{{__('discount')}}" :model="$item" col="6" step="0.01" />
-                            <x-forms.multiple-select name="category_ids" label="{{__('category')}}" :model="$item" :value="old('category_ids',$isEdit ? $item->categories->pluck('id')->all() : [])" :options="$categories->pluck('name','id')" col="12" required />
+                            <x-forms.multiple-select id="choices-multiple-groups" name="group_ids" label="{{__('groups')}}" :model="$item" :value="old('group_ids',$isEdit ? $item->groups->pluck('id')->all() : [])" :options="$groups->pluck('name','id')" col="12" />
+                            <x-forms.multiple-select name="category_ids" label="{{__('categories')}}" :model="$item" :value="old('category_ids',$isEdit ? $item->categories->pluck('id')->all() : [])" :options="$categories->pluck('name','id')" col="12" />
                             <x-forms.switch-checkbox name="is_active" label="{{__('status')}}" col="12" :model="$item" />
 
                         <div class="col-12 mb-3 d-flex justify-content-center">

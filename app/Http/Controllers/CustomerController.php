@@ -18,11 +18,11 @@ class CustomerController extends Controller
                 $q->where('categories.id', $request->category);
             });
         }
-        // if ($request->has('group')) {
-        //     $query->whereHas('group', function ($q) use ($request) {
-        //         $q->where('id', $request->group);
-        //     });
-        // }
+        if ($request->has('group')) {
+            $query->whereHas('groups', function ($q) use ($request) {
+                $q->where('groups.id', $request->group);
+            });
+        }
 
         if ($request->has('search')) {
             $query->where(function($q) use ($request) {

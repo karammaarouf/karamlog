@@ -23,15 +23,15 @@
                     </div>
                     <div class="card-body">
                         <x-forms.form :action="$action" :method="$method" class="row g-3" novalidate>
-                            <x-forms.input name="name" label="{{ __('name') }}" :model="$user" required />
+                            <x-forms.input name="name" placeholder="{{ __('karam maarouf') }}" label="{{ __('name') }}" :model="$user" required />
 
-                            <x-forms.input name="email" type="email" label="{{ __('email') }}" :model="$user"
+                            <x-forms.input name="email" placeholder="{{ __('karam.maarouf@example.com') }}" type="email" label="{{ __('email') }}" :model="$user"
                                 required />
 
                             @if (!$isEdit)
-                                <x-forms.input name="password" type="password" label="{{ __('password') }}" required
+                                <x-forms.input name="password" placeholder="{{ __('********') }}" type="password" label="{{ __('password') }}" required
                                     help="{{ __('min 8 chars') }}" />
-                                <x-forms.input name="password_confirmation" type="password"
+                                <x-forms.input name="password_confirmation" placeholder="{{ __('********') }}" type="password"
                                     label="{{ __('confirm password') }}" required />
                             @endif
                             <x-forms.multiple-select name="roles" label="{{ __('roles') }}" :options="$roles"

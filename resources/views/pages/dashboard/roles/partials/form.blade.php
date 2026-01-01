@@ -42,8 +42,12 @@
                         <div class="tab-content" id="languageTabsContent">
                         @foreach (config('app.available_locales', ['en', 'ar']) as $index => $locale)
                             <div class="tab-pane fade {{$index == 0 ? 'show active' : ''}}" id="{{$locale}}" role="tabpanel" aria-labelledby="{{$locale}}-tab">
-                                <x-forms.input :value="old('name_' . $locale, $isEdit?$role->getTranslation('name', $locale) : '')" name="name_{{$locale}}" label="{{__('name')}} ({{__($locale)}})" :model="$role" required />
-                                <x-forms.textarea :value="old('description_' . $locale, $isEdit?$role->getTranslation('description', $locale) : '')" name="description_{{$locale}}" label="{{__('description')}} ({{__($locale)}})" :model="$role" />
+                                <x-forms.input :value="old('name_' . $locale, $isEdit?$role->getTranslation('name', $locale) : '')" name="name_{{$locale}}" 
+                                    placeholder="{{__('name in ') . __($locale)}}"
+                                    label="{{__('name')}} ({{__($locale)}})" :model="$role" required />
+                                <x-forms.textarea :value="old('description_' . $locale, $isEdit?$role->getTranslation('description', $locale) : '')" name="description_{{$locale}}" 
+                                    placeholder="{{__('description in ') . __($locale)}}"
+                                    label="{{__('description')}} ({{__($locale)}})" :model="$role" />
                             </div>
                         @endforeach
                         </div>

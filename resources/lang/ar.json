@@ -443,6 +443,10 @@
     "Specifications":"تفاصيل مخصصة",
     "no groups":"لا يوجد مجموعات",
     "name in ":"الاسم في ",
-    "description in ":"الوصف في "
+    "description in ":"الوصف في ",
+    "123 Main St, Anytown, SYRIA":"123 الشارع الرئيسي, أي مدينة, سوريا",
+    "Anytown":"أي مدينة",
+    "Anystate":"أي محافظة",
+    "SYRIA":"سوريا"
     
 }

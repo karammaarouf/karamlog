@@ -55,7 +55,7 @@
                 <div class="card-body">
                     <x-forms.form :action="route('profile.password.update')" method="PUT" class="needs-validation" novalidate>
                         <div class="row">
-                            <x-forms.input name="current_password" label="{{ __('Current Password') }}" type="password" col="12" required />
+                            <x-forms.input name="current_password"  label="{{ __('Current Password') }}" type="password" col="12" required />
                             <x-forms.input name="new_password" label="{{ __('New Password') }}" type="password" col="6" required />
                             <x-forms.input name="new_password_confirmation" label="{{ __('Confirm New Password') }}" type="password" col="6" required />
                         </div>
@@ -75,29 +75,29 @@
                 <div class="card-body">
                     <x-forms.form :action="route('profile.update')" method="PUT" class="needs-validation" novalidate>
                         <div class="row">
-                            <x-forms.input name="name" label="{{ __('Name') }}" :model="$user" col="6" required />
-                            <x-forms.input name="email" label="{{ __('Email') }}" type="email" :model="$user" col="6" required />
+                            <x-forms.input name="name" placeholder="{{ __('karam maarouf') }}" label="{{ __('Name') }}" :model="$user" col="6" required />
+                            <x-forms.input name="email" placeholder="{{ __('karam.maarouf@example.com') }}" label="{{ __('Email') }}" type="email" :model="$user" col="6" required />
                         </div>
                         <hr />
                         <h5 class="mb-3">{{ __('General Information') }}</h5>
                         <div class="row">
-                            <x-forms.input name="birth_date" label="{{ __('Birth Date') }}" type="date" :model="$userInformations" col="6" placeholder="{{ __('Not provided') }}" />
-                            <x-forms.input name="phone" label="{{ __('Phone') }}" type="text" :model="$userInformations" col="6" placeholder="{{ __('Not provided') }}" />
-                            <x-forms.input name="address" label="{{ __('Address') }}" :model="$userInformations" col="12" placeholder="{{ __('Not provided') }}" />
-                            <x-forms.input name="city" label="{{ __('City') }}" :model="$userInformations" col="4" placeholder="{{ __('Not provided') }}" />
-                            <x-forms.input name="state" label="{{ __('State') }}" :model="$userInformations" col="4" placeholder="{{ __('Not provided') }}" />
-                            <x-forms.input name="country" label="{{ __('Country') }}" :model="$userInformations" col="4" placeholder="{{ __('Not provided') }}" />
+                            <x-forms.input name="birth_date" placeholder="{{ __('YYYY-MM-DD') }}" label="{{ __('Birth Date') }}" type="date" :model="$userInformations" col="6" />
+                            <x-forms.input name="phone" placeholder="{{ __('+1234567890') }}" label="{{ __('Phone') }}" type="text" :model="$userInformations" col="6" />
+                            <x-forms.input name="address" placeholder="{{ __('123 Main St, Anytown, SYRIA') }}" label="{{ __('Address') }}" :model="$userInformations" col="12" />
+                            <x-forms.input name="city" placeholder="{{ __('Anytown') }}" label="{{ __('City') }}" :model="$userInformations" col="4" />
+                            <x-forms.input name="state" placeholder="{{ __('Anystate') }}" label="{{ __('State') }}" :model="$userInformations" col="4" />
+                            <x-forms.input name="country" placeholder="{{ __('SYRIA') }}" label="{{ __('Country') }}" :model="$userInformations" col="4" />
                         </div>
                         <hr />
                         <h5 class="mb-3">{{ __('Contact Information') }}</h5>
                         <div class="row">
-                            <x-forms.input name="contact[phone]" label="{{ __('Contact Phone') }}" type="text"  :value="old('contact.phone', $contactInformations->phone ?? '')" col="6" placeholder="{{ __('Not provided') }}" />
-                            <x-forms.input name="contact[whatsapp]" label="{{ __('Whatsapp') }}" type="text" :value="old('contact.whatsapp', $contactInformations->whatsapp ?? '')" col="6" placeholder="{{ __('Not provided') }}" />
-                            <x-forms.input name="contact[telegram]" label="{{ __('Telegram') }}" type="text" :value="old('contact.telegram', $contactInformations->telegram ?? '')" col="6" placeholder="{{ __('Not provided') }}" />
-                            <x-forms.input name="contact[facebook]" label="{{ __('Facebook') }}" type="url" :value="old('contact.facebook', $contactInformations->facebook ?? '')" col="6" placeholder="{{ __('Not provided') }}" />
-                            <x-forms.input name="contact[instagram]" label="{{ __('Instagram') }}" type="url" :value="old('contact.instagram', $contactInformations->instagram ?? '')" col="6" placeholder="{{ __('Not provided') }}" />
-                            <x-forms.input name="contact[tiktok]" label="{{ __('Tiktok') }}" type="url" :value="old('contact.tiktok', $contactInformations->tiktok ?? '')" col="6" placeholder="{{ __('Not provided') }}" />
-                            <x-forms.input name="contact[email]" label="{{ __('Contact Email') }}" type="email" :value="old('contact.email', $contactInformations->email ?? '')" col="12" placeholder="{{ __('Not provided') }}" />
+                            <x-forms.input name="contact[phone]" placeholder="{{ __('+1234567890') }}" label="{{ __('Contact Phone') }}" type="text"  :value="old('contact.phone', $contactInformations->phone ?? '')" col="6" />
+                            <x-forms.input name="contact[whatsapp]" placeholder="{{ __('+1234567890') }}" label="{{ __('Whatsapp') }}" type="text" :value="old('contact.whatsapp', $contactInformations->whatsapp ?? '')" col="6" />
+                            <x-forms.input name="contact[telegram]" placeholder="{{ __('@username') }}" label="{{ __('Telegram') }}" type="text" :value="old('contact.telegram', $contactInformations->telegram ?? '')" col="6" />
+                            <x-forms.input name="contact[facebook]" placeholder="{{ __('https://www.facebook.com/karam.maarouf') }}" label="{{ __('Facebook') }}" type="url" :value="old('contact.facebook', $contactInformations->facebook ?? '')" col="6" />
+                            <x-forms.input name="contact[instagram]" placeholder="{{ __('https://www.instagram.com/karam.maarouf') }}" label="{{ __('Instagram') }}" type="url" :value="old('contact.instagram', $contactInformations->instagram ?? '')" col="6" />
+                            <x-forms.input name="contact[tiktok]" placeholder="{{ __('https://www.tiktok.com/@karam.maarouf') }}" label="{{ __('Tiktok') }}" type="url" :value="old('contact.tiktok', $contactInformations->tiktok ?? '')" col="6" />
+                            <x-forms.input name="contact[email]" placeholder="{{ __('karam.maarouf@example.com') }}" label="{{ __('Contact Email') }}" type="email" :value="old('contact.email', $contactInformations->email ?? '')" col="12" />
                         </div>
                         <div class="text-end">
                             <x-forms.submit-button label="{{ __('Update Profile') }}" class="btn btn-outline-primary" />

@@ -44,11 +44,13 @@
                         <div class="tab-pane fade {{ $index == 0 ? 'show active' : '' }}" id="{{ $locale }}" role="tabpanel" aria-labelledby="{{ $locale }}-tab">
                             <x-forms.input 
                             name="name_{{$locale}}"
+                            placeholder="{{__('name in ') . __($locale)}}"
                              label="{{ __('name') }} ({{ __($locale) }})" 
                              :value="old('name_' . $locale, $isEdit ? $category->getTranslation('name', $locale) : '')" 
                              required />
                             <x-forms.textarea 
                             name="description_{{$locale}}" 
+                            placeholder="{{__('description in ') . __($locale)}}"
                             label="{{ __('description') }} ({{ __($locale) }})" 
                             :value="old('description_' . $locale, $isEdit ? $category->getTranslation('description', $locale) : '')" />
                         </div>

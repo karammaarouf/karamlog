@@ -44,6 +44,10 @@
                 <td class="text-{{ $group->is_active ? 'success' : 'danger' }}">{{ $group->is_active ? __('active') : __('inactive') }}</td>
               </tr>
               <tr>
+                <th>{{__('items')}}</th>
+                <td><span class="badge badge-light-{{ $group->items->count() > 0 ? 'primary' : 'secondary' }}">{{ $group->items->count() }}</span></td>
+              </tr>
+              <tr>
                 <th>{{ __('created at') }}</th>
                 <td>{{ \Illuminate\Support\Carbon::parse($group->created_at)->format('Y-m-d H:i') }}</td>
               </tr>
@@ -59,6 +63,37 @@
         @endisset
       </div>
     </div>
+    <div class="card">
+      <div class="card-header">
+        <h3>{{ __('Items') . ' (' . $group->items->count() . ')' }}</h3>
+      </div>
+      <div class="card-body">
+        @if($group->items->count() > 0)
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>{{ __('name') }}</th>
+                <th>{{ __('description') }}</th>
+                <th>{{ __('status') }}</th>
+                <th>{{ __('quantity') }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($group->items as $item)
+              <tr>
+                <td><a href="{{ route('items.show', $item) }}">{{ $item->name }}</a></td>
+                <td>{{ $item->description }}</td>
+                <td class="text-{{ $item->is_active ? 'success' : 'danger' }}">{{ $item->is_active ? __('active') : __('inactive') }}</td>
+                <td><span class="badge badge-light-{{ $item->quantity > 0 ? 'success' : 'danger' }}">{{ $item->quantity }}</span></td>
+              </tr>
+              @endforeach
+        </tbody>
+      </table>
+    </div>
+    @else
+      <x-table.empty />
+    @endif
   </div>
 </div>
 @endsection

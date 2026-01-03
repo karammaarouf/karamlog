@@ -35,6 +35,7 @@
                                     <th>#</th>
                                     <th>{{ __('name') }}</th>
                                     <th>{{ __('description') }}</th>
+                                    <th>{{ __('items') }}</th>
                                     <th>{{ __('status') }}</th>
                                     @canany(['update-groups', 'delete-groups'])
                                         <th>{{ __('actions') }}</th>
@@ -47,6 +48,7 @@
                                         <td>{{ $group->id }}</td>
                                         <td>{{ $group->name }}</td>
                                         <td>{{ $group->description }}</td>
+                                        <td><span class="badge badge-light-{{ $group->items_count > 0 ? 'primary' : 'secondary' }}">{{ $group->items_count }}</span></td>
                                         <td>
                                             @can('update-groups')
                                                 <x-buttons.toggle-active :model="$group" action="groups.toggleActive" />

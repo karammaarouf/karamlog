@@ -8,7 +8,7 @@ class GroupService implements GroupServiceInterface
 
     public function getAll()
     {
-        return Group::query()->paginate();
+        return Group::query()->withCount('items')->paginate();
     }
 
     public function getSearch(string $query)
@@ -16,6 +16,7 @@ class GroupService implements GroupServiceInterface
         return Group::query()
                 ->where('name', 'like', "%{$query}%")
                 ->orWhere('description', 'like', "%{$query}%")
+                ->withCount('items')
                 ->paginate();
     }
 
